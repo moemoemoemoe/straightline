@@ -16,5 +16,38 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::group(['prefix' => '/', 'middleware' => 'auth'], function() {
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
+
+Route::get('manage_package_categories', ['as' => 'manage_package_categories', 'uses' => 'PackageCategories@manage_package_categories']);
+Route::post('manage_package_categories', ['as' => 'manage_package_categories', 'uses' => 'PackageCategories@manage_package_categories_save']);
+Route::get('publish_cat/{id}', ['as' => 'publish_cat', 'uses' => 'PackageCategories@publish_cat']);
+Route::get('update_cat/{id}', ['as' => 'update_cat', 'uses' => 'PackageCategories@update_cat']);
+Route::post('update_cat/{id}', ['as' => 'update_cat', 'uses' => 'PackageCategories@update_cat_save']);
+///////////////////////////////////theme controller
+
+Route::get('manage_themes', ['as' => 'manage_themes', 'uses' => 'ThemeController@manage_themes']);
+Route::post('manage_themes', ['as' => 'manage_themes', 'uses' => 'ThemeController@manage_themes_save']);
+Route::get('publish_theme/{id}', ['as' => 'publish_theme', 'uses' => 'ThemeController@publish_theme']);
+Route::get('update_theme/{id}', ['as' => 'update_theme', 'uses' => 'ThemeController@update_theme']);
+Route::post('update_theme/{id}', ['as' => 'update_theme', 'uses' => 'ThemeController@update_theme_save']);
+
+///////////////////////////////////cont controller
+Route::get('manage_cont', ['as' => 'manage_cont', 'uses' => 'ContinentController@manage_cont']);
+Route::post('manage_cont', ['as' => 'manage_cont', 'uses' => 'ContinentController@manage_cont_save']);
+Route::get('publish_cont/{id}', ['as' => 'publish_cont', 'uses' => 'ContinentController@publish_cont']);
+Route::get('update_cont/{id}', ['as' => 'update_cont', 'uses' => 'ContinentController@update_cont']);
+Route::post('update_cont/{id}', ['as' => 'update_cont', 'uses' => 'ContinentController@update_cont_save']);
+
+
+
+
+
+
+
+
+
+
+
+});

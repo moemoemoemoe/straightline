@@ -21,8 +21,10 @@
 </head>
 <body>
     <div id="app">
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -49,6 +51,48 @@
                                 </li>
                             @endif
                         @else
+
+                <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  Packages <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('manage_package_categories')}}" >
+                                    Manage Package Categories
+                                    </a>
+                                 <a class="dropdown-item" href="">
+                                   Manage Packages
+                                    </a>
+                                  
+                                  
+                                </div>
+                                
+                            </li>
+
+
+                <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  General <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                 
+                                  <a class="dropdown-item" href="{{route('manage_cont')}}" >
+                                    Manage Continents
+                                    </a>
+                              <a class="dropdown-item" href="{{route('manage_themes')}}">
+                                   Manage Themes
+                                    </a>
+                                  <a class="dropdown-item" href="" >
+                                    Manage Hotels
+                                    </a>
+                                </div>
+                                
+                            </li>
+
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -70,9 +114,26 @@
                     </ul>
                 </div>
             </div>
+
         </nav>
 
         <main class="py-4">
+
+<div class="col-md-12" style="padding-right:18%;padding-left: 18%">
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger" >
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    @if(Session::has('success'))
+                        <p class="alert alert-success">{{Session('success')}}</p>
+                    @endif
+                   
+                </div>
             @yield('content')
         </main>
     </div>
