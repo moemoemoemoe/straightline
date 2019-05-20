@@ -10,14 +10,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
-    <!-- Fonts -->
+   <script src="https://cdn.ckeditor.com/4.7.3/standard-all/ckeditor.js"></script>
+    <!-- Styles -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+   
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+     <script src="{{ asset('js/app.js') }}"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   
 </head>
 <body>
     <div id="app">
@@ -54,15 +59,15 @@
 
                 <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                  Packages <span class="caret"></span>
+                             <b>     Packages</b> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('manage_package_categories')}}" >
-                                    Manage Package Categories
+                                  Manage Package Categories
                                     </a>
-                                 <a class="dropdown-item" href="">
-                                   Manage Packages
+                                 <a class="dropdown-item" href="{{route('create_package')}}">
+                          Manage Packages
                                     </a>
                                   
                                   
@@ -73,20 +78,20 @@
 
                 <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                  General <span class="caret"></span>
+                               <b>   General </b><span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
                                  
                                   <a class="dropdown-item" href="{{route('manage_cont')}}" >
-                                    Manage Continents
+                             Manage Continents
                                     </a>
                               <a class="dropdown-item" href="{{route('manage_themes')}}">
-                                   Manage Themes
+                       Manage Themes
                                     </a>
                                   <a class="dropdown-item" href="" >
-                                    Manage Hotels
+                           Manage Hotels
                                     </a>
                                 </div>
                                 
@@ -134,8 +139,22 @@
                     @endif
                    
                 </div>
+
             @yield('content')
-        </main>
+
+            </main>
+            <script type="text/javascript">
+
+
+
+                        CKEDITOR.replace( 'description' );
+                         CKEDITOR.replace( 'detailed' );
+                                                CKEDITOR.replace( 'price_included' );
+
+                </script>
+        
     </div>
 </body>
+
 </html>
+

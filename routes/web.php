@@ -40,6 +40,12 @@ Route::get('publish_cont/{id}', ['as' => 'publish_cont', 'uses' => 'ContinentCon
 Route::get('update_cont/{id}', ['as' => 'update_cont', 'uses' => 'ContinentController@update_cont']);
 Route::post('update_cont/{id}', ['as' => 'update_cont', 'uses' => 'ContinentController@update_cont_save']);
 
+////////////////////////////packagecontroller
+
+Route::get('create_package', ['as' => 'create_package', 'uses' => 'PackageController@create_package']);
+
+
+
 
 
 

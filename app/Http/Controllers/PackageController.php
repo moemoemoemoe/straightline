@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PackageCat;
 use App\Packages;
-
+use App\Continent;
+use App\Theme;
 use Validator;
 use Redirect;
 
@@ -17,9 +18,14 @@ class PackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function manage_packages()
+    public function create_package()
     {
-        //
+
+        $cats = PackageCat::orderBy('id','DESC')->get();
+        $conts = Continent::orderBy('id','DESC')->get();
+        $themes = Theme::orderBy('id','DESC')->get();
+
+        return view('package.manage_packages',compact('cats','conts','themes'));
     }
 
     /**
