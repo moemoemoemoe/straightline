@@ -46,8 +46,16 @@ Route::get('create_package', ['as' => 'create_package', 'uses' => 'PackageContro
 
 
 
+/////////////////country cities controller
 
 
+Route::get('manage_country',['as'=> 'manage_country', 'uses'=>'CountryCityController@manage_country']);
+Route::post('manage_country',['as'=> 'manage_country', 'uses'=>'CountryCityController@manage_country_save']);
+Route::get('update_country/{id}',['as'=> 'update_country', 'uses'=>'CountryCityController@update_country']);
+Route::post('update_country/{id}',['as'=> 'update_country', 'uses'=>'CountryCityController@update_country_save']);
+
+Route::get('manage_city',['as'=> 'manage_city', 'uses'=>'CountryCityController@manage_city']);
+Route::post('manage_city',['as'=> 'manage_city', 'uses'=>'CountryCityController@manage_city_save']);
 
 
 

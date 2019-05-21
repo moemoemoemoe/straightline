@@ -18,7 +18,9 @@ class AddFiealdToPackage extends Migration
             $table->text('title');
             $table->text('description');
             $table->integer('hotel_id');//important
-            $table->string('day_night');
+            $table->integer('day');
+          $table->integer('night');
+
             $table->integer('theme_id');
             $table->integer('cont_id');
             $table->text('map_loc');

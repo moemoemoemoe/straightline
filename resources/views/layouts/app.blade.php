@@ -14,7 +14,6 @@
 
    <script src="https://cdn.ckeditor.com/4.7.3/standard-all/ckeditor.js"></script>
     <!-- Styles -->
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
    
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
      <script src="{{ asset('js/app.js') }}"></script>
@@ -22,7 +21,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-   
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
 </head>
 <body>
     <div id="app">
@@ -97,6 +98,25 @@
                                 
                             </li>
 
+                <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               <b>   Country & Cities </b><span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                 
+                                  <a class="dropdown-item" href="{{route('manage_country')}}" >
+                             Manage Country
+                                    </a>
+                              <a class="dropdown-item" href="{{route('manage_city')}}">
+                       Manage Cities
+                                    </a>
+                                
+                                </div>
+                                
+                            </li>
+
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -152,8 +172,63 @@
                                                 CKEDITOR.replace( 'price_included' );
 
                 </script>
-        
+       
     </div>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" /></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js" /></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js" /></script>
+
+<script type="text/javascript">
+     $(function () {
+   var bindDatePicker = function() {
+        $(".date").datetimepicker({
+        format:'YYYY-MM-DD',
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-arrow-up",
+                down: "fa fa-arrow-down"
+            }
+        }).find('input:first').on("blur",function () {
+            // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+            // update the format if it's yyyy-mm-dd
+            var date = parseDate($(this).val());
+            if (! isValidDate(date)) {
+                //create date based on momentjs (we have that)
+                date = moment().format('YYYY-MM-DD');
+            }
+            $(this).val(date);
+        });
+    }
+   
+   var isValidDate = function(value, format) {
+        format = format || false;
+        // lets parse the date to the best of our knowledge
+        if (format) {
+            value = parseDate(value);
+        }
+        var timestamp = Date.parse(value);
+        return isNaN(timestamp) == false;
+   }
+   
+   var parseDate = function(value) {
+        var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+        if (m)
+            value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+        return value;
+   }
+   
+   bindDatePicker();
+ });
+</script>
+  <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
 </body>
 
 </html>

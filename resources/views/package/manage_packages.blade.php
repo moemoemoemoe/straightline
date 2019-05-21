@@ -36,11 +36,13 @@
         <div class="col-md-3">
  <input type="text" name="hotel_id" placeholder="Hotel Name*" class="form-control" value="{{old('hotel_id')}}">
 </div>
-    <div class="col-md-3">
- <input type="text" name="day_night" placeholder="Day/Night*" class="form-control" value="{{old('day_night')}}">
+    <div class="col-md-2">
+ <input type="number" name="day" placeholder="Day" class="form-control" value="{{old('day')}}">
 </div>
-
-    <div class="col-md-3">
+  <div class="col-md-2">
+ <input type="number" name="night" placeholder="Night" class="form-control" value="{{old('night')}}">
+</div>
+    <div class="col-md-2">
 
 <select class="form-control" name="theme_id">
                                 @foreach($themes as $theme)
@@ -76,8 +78,10 @@
  <input type="text" name="map_loc" placeholder="Map Location " class="form-control" value="{{old('map_loc')}}">
 </div>
     <div class="col-md-4">
- <input type="text" name="depart_date" placeholder="Depart date" class="form-control" value="{{old('depart_date')}}">
-</div>
+  <input type="text" name="depart_date" placeholder="Depart date" class="form-control" value="{{old('depart_date')}}">
+
+
+ </div>
 <div class="col-md-4">
  <input type="text" name="revenu_date" placeholder="Revenue date" class="form-control" value="{{old('revenu_date')}}">
 </div>
