@@ -168,7 +168,7 @@ if($co_exist > 0)
                 
             
                 $city->save();
-      return Redirect::Back()->with('success', 'Country categories  Updated successfully');
+      return Redirect::Back()->with('success', 'City  Updated successfully');
             }
         }
     }
@@ -179,8 +179,43 @@ if($co_exist > 0)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function update_city($id)
     {
-        //
+        $cities  =  City::findOrFail($id);
+       // return $cities;
+        $countries = Country::orderBy('id','DESC')->get();
+        return view('countrycity.city_update',compact('cities','countries'));
     }
+     public function update_city_save($id,Request $r)
+     {
+
+
+         $name = $r->input('name');
+$country_id = $r->input('country_id');
+         $data = ['name' => $name];
+
+            $rules = ['name' => 'required'];
+
+            $v = Validator::make($data, $rules);
+
+            if($v->fails()){
+                return Redirect::Back()->withErrors($v)->withInput($r->input());
+            }
+            else
+            {
+               
+
+
+                  $city = City::findOrFail($id);
+                  $city->name = $name;
+                  $city->country_id = $country_id;
+                
+            
+                $city->save();
+      return Redirect::Back()->with('success', 'City Updated  Updated successfully');
+            }
+        }
+     
+
+    
 }

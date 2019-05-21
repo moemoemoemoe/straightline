@@ -7,6 +7,8 @@ use App\PackageCat;
 use App\Packages;
 use App\Continent;
 use App\Theme;
+use App\Hotel;
+
 use Validator;
 use Redirect;
 
@@ -22,10 +24,12 @@ class PackageController extends Controller
     {
 
         $cats = PackageCat::orderBy('id','DESC')->get();
+      $hotels = Hotel::orderBy('id','DESC')->get();
+
         $conts = Continent::orderBy('id','DESC')->get();
         $themes = Theme::orderBy('id','DESC')->get();
 
-        return view('package.manage_packages',compact('cats','conts','themes'));
+        return view('package.manage_packages',compact('cats','conts','themes','hotels'));
     }
 
     /**

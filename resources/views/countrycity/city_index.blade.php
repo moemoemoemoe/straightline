@@ -51,7 +51,7 @@
 
             </div>
            
-                <a href="{{route('update_country', $city->id)}}" class="btn btn-primary form-control">Update And Details</a>
+                <a href="{{route('update_city', $city->id)}}" class="btn btn-primary form-control">Update And Details</a>
 
 
         </div>

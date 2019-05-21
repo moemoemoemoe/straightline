@@ -21,8 +21,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -91,7 +95,7 @@
                               <a class="dropdown-item" href="{{route('manage_themes')}}">
                        Manage Themes
                                     </a>
-                                  <a class="dropdown-item" href="" >
+                                  <a class="dropdown-item" href="{{route('manage_hotel')}}" >
                            Manage Hotels
                                     </a>
                                 </div>
@@ -174,15 +178,7 @@
                 </script>
        
     </div>
-     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" /></script>
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js" /></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js" /></script>
-
-<script type="text/javascript">
-     $(function () {
+<script type="text/javascript"> $(function () {
    var bindDatePicker = function() {
         $(".date").datetimepicker({
         format:'YYYY-MM-DD',
@@ -196,10 +192,12 @@
             // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
             // update the format if it's yyyy-mm-dd
             var date = parseDate($(this).val());
+
             if (! isValidDate(date)) {
                 //create date based on momentjs (we have that)
                 date = moment().format('YYYY-MM-DD');
             }
+
             $(this).val(date);
         });
     }
@@ -210,7 +208,9 @@
         if (format) {
             value = parseDate(value);
         }
+
         var timestamp = Date.parse(value);
+
         return isNaN(timestamp) == false;
    }
    
@@ -218,17 +218,12 @@
         var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
         if (m)
             value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+
         return value;
    }
    
    bindDatePicker();
- });
-</script>
-  <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
+ });</script>
 </body>
 
 </html>

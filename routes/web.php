@@ -56,6 +56,15 @@ Route::post('update_country/{id}',['as'=> 'update_country', 'uses'=>'CountryCity
 
 Route::get('manage_city',['as'=> 'manage_city', 'uses'=>'CountryCityController@manage_city']);
 Route::post('manage_city',['as'=> 'manage_city', 'uses'=>'CountryCityController@manage_city_save']);
+Route::get('update_city/{id}',['as'=> 'update_city', 'uses'=>'CountryCityController@update_city']);
+Route::post('update_city/{id}',['as'=> 'update_city', 'uses'=>'CountryCityController@update_city_save']);
+
+//////////////////////hotelController
+
+Route::get('manage_hotel',['as'=> 'manage_hotel','uses'=>'HotelController@manage_hotel']);
+Route::post('manage_hotel',['as'=> 'manage_hotel','uses'=>'HotelController@manage_hotel_save']);
+Route::get('hotel_update/{id}',['as'=> 'hotel_update','uses'=>'HotelController@hotel_update']);
+Route::post('hotel_update/{id}',['as'=> 'hotel_update','uses'=>'HotelController@hotel_update_save']);
 
 
 

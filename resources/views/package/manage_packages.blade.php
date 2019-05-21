@@ -34,7 +34,12 @@
 <p>
     <div class="row">
         <div class="col-md-3">
- <input type="text" name="hotel_id" placeholder="Hotel Name*" class="form-control" value="{{old('hotel_id')}}">
+ <!-- <input type="text" name="hotel_id" placeholder="Hotel Name*" class="form-control" value="{{old('hotel_id')}}"> -->
+  <select class="form-control" name="hotel_id">
+                                @foreach($hotels as $hotel)
+                                <option value="{{$hotel->id}}">{{$hotel->name}}</option>
+                                @endforeach
+                            </select>
 </div>
     <div class="col-md-2">
  <input type="number" name="day" placeholder="Day" class="form-control" value="{{old('day')}}">
@@ -78,13 +83,39 @@
  <input type="text" name="map_loc" placeholder="Map Location " class="form-control" value="{{old('map_loc')}}">
 </div>
     <div class="col-md-4">
-  <input type="text" name="depart_date" placeholder="Depart date" class="form-control" value="{{old('depart_date')}}">
+<!--   <input type="text" name="depart_date" placeholder="Depart date" class="form-control" value="{{old('depart_date')}}">
+ -->
 
+           <!--  <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div> -->
+        
+    <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" name="depart_date" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+   
+    
 
+   </div>
  </div>
 <div class="col-md-4">
- <input type="text" name="revenu_date" placeholder="Revenue date" class="form-control" value="{{old('revenu_date')}}">
-</div>
+<div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" name="revenu_date" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+   
+    
+
+   </div></div>
 
 
 </div>
@@ -126,6 +157,8 @@
         </div>
     </div>
 </div>
+
+
 @endsection
     
 
