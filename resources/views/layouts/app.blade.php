@@ -74,6 +74,9 @@
                                  <a class="dropdown-item" href="{{route('create_package')}}">
                           Manage Packages
                                     </a>
+                                      <a class="dropdown-item" href="{{route('view_packages')}}">
+                          View Packages
+                                    </a>
                                   
                                   
                                 </div>

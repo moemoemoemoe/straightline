@@ -43,6 +43,15 @@ Route::post('update_cont/{id}', ['as' => 'update_cont', 'uses' => 'ContinentCont
 ////////////////////////////packagecontroller
 
 Route::get('create_package', ['as' => 'create_package', 'uses' => 'PackageController@create_package']);
+Route::post('create_package', ['as' => 'create_package', 'uses' => 'PackageController@create_package_save']);
+Route::get('view_packages', ['as' => 'view_packages', 'uses' => 'PackageController@view_packages']);
+Route::get('package_update/{id}', ['as' => 'package_update', 'uses' => 'PackageController@package_update']);
+Route::post('package_update/{id}', ['as' => 'package_update', 'uses' => 'PackageController@package_update_save']);
+
+
+Route::get('delete_gallery/{id}',['as'=> 'delete_gallery','uses'=>'PackageController@delete_gallery']);
+
+
 
 
 
