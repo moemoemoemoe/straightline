@@ -19,7 +19,7 @@ class HotelController extends Controller
      */
     public function manage_hotel()
     {
-        $hotels = Hotel::with('city')->orderBy('id','DESC')->get();
+        $hotels = Hotel::with('city')->orderBy('id','DESC')->paginate(8);
 
         $cities = City::with('country')->orderBy('id','DESC')->get();
         return view('hotel.manage_hotel',compact('hotels','cities'));

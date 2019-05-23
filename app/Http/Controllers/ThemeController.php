@@ -17,7 +17,7 @@ class ThemeController extends Controller
      */
     public function manage_themes()
     {
-        $themes = Theme::orderBy('id','DESC')->get();
+        $themes = Theme::orderBy('id','DESC')->paginate(8);
         return view('themes.add_theme',compact('themes'));
     }
 

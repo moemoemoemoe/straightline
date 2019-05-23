@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PackageCat;
-
+use paginate;
 use Validator;
 use Redirect;
 
@@ -17,7 +17,7 @@ class PackageCategories extends Controller
      */
     public function manage_package_categories()
     {
-        $allcats = PackageCat::orderBy('id','DESC')->get();
+        $allcats = PackageCat::orderBy('id','DESC')->paginate(3);
         return view('package.package_cat',compact('allcats'));
     }
 

@@ -19,7 +19,7 @@
                         <p>
 
 
-<select class="form-control" name="country_id">
+                            <select class="form-control" name="country_id">
                                 @foreach($countries as $country)
                                 <option value="{{$country->id}}">{{$country->name}}</option>
                                 @endforeach
@@ -39,26 +39,36 @@
 </div>
 <br/>
 <div class="container">
-    <div class="row">
-         @foreach($cities as $city)
-    <div class="col-md-2" style="padding:10px">
-      <div class="card">
-            <div class="card-header" style="background-color:#ccc ">
-                <b style="font-weight: 900;">{{$city->name}}</b> 
-            </div>
-            <div class="card-body" style="height: 100px;background-color: #fff;font-weight: bold">
-              <p>  <span style="color: green;">Country : </span><span>{{$city->country->name}}</span></p>
+   
+    <table class="table table-striped" style="text-align: center">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">City Name</th>
+          <th scope="col">Country Name</th>
+           <th scope="col" style="text-align:center"><i class="fas fa-edit"></i> </th>
+         
+      </tr>
+  </thead>
+  <tbody>
+   @foreach($cities as $city)
+   <tr>
+      <th >{{$city->id}}</th>
+      <th >
+          {{$city->country->name}}</th>
 
-            </div>
-           
-                <a href="{{route('update_city', $city->id)}}" class="btn btn-primary form-control">Update And Details</a>
+          <td>{{$city->name}}</td>
+          <td><a href="{{route('update_city', $city->id)}}" class="btn btn-primary">Update And Details</a></td>
+      </tr>
 
-
-        </div>
-    </div>
-
-    @endforeach
-    </div>
+      @endforeach
+      
+  </tbody>
+  
+</table>
+<hr style="border: 1px solid #169cd9;" >
+{!!$cities->links()!!} 
 </div>
+
 
 @endsection

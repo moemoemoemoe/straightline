@@ -16,7 +16,7 @@ class ContinentController extends Controller
      */
     public function manage_cont()
     {
-        $conts = Continent::orderBy('id','DESC')->get();
+        $conts = Continent::orderBy('id','DESC')->paginate(8);
 
     return view('continents.manage_continent',compact('conts'));
         //

@@ -94,6 +94,9 @@
                
 
         </div>
+        <hr style="border: 1px solid #169cd9;" >
+        <br/>
+{!!$hotels->links()!!} 
 
     </div>
 @endsection

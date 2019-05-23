@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\City;
 use App\Country;
 use Validator;
+use paginate;
 use Redirect;
 
 class CountryCityController extends Controller
@@ -17,7 +18,7 @@ class CountryCityController extends Controller
      */
     public function manage_country()
     {
-        $countries = Country::orderBy('id','DESC')->get();
+        $countries = Country::orderBy('id','DESC')->paginate(6);
         return view('countrycity.country_index',compact('countries'));
     }
 
@@ -125,7 +126,7 @@ if($co_exist > 0)
     public function manage_city()
     {
         $countries = Country::orderBy('id','DESC')->get();
-        $cities = City::with('country')->orderBy('id','DESC')->get();
+        $cities = City::with('country')->orderBy('id','DESC')->paginate(8);
         //return $cities;
         return view('countrycity.city_index',compact('countries','cities'));
     }
