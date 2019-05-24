@@ -15,6 +15,12 @@ class CreatePopularsTable extends Migration
     {
         Schema::create('populars', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('image');
+            $table->string('country');
+            $table->string('city');
+            $table->string('url');
+            $table->integer('status');
+
             $table->timestamps();
         });
     }

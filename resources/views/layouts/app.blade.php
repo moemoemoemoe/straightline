@@ -14,16 +14,18 @@
 
     <script src="https://cdn.ckeditor.com/4.7.3/standard-all/ckeditor.js"></script>
     <!-- Styles -->
+ <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/minty.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   
     <script src="{{ asset('js/app.js') }}"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    -->
+ <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -31,11 +33,11 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" >
 
      <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" >
 
-        <div class="container" style="background-color: #eee">
+        <div class="container" >
 
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -47,7 +49,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
 
-                <ul class="nav nav-tabs">
+                <ul class="nav ">
+                   <!--  nav-tabs -->
                    
                 <li class="nav-item dropdown">
                       @if( Route::current()->getName() == 'manage_country' || Route::current()->getName() == 'manage_city' )

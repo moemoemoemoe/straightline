@@ -11,7 +11,7 @@
                                                                                
 @foreach($packages as $package)
     <div class="col-md-4">
-        <div class="card">
+        <div class="card" style="border-radius: 20px">
             <div class="card-header" style="background-color:#fff ">
                 <b><span style="color: #4CAF50;font-weight: 900">{{$package->title}}</span></b>
             </div>
