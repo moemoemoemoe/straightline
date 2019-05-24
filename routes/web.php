@@ -76,7 +76,21 @@ Route::get('hotel_update/{id}',['as'=> 'hotel_update','uses'=>'HotelController@h
 Route::post('hotel_update/{id}',['as'=> 'hotel_update','uses'=>'HotelController@hotel_update_save']);
 
 
+////////////////////////popularController
 
+Route::get('create_popular',['as'=> 'create_popular','uses'=>'PopularController@create_popular']);
+Route::post('create_popular',['as'=> 'create_popular','uses'=>'PopularController@create_popular_save']);
+Route::get('publish_popular/{id}', ['as' => 'publish_popular', 'uses' => 'PopularController@publish_popular']);
+Route::get('update_popular/{id}', ['as' => 'update_popular', 'uses' => 'PopularController@update_popular']);
+Route::post('update_popular/{id}', ['as' => 'update_popular', 'uses' => 'PopularController@update_popular_save']);
+
+///////////////////Service Controller
+
+Route::get('create_service',['as'=> 'create_service','uses'=>'ServiceController@create_service']);
+Route::post('create_service',['as'=> 'create_service','uses'=>'ServiceController@create_service_save']);
+Route::get('publish_service/{id}', ['as' => 'publish_service', 'uses' => 'ServiceController@publish_service']);
+Route::get('update_service/{id}', ['as' => 'update_service', 'uses' => 'ServiceController@update_service']);
+Route::post('update_service/{id}', ['as' => 'update_service', 'uses' => 'ServiceController@update_service_save']);
 
 
 

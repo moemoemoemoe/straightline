@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePopularsTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePopularsTable extends Migration
      */
     public function up()
     {
-        Schema::create('populars', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('image');
-            $table->string('country');
-            $table->string('city');
-            $table->string('url');
+            $table->string('name');
+            $table->text('description');
+            $table->integer('is_important');
             $table->integer('status');
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ class CreatePopularsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('populars');
+        Schema::dropIfExists('services');
     }
 }

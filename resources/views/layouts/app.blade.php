@@ -157,6 +157,47 @@
                   </div>
               </li>
 
+              <!--  -->
+
+                <li class="nav-item dropdown">
+                 @if( Route::current()->getName() == 'create_popular')
+                <a class="active nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Popular Destination</a>
+                @else
+                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Popular Destination</a>
+                @endif
+                <div class="dropdown-menu">
+                    @if(Route::current()->getName() == 'create_popular' )
+                    <a class="active dropdown-item" href="{{route('create_popular')}}" > Create Destination</a>
+@else
+                    <a class="dropdown-item" href="{{route('create_popular')}}" > Create Destination</a>
+
+@endif
+                   
+                        
+                    </div>
+                   
+                </li>
+
+
+                <li class="nav-item dropdown">
+                
+                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Informations</a>
+             
+                <div class="dropdown-menu">
+                    @if(Route::current()->getName() == 'create_service' )
+                    <a class="active dropdown-item" href="{{route('create_service')}}" > Create Service</a>
+@else
+                    <a class="dropdown-item" href="{{route('create_service')}}" > Create Service</a>
+
+@endif
+                    <a class="dropdown-item" href="{{route('create_service')}}" > Contact Us</a>
+
+                   
+                                        </div>
+                   
+                </li>
+
+
           </ul>
 
 

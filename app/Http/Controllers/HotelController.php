@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Hotel;
 use App\City;
-
+use paginate;
 use Validator;
 use Redirect;
 
