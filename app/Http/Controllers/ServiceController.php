@@ -126,9 +126,20 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function change_section($id)
     {
-        //
+         $main = Service::findOrFail($id);
+     if($main->is_important == '0')
+     {
+       $main->is_important = '1';
+       $main->save();
+       return Redirect::Back()->with('success', 'This  Service is In Top Section');
+     }
+     else{
+      $main->is_important = '0';
+      $main->save();
+      return Redirect::Back()->with('success', 'This  Service is In Other Services');
+    }
     }
 
     /**

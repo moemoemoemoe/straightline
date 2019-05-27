@@ -15,7 +15,7 @@
     <script src="https://cdn.ckeditor.com/4.7.3/standard-all/ckeditor.js"></script>
     <!-- Styles -->
  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/minty.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/flatly.min.css') }}" rel="stylesheet">
 
    
     <script src="{{ asset('js/app.js') }}"></script>
@@ -35,7 +35,7 @@
 <body>
     <div id="app" >
 
-     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" >
+     <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
 
         <div class="container" >
 
@@ -48,7 +48,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
+ @if(Route::current()->getName() == 'login'  ||  Route::current()->getName() == 'register' ) 
 
+ @else
                 <ul class="nav ">
                    <!--  nav-tabs -->
                    
@@ -190,9 +192,12 @@
                     <a class="dropdown-item" href="{{route('create_service')}}" > Create Service</a>
 
 @endif
-                    <a class="dropdown-item" href="{{route('create_service')}}" > Contact Us</a>
+ @if(Route::current()->getName() == 'contact_index' )
+                    <a class="active dropdown-item" href="{{route('contact_index')}}" > Contact Us</a>
 
-                   
+                   @else
+                                       <a class=" dropdown-item" href="{{route('contact_index')}}" > Contact Us</a>
+@endif
                                         </div>
                    
                 </li>
@@ -200,7 +205,7 @@
 
           </ul>
 
-
+@endif
           <ul class="navbar-nav ml-auto">
 
             @guest
@@ -215,7 +220,7 @@
             @else
 
             <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class=" dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 

@@ -60,15 +60,15 @@
       <th >{{$service->name}}</th>
 
          @if($service->is_important ==1)
-     <th>Top Service in page</th>
+     <th><a href="{{route('change_section', $service->id)}}" ><i class="fas fa-exchange-alt"></i></a>  Top Service in page</th>
 @else
- <th> Onther Services </th>
+ <th><a href="{{route('change_section', $service->id)}}"> <i class="fas fa-exchange-alt"></i> </a> Onther Services </th>
 @endif
            <td>  <a href="{{route('update_service', $service->id)}}" class="btn btn-primary ">Update And Details</a></td>
           <td>@if($service->status == 0)
                  <a href="{{route('publish_service', $service->id)}}" class="btn btn-success ">Publish</a>
                  @else
-                 <a href="{{route('publish_service', $service->id)}}" class="btn btn-danger ">Unpublish</a>
+                 <a href="{{route('publish_service', $service->id)}}" class="btn btn-warning ">Unpublish</a>
                  @endif
            </td>
          
