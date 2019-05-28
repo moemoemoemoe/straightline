@@ -51,7 +51,7 @@
                     </div>
                 </p>
                 <p>
-                            <input type="submit" value="Update" class="btn btn-primary form-control">
+                            <input type="submit" value="Save" class="btn btn-primary form-control">
                         </p>
 
             </form>

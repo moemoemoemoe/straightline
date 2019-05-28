@@ -14,6 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+ Route::get('front_index',['as'=> 'front_index','uses'=>'FrontController@front_index']);
+ Route::post('front_index',['as'=> 'front_index','uses'=>'FrontController@front_index_search']);
+ 
+
+ Route::get('result_search',['as'=> 'result_search','uses'=>'FrontController@result_search']);
+
 
 Auth::routes();
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function() {
@@ -91,6 +97,9 @@ Route::get('change_section/{id}', ['as' => 'change_section', 'uses' => 'ServiceC
  Route::get('contact_index',['as'=> 'contact_index','uses'=>'ContactController@contact_index']);
  Route::post('contact_index',['as'=> 'contact_index','uses'=>'ContactController@contact_index_save']);
 
+////////////////////////HomeController
+ Route::get('search_index',['as'=> 'search_index','uses'=>'HomeController@search_index']);
+  Route::post('search_index',['as'=> 'search_index','uses'=>'HomeController@search_index_result']);
 
 
 });

@@ -96,7 +96,7 @@
         
     <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" name="depart_date" />
+                    <input type='date' class="form-control" name="depart_date" />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
@@ -108,7 +108,7 @@
 <div class="col-md-4">
 <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" name="revenue_date" />
+                    <input type='date' class="form-control" name="revenue_date" />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>

@@ -68,7 +68,7 @@
           <td>@if($service->status == 0)
                  <a href="{{route('publish_service', $service->id)}}" class="btn btn-success ">Publish</a>
                  @else
-                 <a href="{{route('publish_service', $service->id)}}" class="btn btn-warning ">Unpublish</a>
+                 <a href="{{route('publish_service', $service->id)}}" class="btn btn-warning">Unpublish</a>
                  @endif
            </td>
          
