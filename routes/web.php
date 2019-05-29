@@ -16,9 +16,8 @@ Route::get('/', function () {
 });
  Route::get('front_index',['as'=> 'front_index','uses'=>'FrontController@front_index']);
  Route::post('front_index',['as'=> 'front_index','uses'=>'FrontController@front_index_search']);
- 
-
  Route::get('result_search',['as'=> 'result_search','uses'=>'FrontController@result_search']);
+ Route::get('autocomplete/{key}',['as'=> 'autocomplete','uses'=>'FrontController@autocomplete']);
 
 
 Auth::routes();
@@ -100,6 +99,18 @@ Route::get('change_section/{id}', ['as' => 'change_section', 'uses' => 'ServiceC
 ////////////////////////HomeController
  Route::get('search_index',['as'=> 'search_index','uses'=>'HomeController@search_index']);
   Route::post('search_index',['as'=> 'search_index','uses'=>'HomeController@search_index_result']);
+/////////insurance Controller
+
+  Route::get('insurance_index',['as'=> 'insurance_index','uses'=>'insuranceController@insurance_index']);
+  Route::get('delete_insurance/{id}',['as'=> 'delete_insurance','uses'=>'insuranceController@delete_insurance']);
+  Route::get('archive_insurance/{id}', ['as' => 'archive_insurance', 'uses' => 'insuranceController@archive_insurance']);
+
+
+//////Call Back Controlller
+
+  Route::get('callback_index',['as'=> 'callback_index','uses'=>'CallbackController@callback_index']);
+  Route::get('delete_callback/{id}',['as'=> 'delete_callback','uses'=>'CallbackController@delete_callback']);
+  Route::get('archive_callback/{id}', ['as' => 'archive_callback', 'uses' => 'CallbackController@archive_callback']);
 
 
 });

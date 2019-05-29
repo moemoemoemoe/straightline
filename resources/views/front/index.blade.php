@@ -57,7 +57,7 @@
 				<div class="form-group" >
 
 					
-<input type="text" name="from" placeholder="From" class="form-control" style="background-color: #fff;border-radius: 15px;height: 50px" autocomplete="off" id="from" >		
+<input type="text" name="from" placeholder="From" class="form-control from" style="background-color: #fff;border-radius: 15px;height: 50px" autocomplete="off" id="from" >		
 </div>	
 </div>
 
@@ -67,14 +67,29 @@
 </div>	
 </div>
 <div class="col-md-3">
-				<div class="form-group">
+	<!-- 			<div class="form-group">
 <input type="date" name="dep" placeholder="Depart" class="form-control" id="dep_date" style="background-color: #fff;border-radius: 15px;height: 50px">		
-</div>	
+</div>	 -->
+<div class="form-group">
+            <div class="input-group date" id="datetimepicker">
+                <input type="text" name="dep" placeholder="Depart" class="form-control" id="dep_date" style="background-color: #fff;border-radius: 15px;height: 50px" autocomplete="off" />	 <span  class="input-group-addon" style="visibility: hidden;" >
+                         <span class="glyphicon-calendar glyphicon"></span>
+                       </span>
+            </div>
+        </div>
+
 </div>
 <div class="col-md-3">
-				<div class="form-group" id="re">
+	<!-- 			<div class="form-group" id="re">
 <input type="date" id="retu" name="ret" placeholder="Return" class="form-control" style="background-color: #fff;border-radius: 15px;height: 50px">		
-</div>	
+</div>	 -->
+<div class="form-group">
+            <div class="input-group date" id="datetimepicker">
+                <input type="text" id="retu" name="ret" placeholder="Return" class="form-control" style="background-color: #fff;border-radius: 15px;height: 50px" autocomplete="off" />	 <span class="input-group-addon" style="visibility: hidden;">
+                         <span class="glyphicon-calendar glyphicon"></span>
+                       </span>
+            </div>
+        </div>
 </div>
 
 <div class="col-md-3">

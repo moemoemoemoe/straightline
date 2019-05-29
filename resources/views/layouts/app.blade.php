@@ -51,7 +51,7 @@
  @if(Route::current()->getName() == 'login'  ||  Route::current()->getName() == 'register' ) 
 
  @else
-                <ul class="nav ">
+                <ul class="nav " style="font-size: 0.8em">
                    <!--  nav-tabs -->
                    
                 <li class="nav-item dropdown">
@@ -203,6 +203,46 @@
                 </li>
 
 
+                <li class="nav-item dropdown">
+                
+                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Emails</a>
+             
+                <div class="dropdown-menu">
+                  @if(Route::current()->getName() == 'create_service' )
+                    <a class="active dropdown-item" href="{{route('create_service')}}" > Package Reservation</a>
+@else
+                    <a class="dropdown-item" href="{{route('create_service')}}" >  Package Reservation</a>
+
+@endif
+                    @if(Route::current()->getName() == 'insurance_index' )
+                    <a class="active dropdown-item" href="{{route('insurance_index')}}" > Insurance</a>
+@else
+                    <a class="dropdown-item" href="{{route('insurance_index')}}" >  Insurance</a>
+
+@endif
+ @if(Route::current()->getName() == 'callback_index' )
+                    <a class="active dropdown-item" href="{{route('callback_index')}}" > CallBack</a>
+
+                   @else
+                                       <a class=" dropdown-item" href="{{route('callback_index')}}" > CallBack</a>
+@endif
+
+ @if(Route::current()->getName() == 'contact_index' )
+                    <a class="active dropdown-item" href="{{route('contact_index')}}" > Mailing List</a>
+
+                   @else
+                                       <a class=" dropdown-item" href="{{route('contact_index')}}" > Mailing List</a>
+@endif
+
+@if(Route::current()->getName() == 'contact_index' )
+                    <a class="active dropdown-item" href="{{route('contact_index')}}" >Contact Us Messages</a>
+
+                   @else
+                                       <a class=" dropdown-item" href="{{route('contact_index')}}" >Contact Us Messages</a>
+@endif
+                                        </div>
+                   
+                </li>
           </ul>
 
 @endif

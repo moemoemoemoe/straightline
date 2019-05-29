@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\View;
 use Redirect;
+use App\Airport;
 class FrontController extends Controller
 {
     /**
@@ -33,8 +34,8 @@ class FrontController extends Controller
         $rev_date = $r->input('rev_date');
         $adult = $r->input('adu');
         $child = $r->input('chil');
-  $dep_hex = str_replace('-', '%2F', $dep_date);
-        $ret_hex = str_replace('-', '%2F', $rev_date);
+  $dep_hex = str_replace('/', '%2F', $dep_date);
+        $ret_hex = str_replace('/', '%2F', $rev_date);
         if($type == 1)
         {
  $link = "https://www.epower.amadeus.com/slt/#AdtCount=".$adult."&CabinClass=&ChdCount=".$child."&Culture=en-US&DepartureDate=".$dep_hex."&From=".$from."&InfCount=1&Method=Search&Page=Result&PaxAge=&ProviderList=OnlyAmadeus&QTo=A&ReturnDate=".$ret_hex."&To=".$to;
@@ -48,6 +49,13 @@ if($type == 2)
  //return $link;
 Session::put('link', $link);
 
+}
+if($type == 3)
+{
+ $link = "https://www.epower.amadeus.com/slt/#AdtCount=".$adult."&CabinClass=&ChdCount=".$child."&Culture=en-US&DepartureDate=".$dep_hex."&DepartureDate1=".$dep_hex."&DepartureFlexibleDate1=&DepartureTime=&DepartureTime1=&FlightType=MultiLeg&From=".$from."&From1=".$from."&InfCount=&IsMajorCabin=false&Method=Search&Page=Result&PaxAge=&QFrom1=C&QTo=A&QTo1=C&To=".$to."&To1=".$to;
+ //return $link;
+Session::put('link', $link);
+   
 }
 
     }
@@ -69,9 +77,10 @@ Session::put('link', $link);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function autocomplete($key)
     {
-        //
+        $query = Airport::where('countryName','LIKE','%{$key}%')->get();
+        return $query;
     }
 
     /**

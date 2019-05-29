@@ -26,6 +26,7 @@
 	
 <!--   <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
  -->
+ <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="{{asset('front/css/animate.css')}}">
 	<!-- Icomoon Icon Fonts-->
@@ -58,8 +59,8 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 <![endif]-->
-
-</head>
+<!--  <script src="{{asset('front/js/typeahead.min.js')}}"></script>
+ --></head>
 <body >
 
 	<div class="colorlib-loader"></div>
@@ -205,7 +206,6 @@
 <script src="{{asset('front/js/main.js')}}"></script>
 
 
-
 <script type="text/javascript">
 var type = 1;
 	$("input:checkbox").on('click', function() {
@@ -284,6 +284,36 @@ var type = 1;
         }
       });
     }
+      // function autocompleteq(){
+  	   //   var from = $('#from').val();
+  	   //    window.alert(from);
+      // $.ajax({
+      //   url: 'autocomplete/'+from,
+      //   type: 'GET',
+      //   data:{
+         
+      //   },
+      //   cache: false,
+      //   datatype: 'JSON',
+      //   success: function(data){
+      //   window.alert(from);
+      //   },
+      //   error: function(){
+         
+      //   }
+      // });
+    // $('input.from').typeahead({
+    //     name: 'from',
+    //     remote : '{{ route('autocomplete', ['key'=> '%QUERY']) }}',
+    //     limit : 10
+    // });
+// }
 </script>
+
+<script >
+
+
+    </script>
+    
 </body>
 </html>
