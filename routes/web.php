@@ -112,5 +112,22 @@ Route::get('change_section/{id}', ['as' => 'change_section', 'uses' => 'ServiceC
   Route::get('delete_callback/{id}',['as'=> 'delete_callback','uses'=>'CallbackController@delete_callback']);
   Route::get('archive_callback/{id}', ['as' => 'archive_callback', 'uses' => 'CallbackController@archive_callback']);
 
+/////////////////mailing controller
+
+ Route::get('mailing_index',['as'=> 'mailing_index','uses'=>'MailingController@mailing_index']);
+  Route::get('delete_mailing/{id}',['as'=> 'delete_mailing','uses'=>'MailingController@delete_mailing']);
+  Route::get('archive_mailing/{id}', ['as' => 'archive_mailing', 'uses' => 'MailingController@archive_mailing']);
+
+  ////contact us message controller 
+
+  Route::get('contactmessage_index',['as'=> 'contactmessage_index','uses'=>'ContactMessageController@contactmessage_index']);
+  Route::get('delete_contactmessage/{id}',['as'=> 'delete_contactmessage','uses'=>'ContactMessageController@delete_contactmessage']);
+  Route::get('archive_contactmessage/{id}', ['as' => 'archive_contactmessage', 'uses' => 'ContactMessageController@archive_contactmessage']);
+
+  /////////////////////Excell Controller
+
+
+    Route::get('export_mailing_excell/{type}',['as'=> 'export_mailing_excell','uses'=>'ExcellController@export_mailing_excell']);
+
 
 });

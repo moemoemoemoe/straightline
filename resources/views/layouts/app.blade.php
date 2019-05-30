@@ -227,18 +227,18 @@
                                        <a class=" dropdown-item" href="{{route('callback_index')}}" > CallBack</a>
 @endif
 
- @if(Route::current()->getName() == 'contact_index' )
-                    <a class="active dropdown-item" href="{{route('contact_index')}}" > Mailing List</a>
+ @if(Route::current()->getName() == 'mailing_index' )
+                    <a class="active dropdown-item" href="{{route('mailing_index')}}" > Mailing List</a>
 
                    @else
-                                       <a class=" dropdown-item" href="{{route('contact_index')}}" > Mailing List</a>
+                                       <a class=" dropdown-item" href="{{route('mailing_index')}}" > Mailing List</a>
 @endif
 
-@if(Route::current()->getName() == 'contact_index' )
-                    <a class="active dropdown-item" href="{{route('contact_index')}}" >Contact Us Messages</a>
+@if(Route::current()->getName() == 'contactmessage_index' )
+                    <a class="active dropdown-item" href="{{route('contactmessage_index')}}" >Contact Us Messages</a>
 
                    @else
-                                       <a class=" dropdown-item" href="{{route('contact_index')}}" >Contact Us Messages</a>
+                                       <a class=" dropdown-item" href="{{route('contactmessage_index')}}" >Contact Us Messages</a>
 @endif
                                         </div>
                    
