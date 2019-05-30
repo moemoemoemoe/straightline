@@ -7,7 +7,11 @@
         <div class="col-md-12">
             <div class="card">
 
-                <div class="card-header">CallBack Messages </div>
+                <div class="card-header">CallBack Messages 
+                <div class="form-group" style="float: right">
+<a href="{{route('export_callback_excell', 'xlsx')}}" class="btn btn-success">Export & Dwnld  .xlsx</a>
+<a href="{{route('export_callback_excell', 'xls')}}" class="btn btn-primary">Export & Dwnld  .xls</a>
+</div></div>
             
 
             </div>
@@ -41,7 +45,7 @@
       <th >{{$call->your_go}} </th>
       <th >{{$call->your_whene}} </th>
          
-           <td>  <a href="{{route('delete_callback', $call->id)}}" class="btn btn-danger ">DELETE</a></td>
+             <td> <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('delete_callback', $call->id)}}">DELETE</a></td>
           <td>@if($call->status == 0)
                  <a href="{{route('archive_callback', $call->id)}}" class="btn btn-success ">Archive</a>
                  @else

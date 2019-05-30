@@ -208,10 +208,10 @@
                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Emails</a>
              
                 <div class="dropdown-menu">
-                  @if(Route::current()->getName() == 'create_service' )
-                    <a class="active dropdown-item" href="{{route('create_service')}}" > Package Reservation</a>
+                  @if(Route::current()->getName() == 'reservation_package' )
+                    <a class="active dropdown-item" href="{{route('reservation_package')}}" > Package Reservation</a>
 @else
-                    <a class="dropdown-item" href="{{route('create_service')}}" >  Package Reservation</a>
+                    <a class="dropdown-item" href="{{route('reservation_package')}}" >  Package Reservation</a>
 
 @endif
                     @if(Route::current()->getName() == 'insurance_index' )

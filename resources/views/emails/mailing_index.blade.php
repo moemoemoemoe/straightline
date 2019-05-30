@@ -10,8 +10,8 @@
                 <div class="card-header">Mailing List 
              <!--    <div style="float: right"><a href="" class="btn btn-primary">Export</a></div>  -->
              <div class="form-group" style="float: right">
-<a href="{{route('export_mailing_excell', 'xlsx')}}" class="btn btn-success">Export to .xlsx</a>
-<a href="{{route('export_mailing_excell', 'xls')}}" class="btn btn-primary">Export to .xls</a>
+<a href="{{route('export_mailing_excell', 'xlsx')}}" class="btn btn-success">Export & Dwnld  .xlsx</a>
+<a href="{{route('export_mailing_excell', 'xls')}}" class="btn btn-primary">Export & Dwnld  .xls</a>
 </div>
                 </div>
             
@@ -43,7 +43,9 @@
       <th style="text-align: center;"> <i class="fas fa-envelope"></i> {{$mailing->email}} </th>
      
          
-           <td>  <a href="{{route('delete_mailing', $mailing->id)}}" class="btn btn-danger ">DELETE</a></td>
+          
+
+              <td> <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('delete_mailing', $mailing->id)}}">DELETE</a></td>
           <td>@if($mailing->status == 0)
                  <a href="{{route('archive_mailing', $mailing->id)}}" class="btn btn-success ">Archive</a>
                  @else

@@ -19,7 +19,7 @@
             <div class="panel-body" style="height:200px; background: url('{{asset('uploads/packages/'.$package->main_image)}}'); background-size: cover; background-position: center center;background-repeat: no-repeat;">
                 
             </div>
-          
+          <br/>
             <div class="panel-footer text-center">
                <a href="{!! route('package_update', ['id'=>$package->id]) !!}" class="btn btn-primary form-control">Edit ...</a>
             </div>

@@ -20,8 +20,7 @@
     <table class="table table-striped" style="text-align: center">
       <thead>
         <tr>
-         contactmessage
-         
+     
           <th scope="col">Name</th>
            <th scope="col">Last Name</th>
           <th scope="col">contact info</th>  <!-- email and phone -->
@@ -39,10 +38,11 @@
         <th >{{$contactmessage->last_name}}</th>
 
       <th style="text-align: center;"><i class="fas fa-phone"></i> {{$contactmessage->phone}} <br/> <i class="fas fa-envelope"></i> {{$contactmessage->email}} </th>
-      <th >{{$contactmessage->message}}</th>
+      <th width="30%">{{$contactmessage->message}}</th>
      
          
-           <td>  <a href="{{route('delete_contactmessage', $contactmessage->id)}}" class="btn btn-danger ">DELETE</a></td>
+          
+              <td> <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('delete_contactmessage', $contactmessage->id)}}">DELETE</a></td>
           <td>@if($contactmessage->status == 0)
                  <a href="{{route('archive_contactmessage', $contactmessage->id)}}" class="btn btn-success ">Archive</a>
                  @else

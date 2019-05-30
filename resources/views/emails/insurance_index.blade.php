@@ -7,7 +7,12 @@
         <div class="col-md-12">
             <div class="card">
 
-                <div class="card-header">Insurance Messages </div>
+                <div class="card-header">Insurance Messages 
+                    <div class="form-group" style="float: right">
+<a href="{{route('export_insurance_excell', 'xlsx')}}" class="btn btn-success">Export & Dwnld  .xlsx</a>
+<a href="{{route('export_insurance_excell', 'xls')}}" class="btn btn-primary">Export & Dwnld  .xls</a>
+</div>
+                </div>
             
 
             </div>
@@ -41,7 +46,8 @@
       <th >{{$insurance->depart_date}} till {{$insurance->return_date}}</th>
       <th >{{$insurance->adult}} adult / {{$insurance->child}} child </th>
          
-           <td>  <a href="{{route('delete_insurance', $insurance->id)}}" class="btn btn-danger ">DELETE</a></td>
+          
+          <td> <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('delete_insurance', $insurance->id)}}">DELETE</a></td>
           <td>@if($insurance->status == 0)
                  <a href="{{route('archive_insurance', $insurance->id)}}" class="btn btn-success ">Archive</a>
                  @else

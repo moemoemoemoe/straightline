@@ -124,10 +124,25 @@ Route::get('change_section/{id}', ['as' => 'change_section', 'uses' => 'ServiceC
   Route::get('delete_contactmessage/{id}',['as'=> 'delete_contactmessage','uses'=>'ContactMessageController@delete_contactmessage']);
   Route::get('archive_contactmessage/{id}', ['as' => 'archive_contactmessage', 'uses' => 'ContactMessageController@archive_contactmessage']);
 
+  //////////////Reservation Controller 
+
+ Route::get('reservation_package',['as'=> 'reservation_package','uses'=>'ReservationPackageController@reservation_package_index']);
+  Route::get('delete_reservation_package/{id}',['as'=> 'delete_reservation_package','uses'=>'ReservationPackageController@delete_reservation_package']);
+  Route::get('archive_reservation_package/{id}', ['as' => 'archive_reservation_package', 'uses' => 'ReservationPackageController@archive_reservation_package']);
+
+  Route::get('view_reservation_package/{id}', ['as' => 'view_reservation_package', 'uses' => 'ReservationPackageController@view_reservation_package']);
+
+  
   /////////////////////Excell Controller
 
 
     Route::get('export_mailing_excell/{type}',['as'=> 'export_mailing_excell','uses'=>'ExcellController@export_mailing_excell']);
+ Route::get('export_insurance_excell/{type}',['as'=> 'export_insurance_excell','uses'=>'ExcellController@export_insurance_excell']);
+
+ Route::get('export_callback_excell/{type}',['as'=> 'export_callback_excell','uses'=>'ExcellController@export_callback_excell']);
+
+
+
 
 
 });
