@@ -72,16 +72,16 @@
 @foreach($hotels as $hotel)
     <div class="col-md-3">
         <div class="card">
-            <div class="card-header" style="background-color:#fff ">
+            <div class="card-header" style="background-color:#fff;text-align: center; ">
                 <b><span style="color: #4CAF50;font-weight: 900">{{$hotel->name}}</span></b>
             </div>
              <div class="panel-heading text-center">
                 <b><span style="color: black">{{$hotel->city->name}}</span></b>
             </div>
-            <div class="panel-body" style="height:80px; background: url('{{asset('uploads/hotels/'.$hotel->img_url)}}'); background-size: cover; background-position: center center;background-repeat: no-repeat;">
+            <div class="panel-body" style="height:80px; background: url('{{asset('uploads/hotels/'.$hotel->img_url)}}'); background-size: 100%; background-position: center center;background-repeat: no-repeat;">
                 
             </div>
-          
+          <br/>
             <div class="panel-footer text-center">
                <a href="{!! route('hotel_update', ['id'=>$hotel->id]) !!}" class="btn btn-primary form-control">Edit ...</a>
             </div>
