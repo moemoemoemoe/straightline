@@ -53,6 +53,8 @@ Route::get('view_packages', ['as' => 'view_packages', 'uses' => 'PackageControll
 Route::get('package_update/{id}', ['as' => 'package_update', 'uses' => 'PackageController@package_update']);
 Route::post('package_update/{id}', ['as' => 'package_update', 'uses' => 'PackageController@package_update_save']);
 Route::get('delete_gallery/{id}',['as'=> 'delete_gallery','uses'=>'PackageController@delete_gallery']);
+Route::post('show_hotels',['as'=> 'show_hotels','uses'=>'PackageController@show_hotels']);
+
 
 /////////////////country cities controller
 
@@ -132,6 +134,8 @@ Route::get('change_section/{id}', ['as' => 'change_section', 'uses' => 'ServiceC
 
   Route::get('view_reservation_package/{id}', ['as' => 'view_reservation_package', 'uses' => 'ReservationPackageController@view_reservation_package']);
 
+
+ Route::post('reservation_package',['as'=> 'reservation_package','uses'=>'ReservationPackageController@reservation_package_search']);
   
   /////////////////////Excell Controller
 
@@ -142,7 +146,8 @@ Route::get('change_section/{id}', ['as' => 'change_section', 'uses' => 'ServiceC
  Route::get('export_callback_excell/{type}',['as'=> 'export_callback_excell','uses'=>'ExcellController@export_callback_excell']);
 
 
-
+Route::get('export_packres_excell/{type}',['as'=> 'export_packres_excell','uses'=>'ExcellController@export_packres_excell']);
+Route::get('export_contact_excell/{type}',['as'=> 'export_contact_excell','uses'=>'ExcellController@export_contact_excell']);
 
 
 });

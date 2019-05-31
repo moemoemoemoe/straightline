@@ -8,16 +8,13 @@
             <div class="card">
 
                 <div class="card-header">
-                Reservation Package 
-                          <div class="form-group" style="float: right">
-<a href="{{route('export_packres_excell', 'xlsx')}}" class="btn btn-success">Export & Dwnld  .xlsx</a>
-<a href="{{route('export_packres_excell', 'xls')}}" class="btn btn-primary">Export & Dwnld  .xls</a>
-</div>
+                Reservation Package Result
+                        
               </div>
             <br/>
 <div class="row">
 <div class="col-md-8">
-                  <form method="POST" enctype="multipart/form-data" class="well">
+                  <form method="POST" enctype="multipart/form-data" class="well" action="{{route('reservation_package')}}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         
                <input type="text" name="search_keyword" class="form-control" placeholder="Search By email,name or mobile number ...">
@@ -86,7 +83,6 @@
   
 </table>
 <hr style="border: 1px solid #169cd9;" >
-{!!$packages->links()!!} 
 </div>
 
 

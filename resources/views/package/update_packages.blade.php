@@ -15,26 +15,38 @@
                           <p>
                             <input type="text" name="title" placeholder="Package Title*" class="form-control" value="{{$packages->title}}">
                         </p>
-  <p>
+  
+          <p>
+            <div class="row">
+              <div class="col-md-6">
+                <p>
                             <b>
                                 Choose Category  
                             </b>
                         </p>
-          <p>
           <select class="form-control" name="cat_id">
                                 @foreach($cats as $cat)
                                 <option value="{{$cat->id}}" {{ ($packages->cat_id == $cat->id) ? 'selected' : '' }}>{{$cat->cat_name}}</option>
                                 @endforeach
                             </select>
+</div>
+                             <div class="col-md-6">
+<p>
+                            <b>
+                                Choose Theme  
+                            </b>
+                        </p>
+<select class="form-control" name="theme_id">
+                                @foreach($themes as $theme)
+ <option value="{{$theme->id}}" {{ ($packages->theme_id == $theme->id) ? 'selected' : '' }}>{{$theme->theme_name}}</option>                                @endforeach
+                            </select> 
+</div>
+                      </div>
                         </p> 
-<p>
-    <textarea name="description">{{$packages->description}}</textarea>
-</p>
 
-<p>
+                        <p>
     <div class="row">
-        <div class="col-md-3">
- <!-- <input type="text" name="hotel_id" placeholder="Hotel Name*" class="form-control" value="{{old('hotel_id')}}"> -->
+        <div class="col-md-4">
   <select class="form-control" name="hotel_id">
                                 @foreach($hotels as $hotel)
                                  <option value="{{$hotel->id}}" {{ ($packages->hotel_id == $hotel->id) ? 'selected' : '' }}>{{$hotel->name}}---> {{$hotel->city->name}}</option>
@@ -42,56 +54,23 @@
                                 @endforeach
                             </select>
 </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
  <input type="number" name="day" placeholder="Day" class="form-control" value="{{$packages->day}}">
 </div>
-  <div class="col-md-2">
+  <div class="col-md-4">
  <input type="number" name="night" placeholder="Night" class="form-control" value="{{$packages->night}}">
 </div>
-    <div class="col-md-2">
+   
 
-<select class="form-control" name="theme_id">
-                                @foreach($themes as $theme)
- <option value="{{$theme->id}}" {{ ($packages->theme_id == $theme->id) ? 'selected' : '' }}>{{$theme->theme_name}}</option>                                @endforeach
-                            </select> 
-</div>
-
-  <div class="col-md-3">
-
-<select class="form-control" name="cont_id">
-                                @foreach($conts as $cont)
- <option value="{{$cont->id}}" {{ ($packages->cont_id == $cont->id) ? 'selected' : '' }}>{{$cont->cont_name}}</option>                                @endforeach
-                            </select> 
-</div>
 </div>
 </p>
- <p>
-                            <b>
-                                Detailed Itinerary 
-                            </b>
-                        </p>
-<p>
-    <textarea name="detailed">{{$packages->detailed}}</textarea>
-</p>
- </p>
 
 
 <p>
      <div class="row">
-        <div class="col-md-4">
- <input type="text" name="map_loc" placeholder="Map Location " class="form-control" value="{{$packages->map_loc}}">
-</div>
-    <div class="col-md-4">
-<!--   <input type="text" name="depart_date" placeholder="Depart date" class="form-control" value="{{old('depart_date')}}">
- -->
+      
+    <div class="col-md-6">
 
-           <!--  <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div> -->
         
     <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
@@ -104,7 +83,7 @@
 
    </div>
  </div>
-<div class="col-md-4">
+<div class="col-md-6">
 <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
                     <input type='date' class="form-control" name="revenue_date" value="{{$packages->revenu_date}}" />
@@ -118,10 +97,6 @@
 
 
 </div>
-</p>
-
-
-
 <p>
      <div class="row">
         <div class="col-md-6">
@@ -138,6 +113,26 @@
  </div>
 </div>
 </p>
+</p>
+<p>
+    <textarea name="description">{{$packages->description}}</textarea>
+</p>
+
+
+ <p>
+                            <b>
+                                Detailed Itinerary 
+                            </b>
+                        </p>
+<p>
+    <textarea name="detailed">{{$packages->detailed}}</textarea>
+</p>
+ </p>
+
+
+
+
+
  <p>
                             <b>
                                 Price Included

@@ -61,6 +61,12 @@
                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Counrties & Cities</a>
                     @endif
                     <div class="dropdown-menu">
+                      @if(Route::current()->getName() == 'manage_cont' )
+                    <a class="active dropdown-item" href="{{route('manage_cont')}}" > Manage Continents</a>
+@else
+                    <a class="dropdown-item" href="{{route('manage_cont')}}" > Manage Continents</a>
+
+@endif
                         @if( Route::current()->getName() == 'manage_country' )
                         
                         <a class="dropdown-item active" href="{{route('manage_country')}}" >Manage Country
@@ -87,17 +93,12 @@
 
              <li class="nav-item dropdown">
                  @if( Route::current()->getName() == 'manage_cont' || Route::current()->getName() == 'manage_themes' || Route::current()->getName() == 'manage_hotel' )
-                <a class="active nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">General</a>
+                <a class="active nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Managmenet</a>
                 @else
-                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">General</a>
+                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Managmenet</a>
                 @endif
                 <div class="dropdown-menu">
-                    @if(Route::current()->getName() == 'manage_cont' )
-                    <a class="active dropdown-item" href="{{route('manage_cont')}}" > Manage Continents</a>
-@else
-                    <a class="dropdown-item" href="{{route('manage_cont')}}" > Manage Continents</a>
-
-@endif
+                    
                     @if(Route::current()->getName() == 'manage_themes' )
 
                     <a class="active dropdown-item" href="{{route('manage_themes')}}">Manage Themes </a> 
@@ -105,9 +106,9 @@
                     <a class="dropdown-item" href="{{route('manage_themes')}}">Manage Themes </a> 
 
 @endif
-                    <div class="dropdown-divider">
+                 
                         
-                    </div>
+                   
                     @if(Route::current()->getName() == 'manage_hotel' )
 
                     <a class="active  dropdown-item" href="{{route('manage_hotel')}}" > Manage Hotels </a> 
@@ -183,13 +184,13 @@
 
                 <li class="nav-item dropdown">
                 
-                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Informations</a>
+                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Static Pages</a>
              
                 <div class="dropdown-menu">
                     @if(Route::current()->getName() == 'create_service' )
-                    <a class="active dropdown-item" href="{{route('create_service')}}" > Create Service</a>
+                    <a class="active dropdown-item" href="{{route('create_service')}}" >  Services</a>
 @else
-                    <a class="dropdown-item" href="{{route('create_service')}}" > Create Service</a>
+                    <a class="dropdown-item" href="{{route('create_service')}}" >  Services</a>
 
 @endif
  @if(Route::current()->getName() == 'contact_index' )
@@ -198,6 +199,19 @@
                    @else
                                        <a class=" dropdown-item" href="{{route('contact_index')}}" > Contact Us</a>
 @endif
+
+@if(Route::current()->getName() == 'contact_index' )
+                    <a class="active dropdown-item" href="{{route('contact_index')}}" > Profile</a>
+
+                   @else
+                                       <a class=" dropdown-item" href="{{route('contact_index')}}" > Profile</a>
+@endif
+@if(Route::current()->getName() == 'contact_index' )
+                    <a class="active dropdown-item" href="{{route('contact_index')}}" > Loyality Page</a>
+
+                   @else
+                                       <a class=" dropdown-item" href="{{route('contact_index')}}" > Loyality Page</a>
+@endif
                                         </div>
                    
                 </li>
@@ -205,7 +219,7 @@
 
                 <li class="nav-item dropdown">
                 
-                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Emails</a>
+                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Forms</a>
              
                 <div class="dropdown-menu">
                   @if(Route::current()->getName() == 'reservation_package' )

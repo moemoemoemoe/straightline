@@ -16,6 +16,15 @@
                         <p>
                             <input type="text" name="name" placeholder="Country Name" class="form-control" value="{{old('name')}}" autocomplete="off">
                         </p>
+                         <p>
+
+
+                            <select class="form-control" name="cont_id">
+                                @foreach($continents as $continent)
+                                <option value="{{$continent->id}}">{{$continent->cont_name}}</option>
+                                @endforeach
+                            </select> 
+                        </p>
 
                         <p>
                             <input type="submit" value="Save" class="btn btn-primary form-control">

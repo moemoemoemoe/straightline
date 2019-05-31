@@ -7,7 +7,12 @@
         <div class="col-md-12">
             <div class="card">
 
-                <div class="card-header">Contact US  Messages </div>
+                <div class="card-header">Contact US  Messages 
+                   <div class="form-group" style="float: right">
+<a href="{{route('export_contact_excell', 'xlsx')}}" class="btn btn-success">Export & Dwnld  .xlsx</a>
+<a href="{{route('export_contact_excell', 'xls')}}" class="btn btn-primary">Export & Dwnld  .xls</a>
+</div>
+                </div>
             
 
             </div>

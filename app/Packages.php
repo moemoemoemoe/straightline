@@ -12,5 +12,7 @@ class Packages extends Model
      public function cat(){
     	return $this->belongsTo('App\PackageCat');
     }
-     
+       public function hotel(){
+    	return $this->belongsTo('App\Hotel');
+    }
 }

@@ -12,168 +12,240 @@
                     <form method="POST" enctype="multipart/form-data" class="well">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                          <p>
+                        <p>
                             <input type="text" name="title" placeholder="Package Title*" class="form-control" value="{{old('title')}}">
                         </p>
-  <p>
-                            <b>
-                                Choose Category  
+
+
+                        <p>
+                            <div class="row" >
+                                <div class=" col-md-6">
+                                   <b>
+                                    Choose Category * 
+                                </b>
+                                <select class="form-control" name="cat_id">
+                                    @foreach($cats as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+
+                               <b>
+                                Choose Theme * 
                             </b>
-                        </p>
-          <p>
-          <select class="form-control" name="cat_id">
-                                @foreach($cats as $cat)
-                                <option value="{{$cat->id}}">{{$cat->cat_name}}</option>
-                                @endforeach
-                            </select>
-                        </p> 
-<p>
-    <textarea name="description"></textarea>
-</p>
-
-<p>
-    <div class="row">
-        <div class="col-md-3">
- <!-- <input type="text" name="hotel_id" placeholder="Hotel Name*" class="form-control" value="{{old('hotel_id')}}"> -->
-  <select class="form-control" name="hotel_id">
-                                @foreach($hotels as $hotel)
-                                <option value="{{$hotel->id}}">{{$hotel->name}} ---> {{$hotel->city->name}}</option>
-                                @endforeach
-                            </select>
-</div>
-    <div class="col-md-2">
- <input type="number" name="day" placeholder="Day" class="form-control" value="{{old('day')}}">
-</div>
-  <div class="col-md-2">
- <input type="number" name="night" placeholder="Night" class="form-control" value="{{old('night')}}">
-</div>
-    <div class="col-md-2">
-
-<select class="form-control" name="theme_id">
+                            <select class="form-control" name="theme_id">
                                 @foreach($themes as $theme)
                                 <option value="{{$theme->id}}">{{$theme->theme_name}}</option>
                                 @endforeach
                             </select> 
-</div>
+                        </div>
+                        
+                    </div>
+                </p> 
+                <p>
+                    <div class="row">
 
-  <div class="col-md-3">
-
-<select class="form-control" name="cont_id">
-                                @foreach($conts as $cont)
-                                <option value="{{$cont->id}}">{{$cont->cont_name}}</option>
-                                @endforeach
-                            </select> 
-</div>
-</div>
-</p>
- <p>
-                            <b>
-                                Detailed Itinerary 
+  <div class="col-md-6">
+                              <b>
+                                Choose City *
                             </b>
-                        </p>
-<p>
-    <textarea name="detailed"></textarea>
-</p>
- </p>
+                        
+                           <select class="form-control" name="city_id" onchange="show_hotels(this);">
+                          
+                            @foreach($cities as $city)
+                            <option value="{{$city->id}}">{{$city->name}} </option>
+                            @endforeach
+                        </select>
+                        <p>
+                  <b>Choose Hotel<p> <span id="loading" style="color: red;font-weight: 900;display: none;">LOADING...</span></p></b>
+                </p>
+                    </div>
+
+                        <div class="col-md-6">
+                              <b>
+                                Hotel Name
+                            </b>
+                        
+                      
+                  <select class="form-control" name="hotel_id" id="hotel_id"  >
+                   <option value="0" >--Select Hotel--</option>
+                 </select>
+            
+                    </div>
+                    <div class="col-md-6">
+                          <b>
+                              Day * 
+                            </b>
+                       <input type="number" name="day" placeholder="Day" class="form-control" value="{{old('day')}}">
+                   </div>
+                   <div class="col-md-6">
+                      <b>
+                                Night *
+                            </b>
+                       <input type="number" name="night" placeholder="Night" class="form-control" value="{{old('night')}}">
+                   </div>
 
 
-<p>
-     <div class="row">
-        <div class="col-md-4">
- <input type="text" name="map_loc" placeholder="Map Location " class="form-control" value="{{old('map_loc')}}">
-</div>
-    <div class="col-md-4">
-<!--   <input type="text" name="depart_date" placeholder="Depart date" class="form-control" value="{{old('depart_date')}}">
- -->
+ 
+            </div>
+        </p>
 
-           <!--  <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div> -->
-        
-    <div class="form-group">
+
+        <p>
+           <div class="row">
+           
+           <div class="col-md-6">
+
+  <b>
+                                Departure Date * 
+                            </b>
+            <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
                     <input type='date' class="form-control" name="depart_date" />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-   
-    
+                </span>
+            </div>
 
-   </div>
- </div>
-<div class="col-md-4">
-<div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='date' class="form-control" name="revenue_date" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-   
-    
 
-   </div></div>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+          <b>
+                               Return Date *
+                            </b>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+                <input type='date' class="form-control" name="revenue_date" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+
+
+
+    </div></div>
 
 
 </div>
 </p>
+<p>
+   <div class="row">
+    <div class="col-md-6">
+       <input type="text" name="price" placeholder="Package Price" class="form-control" value="{{old('price')}}">
+   </div>
+   <div class="col-md-6">
+       <select class="form-control" name="is_featured">
+
+        <option value="1">Section Best Packages</option>
+        <option value="0"> Section Featured Packages</option>
+
+
+    </select>
+</div>
+</div>
+</p>
+<p>
+    <textarea name="description"></textarea>
+</p>
+
+
+<p>
+    <b>
+        Detailed Itinerary 
+    </b>
+</p>
+<p>
+    <textarea name="detailed"></textarea>
+</p>
+</p>
+
+
 
 
 
 <p>
-     <div class="row">
-        <div class="col-md-6">
-     <input type="text" name="price" placeholder="Package Price" class="form-control" value="{{old('price')}}">
- </div>
- <div class="col-md-6">
-     <select class="form-control" name="is_featured">
-                               
-                                <option value="1">Not Featured</option>
-                           <option value="0"> Featured Package</option>
-
-                              
-                            </select>
- </div>
-</div>
+    <b>
+        Price Included *
+    </b>
 </p>
- <p>
-                            <b>
-                                Price Included
-                            </b>
-                        </p>
 <p>
     <textarea name="price_included"></textarea>
 </p>
 
- <p>
-     <div class="row">
-        <div class="col-md-6">
-            Choose Image/s
- <input type="file" name="attachment[]"  class="form-control" multiple />
-        </div>
-        <div class="col-md-6">
-                 Choose brochure
-             <input type="file" name="brochur_url"  class="form-control" />
-        </div>
+<p>
+   <div class="row">
+    <div class="col-md-6">
+        Choose Image/s *
+        <input type="file" name="attachment[]"  class="form-control" multiple />
     </div>
- </p>
-  <p>
-                            <input type="submit" value="Save" class="btn btn-primary form-control">
-                        </p>
-
-                    </form>
-
-                 
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="col-md-6">
+       Choose brochure
+       <input type="file" name="brochur_url"  class="form-control" />
+   </div>
 </div>
+</p>
+<p>
+    <input type="submit" value="Save" class="btn btn-primary form-control">
+</p>
+
+</form>
 
 
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+function show_hotels(id){
+
+  var city_id = id.value;
+ 
+//window.alert(id_room);
+$.ajax({
+  url: '{{route('show_hotels')}}',
+  type: 'POST',
+  data:{
+    _token: '{{ csrf_token() }}',
+    city_id:city_id
+  },
+  cache: false,
+  datatype: 'JSON',
+  success: function(response){
+    $('#loading').show();
+    $('#hotel_id').html('');
+    var i;
+    var count = Object.keys(response).length;
+    if(count == 0)
+    {
+      var option=$('<option></option>');
+      option.attr('value',-1);
+      option.text('--No hotels--');
+      $('#hotel_id').append(option);
+    } else
+    {
+    var JSONObject = JSON.parse(JSON.stringify(response));
+    $('#hotel_id').append('<option value="0">-- Select Hotel --</option>');
+    for(i=0;i<count;i++)
+    { 
+     var option=$('<option></option>');
+     option.attr('value',JSONObject[i]["id"]);
+     option.text(JSONObject[i]["name"]);
+     $('#hotel_id').append(option);
+   }
+ }
+   // $('#hotel_id').append('<option value="0">---choose--</option>');
+   $('#loading').hide();
+
+ },error:function(){
+  alert('Somthing Went Wrong');
+  $('#loading').hide();
+
+}
+});
+}
+</script>
 @endsection
-    
+
 

@@ -8,6 +8,7 @@ use App\Country;
 use Validator;
 use paginate;
 use Redirect;
+use App\Continent;
 
 class CountryCityController extends Controller
 {
@@ -19,7 +20,8 @@ class CountryCityController extends Controller
     public function manage_country()
     {
         $countries = Country::orderBy('id','DESC')->paginate(6);
-        return view('countrycity.country_index',compact('countries'));
+        $continents = Continent::orderBy('id','DESC')->get();
+        return view('countrycity.country_index',compact('countries','continents'));
     }
 
     /**
@@ -31,7 +33,7 @@ class CountryCityController extends Controller
     {
         
          $name = $r->input('name');
-
+$cont_id = $r->input('cont_id');
          $data = ['name' => $name];
 
             $rules = ['name' => 'required'];
@@ -55,6 +57,8 @@ if($co_exist > 0)
 
                   $country = new Country();
                   $country->name = $name;
+                  $country->continent_id = $cont_id;
+
                 
                
                 $country->save();
@@ -72,6 +76,7 @@ if($co_exist > 0)
     public function update_country_save(Request $r,$id)
     {
          $name = $r->input('name');
+$cont_id = $r->input('cont_id');
 
          $data = ['name' => $name];
 
@@ -83,24 +88,21 @@ if($co_exist > 0)
                 return Redirect::Back()->withErrors($v)->withInput($r->input());
             }
             else
-            {
-                $co_exist = Country::where('name',$name)->count();
-
-if($co_exist > 0)
-{
-                return Redirect::Back()->withErrors("Error : Duplicate Country Name")->withInput($r->input());
+            
+               
 
 
-} else
 {
 
                   $country = Country::findOrFail($id);
                   $country->name = $name;
+                  $country->continent_id = $cont_id;
+
                 
                
                 $country->save();
-      return Redirect::Back()->with('success', 'Country categories  Updated successfully');
-            }
+      return Redirect::Back()->with('success', 'Country   Updated successfully');
+            
         }
     }
 
@@ -113,7 +115,9 @@ if($co_exist > 0)
     public function update_country($id)
     {
         $countries = Country::findOrFail($id);
-        return view('countrycity.country_update',compact('countries'));
+        $continents = Continent::orderBy('id','DESC')->get();
+
+        return view('countrycity.country_update',compact('countries','continents'));
     }
     
 

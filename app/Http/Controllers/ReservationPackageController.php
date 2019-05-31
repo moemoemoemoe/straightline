@@ -76,9 +76,20 @@ class ReservationPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function reservation_package_search(Request $r)
     {
-        //
+        $keyword = $r->input('search_keyword');
+
+        if($keyword == '')
+        {
+             return Redirect::Back()->withErrors('keyword is Empty');
+        }
+        else
+        {
+        $packages = Reservationpack::with('package')->where('name','LIKE', '%'.$keyword.'%')->orWhere('phone','=', $keyword)->orWhere('email','LIKE', '%'.$keyword.'%')->get();
+        return view('emails.search_reservation_package',compact('packages'));
+    }
+   
     }
 
     /**

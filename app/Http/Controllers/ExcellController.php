@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Mailing;
 use App\Insurance;
 use App\Callback;
-
+use App\Reservationpack;
+use App\Contactmessage;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
@@ -156,9 +157,47 @@ return redirect(url('/')."/uploads/excell/callback/".$fileName);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function export_packres_excell($type)
     {
-        //
+        date_default_timezone_set("Asia/Beirut");
+        $current_date_time  =  date("Y-m-d")."-".date("h-i-sa");
+        $reservations = Reservationpack::all();
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setCellValue('A1', 'Id');
+$sheet->setCellValue('B1', 'Name');
+$sheet->setCellValue('C1', 'Last Name');
+$sheet->setCellValue('D1', 'Email');
+$sheet->setCellValue('E1', 'Phone');
+$sheet->setCellValue('F1', '# Traveller');
+$sheet->setCellValue('G1', 'Departure Date');
+$sheet->setCellValue('H1', 'Return Date');
+
+
+$rows = 2;
+foreach($reservations as $reservation){
+$sheet->setCellValue('A' . $rows, $reservation['id']);
+$sheet->setCellValue('B' . $rows, $reservation['name']);
+$sheet->setCellValue('C' . $rows, $reservation['last_name']);
+$sheet->setCellValue('D' . $rows, $reservation['email']);
+$sheet->setCellValue('E' . $rows, $reservation['phone']);
+$sheet->setCellValue('F' . $rows, $reservation['traveller_number']);
+$sheet->setCellValue('G' . $rows, $reservation['dep_date']);
+$sheet->setCellValue('H' . $rows, $reservation['return_date']);
+
+
+
+$rows++;
+}
+$fileName = "reservation_package_list_".$current_date_time.".".$type;
+if($type == 'xlsx') {
+$writer = new Xlsx($spreadsheet);
+} else if($type == 'xls') {
+$writer = new Xls($spreadsheet);
+}
+$writer->save("uploads/excell/package/".$fileName);
+header("Content-Type: application/vnd.ms-excel");
+return redirect(url('/')."/uploads/excell/package/".$fileName);
     }
 
     /**
@@ -167,9 +206,46 @@ return redirect(url('/')."/uploads/excell/callback/".$fileName);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function export_contact_excell($type)
     {
-        //
+        
+        date_default_timezone_set("Asia/Beirut");
+        $current_date_time  =  date("Y-m-d")."-".date("h-i-sa");
+        $contacts = Contactmessage::all();
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setCellValue('A1', 'Id');
+$sheet->setCellValue('B1', 'Name');
+$sheet->setCellValue('C1', 'Last Name');
+$sheet->setCellValue('D1', 'Email');
+$sheet->setCellValue('E1', 'Phone');
+$sheet->setCellValue('F1', 'Message');
+
+
+
+$rows = 2;
+foreach($contacts as $contact){
+$sheet->setCellValue('A' . $rows, $contact['id']);
+$sheet->setCellValue('B' . $rows, $contact['name']);
+$sheet->setCellValue('C' . $rows, $contact['last_name']);
+$sheet->setCellValue('D' . $rows, $contact['email']);
+$sheet->setCellValue('E' . $rows, $contact['phone']);
+$sheet->setCellValue('F' . $rows, $contact['message']);
+
+
+
+
+$rows++;
+}
+$fileName = "contact_us_package_list_".$current_date_time.".".$type;
+if($type == 'xlsx') {
+$writer = new Xlsx($spreadsheet);
+} else if($type == 'xls') {
+$writer = new Xls($spreadsheet);
+}
+$writer->save("uploads/excell/contactus/".$fileName);
+header("Content-Type: application/vnd.ms-excel");
+return redirect(url('/')."/uploads/excell/contactus/".$fileName);
     }
 
     /**
