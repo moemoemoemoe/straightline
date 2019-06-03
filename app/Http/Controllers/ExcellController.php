@@ -28,15 +28,21 @@ $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('A1', 'Id');
 $sheet->setCellValue('B1', 'Full Name');
 $sheet->setCellValue('C1', 'Email');
-// $sheet->setCellValue('D1', 'Skills');
-// $sheet->setCellValue('E1', 'Address');
-// $sheet->setCellValue('F1', 'Designation');
+$sheet->getColumnDimension('A')->setAutoSize(true);
+$sheet->getColumnDimension('B')->setAutoSize(true);
+$sheet->getColumnDimension('C')->setAutoSize(true);
+$sheet->getStyle('A1:C1')
+->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
+$sheet->getStyle("A1:C1")->getFont()->setBold( true ); 
+$sheet->getStyle('A1:C1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+
+$sheet->getStyle('A:C')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A2:C2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 $rows = 2;
 foreach($mailings as $mailingDetails){
 $sheet->setCellValue('A' . $rows, $mailingDetails['id']);
 $sheet->setCellValue('B' . $rows, $mailingDetails['full_name']);
 $sheet->setCellValue('C' . $rows, $mailingDetails['email']);
-
 $rows++;
 }
 $fileName = "mailing_list_".$current_date_time.".".$type;
@@ -74,6 +80,21 @@ $sheet->setCellValue('H1', 'Depart Date');
 $sheet->setCellValue('I1', 'Return Date');
 $sheet->setCellValue('J1', '# Adult');
 $sheet->setCellValue('K1', '# Child');
+$sheet->getColumnDimension('A')->setAutoSize(true);
+$sheet->getColumnDimension('B')->setAutoSize(true);
+$sheet->getColumnDimension('C')->setAutoSize(true);
+$sheet->getColumnDimension('D')->setAutoSize(true);
+$sheet->getColumnDimension('F')->setAutoSize(true);
+$sheet->getColumnDimension('G')->setAutoSize(true);
+$sheet->getColumnDimension('H')->setAutoSize(true);
+$sheet->getColumnDimension('I')->setAutoSize(true);
+$sheet->getColumnDimension('J')->setAutoSize(true);
+$sheet->getColumnDimension('K')->setAutoSize(true);
+$sheet->getStyle('A1:K1')
+->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
+$sheet->getStyle("A1:K1")->getFont()->setBold( true ); 
+$sheet->getStyle('A1:K1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+
 
 $rows = 2;
 foreach($insurances as $insurance){
@@ -90,6 +111,8 @@ $sheet->setCellValue('J' . $rows, $insurance['adult']);
 $sheet->setCellValue('K' . $rows, $insurance['child']);
 
 
+$sheet->getStyle('A:K')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A2:K2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 $rows++;
 }
@@ -125,7 +148,16 @@ $sheet->setCellValue('D1', 'Email');
 $sheet->setCellValue('E1', 'Target');
 $sheet->setCellValue('F1', 'Designation');
 $sheet->setCellValue('G1', 'Season');
-
+$sheet->getColumnDimension('A')->setAutoSize(true);
+$sheet->getColumnDimension('B')->setAutoSize(true);
+$sheet->getColumnDimension('C')->setAutoSize(true);
+$sheet->getColumnDimension('D')->setAutoSize(true);
+$sheet->getColumnDimension('F')->setAutoSize(true);
+$sheet->getColumnDimension('G')->setAutoSize(true);
+$sheet->getStyle("A1:G1")->getFont()->setBold( true ); 
+$sheet->getStyle('A1:G1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A1:G1')
+->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
 $rows = 2;
 foreach($callbacks as $callback){
 $sheet->setCellValue('A' . $rows, $callback['id']);
@@ -136,6 +168,8 @@ $sheet->setCellValue('E' . $rows, $callback['your_mind']);
 $sheet->setCellValue('F' . $rows, $callback['your_go']);
 $sheet->setCellValue('G' . $rows, $callback['your_whene']);
 
+$sheet->getStyle('A:G')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A2:G2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 $rows++;
 }
@@ -172,8 +206,18 @@ $sheet->setCellValue('E1', 'Phone');
 $sheet->setCellValue('F1', '# Traveller');
 $sheet->setCellValue('G1', 'Departure Date');
 $sheet->setCellValue('H1', 'Return Date');
+$sheet->getColumnDimension('A')->setAutoSize(true);
+$sheet->getColumnDimension('B')->setAutoSize(true);
+$sheet->getColumnDimension('C')->setAutoSize(true);
+$sheet->getColumnDimension('D')->setAutoSize(true);
+$sheet->getColumnDimension('F')->setAutoSize(true);
+$sheet->getColumnDimension('G')->setAutoSize(true);
+$sheet->getColumnDimension('H')->setAutoSize(true);
 
-
+$sheet->getStyle("A1:H1")->getFont()->setBold( true ); 
+$sheet->getStyle('A1:H1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A1:H1')
+->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
 $rows = 2;
 foreach($reservations as $reservation){
 $sheet->setCellValue('A' . $rows, $reservation['id']);
@@ -185,6 +229,8 @@ $sheet->setCellValue('F' . $rows, $reservation['traveller_number']);
 $sheet->setCellValue('G' . $rows, $reservation['dep_date']);
 $sheet->setCellValue('H' . $rows, $reservation['return_date']);
 
+$sheet->getStyle('A:H')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A2:H2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 
 $rows++;
@@ -220,7 +266,15 @@ $sheet->setCellValue('C1', 'Last Name');
 $sheet->setCellValue('D1', 'Email');
 $sheet->setCellValue('E1', 'Phone');
 $sheet->setCellValue('F1', 'Message');
-
+$sheet->getStyle("A1:F1")->getFont()->setBold( true ); 
+$sheet->getStyle('A1:F1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A1:F1')
+->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
+$sheet->getColumnDimension('A')->setAutoSize(true);
+$sheet->getColumnDimension('B')->setAutoSize(true);
+$sheet->getColumnDimension('C')->setAutoSize(true);
+$sheet->getColumnDimension('D')->setAutoSize(true);
+$sheet->getColumnDimension('F')->setAutoSize(true);
 
 
 $rows = 2;
@@ -234,6 +288,8 @@ $sheet->setCellValue('F' . $rows, $contact['message']);
 
 
 
+$sheet->getStyle('A:F')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A2:F2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
 $rows++;
 }
