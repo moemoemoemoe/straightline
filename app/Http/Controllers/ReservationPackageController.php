@@ -79,16 +79,62 @@ class ReservationPackageController extends Controller
     public function reservation_package_search(Request $r)
     {
         $keyword = $r->input('search_keyword');
+        $start_date = $r->input('start_date');
+        $end_date = $r->input('end_date');
 
-        if($keyword == '')
+
+        if($keyword == ' ' || $keyword == NULL )
+
         {
-             return Redirect::Back()->withErrors('keyword is Empty');
-        }
-        else
-        {
-        $packages = Reservationpack::with('package')->where('name','LIKE', '%'.$keyword.'%')->orWhere('phone','=', $keyword)->orWhere('email','LIKE', '%'.$keyword.'%')->get();
+            if($end_date == NULL && $start_date != NULL)
+            {
+                 $packages = Reservationpack::with('package')->whereDate('created_at','=', $start_date)->get();
         return view('emails.search_reservation_package',compact('packages'));
-    }
+            }
+            elseif($end_date == NULL && $start_date == NULL)
+            {
+             return Redirect::Back()->withErrors('All field is Empty');
+         }
+         elseif($end_date != NULL && $start_date == NULL)
+         {
+             return Redirect::Back()->withErrors('Incorrect search');
+         }
+          elseif($end_date != NULL && $start_date != NULL)
+         {
+             $packages = Reservationpack::with('package')->whereBetween('created_at', array($start_date, $end_date))->get();
+        return view('emails.search_reservation_package',compact('packages'));
+         }
+            }
+
+           elseif($keyword != NULL || $keyword != ' ')
+            
+        {
+            if( $start_date != NULL && $end_date == NULL)
+            {
+                    $packages = Reservationpack::with('package')->where('name','LIKE', '%'.$keyword.'%')->orWhere('phone','LIKE', '%'.$keyword.'%')->orWhere('email','LIKE', '%'.$keyword.'%')->whereDate('created_at','=', $start_date)->get();
+        return view('emails.search_reservation_package',compact('packages'));
+    
+       
+            }
+            elseif($end_date == NULL && $start_date == NULL)
+            {
+              $packages = Reservationpack::with('package')->where('name','LIKE', '%'.$keyword.'%')->orWhere('phone','LIKE', '%'.$keyword.'%')->orWhere('email','LIKE', '%'.$keyword.'%')->get();
+         return view('emails.search_reservation_package',compact('packages'));
+   
+         }
+         elseif($end_date != NULL && $start_date == NULL)
+         {
+             return Redirect::Back()->withErrors('Incorrect search');
+         }
+          elseif($end_date != NULL && $start_date != NULL)
+         {
+              $packages = Reservationpack::with('package')->where('name','LIKE', '%'.$keyword.'%')->orWhere('phone','LIKE','%'.$keyword.'%')->orWhere('email','LIKE', '%'.$keyword.'%')->whereBetween('created_at', array($start_date, $end_date))->get();
+        return view('emails.search_reservation_package',compact('packages'));
+         }
+            }
+            
+      
+ 
    
     }
 

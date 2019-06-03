@@ -16,15 +16,28 @@
               </div>
             <br/>
 <div class="row">
-<div class="col-md-8">
+<div class="col-md-12">
                   <form method="POST" enctype="multipart/form-data" class="well">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         
                <input type="text" name="search_keyword" class="form-control" placeholder="Search By email,name or mobile number ...">
-            </div>  
-             <div class="col-md-4">
+               <p>
+                <div class="row">
+                <div class="col-md-6">
+                  <b>Startring Date </b>
+                <input type="date" name="start_date" class="form-control" > 
+              </div>
+               <div class="col-md-6">
+                <b>End Date </b>
+                <input type="date" name="end_date" class="form-control" > 
+              </div>
+            </div>
+              </p>
+              <div class="col-md-12">
                <input type="submit" value="Search" class="btn btn-warning form-control">
              </div>
+            </div>  
+             
            </form> 
                       
              
