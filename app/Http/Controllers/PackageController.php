@@ -46,7 +46,10 @@ class PackageController extends Controller
         $title = $r->input('title');
         $cat_id=$r->input('cat_id');
         $description=$r->input('description');
+        $execluded=$r->input('execluded');
         $hotel_id=$r->input('hotel_id');
+        $city_id = $r->input('city_id'); 
+        $map_loc = "00000,00000";
         $day=$r->input('day');
         $night =$r->input('night');
         $theme_id=$r->input('theme_id');
@@ -60,10 +63,10 @@ class PackageController extends Controller
         $brochur_url=$r->file('brochur_url');
       $files=$r->file('attachment');
 
-         $data = ['title' => $title , 'cat_id' => $cat_id , 'description' =>$description ,'hotel_id' =>$hotel_id ,'day' =>$day ,'night' =>$night ,'theme_id' =>$theme_id  ,'depart_date' =>$depart_date ,'revenue_date' =>$revenue_date ,'price' =>$price ,'is_featured' =>$is_featured ,'price_included' =>$price_included ,'attachment' =>$files];
+         $data = ['title' => $title , 'cat_id' => $cat_id , 'description' =>$description ,'hotel_id' =>$hotel_id ,'day' =>$day ,'night' =>$night ,'theme_id' =>$theme_id  ,'depart_date' =>$depart_date ,'revenue_date' =>$revenue_date ,'price' =>$price ,'is_featured' =>$is_featured ,'price_included' =>$price_included ,'attachment' =>$files,'execluded' =>$execluded];
 
             $rules = ['title' => 'required' , 'cat_id' => 'required' , 'description' => 'required' , 'hotel_id' => 'required' , 'day' => 'required' , 'night' => 'required' , 'theme_id' => 'required'  , 'depart_date' => 'required' , 'revenue_date' => 'required' , 'price' => 'required' , 'is_featured' => 'required' , 
-            'price_included' => 'required' , 'attachment' => 'required' ];
+            'price_included' => 'required' , 'attachment' => 'required' , 'execluded' => 'required' ];
 
             $v = Validator::make($data, $rules);
 
@@ -72,11 +75,18 @@ class PackageController extends Controller
             }
             else
             { 
-                $data_by_hotel_id = Hotel::with('city')->where('id', $hotel_id)->get();
+                $city_cont = City::with('country')->where('id', $city_id)->get();
+                $cont_id = $city_cont[0]->country->continent->id;
+if($hotel_id == 0 || $hotel_id == -1)
+{
+     $map_loc = "00000,00000";
+}
+else
+{
+                $data_by_hotel_id = Hotel::where('id', $hotel_id)->get();
 $map_loc = $data_by_hotel_id[0]->coor_x.",".$data_by_hotel_id[0]->coor_y;
 
-$cont_id = $data_by_hotel_id[0]->city->country->continent->id;
-
+}
                 $package = new Packages();
                 $package->cat_id  = $cat_id;
                 $package->title  =$title ;
@@ -85,7 +95,7 @@ $cont_id = $data_by_hotel_id[0]->city->country->continent->id;
                 $package->day  =$day ;
                 $package->night  =$night ;
                 $package->theme_id  =$theme_id ;
-            
+                $package->city_id =$city_id;
 
                 $package->cont_id  =$cont_id ;
                 $package->map_loc  =$map_loc ;
@@ -102,6 +112,7 @@ $cont_id = $data_by_hotel_id[0]->city->country->continent->id;
                 $package->price  =$price ;
                 $package->is_featured  =$is_featured ;
                 $package->price_included  =$price_included ;
+                $package->price_execluded  =$execluded ;
                 $package->status = 0;
 
 
@@ -176,7 +187,8 @@ for($i=0;$i<count($image_name);$i++){
         $cats = PackageCat::orderBy('id','DESC')->get();
         $themes = Theme::orderBy('id','DESC')->get();
         $gallery = Image::where('package_id',$id)->get();
-        return view('package.update_packages',compact('packages','hotels','conts','cats','themes','gallery'));
+        $cities = City::orderBy('id','DESC')->get();
+        return view('package.update_packages',compact('packages','hotels','conts','cats','themes','gallery','cities'));
     }
 
     /**
@@ -202,31 +214,32 @@ for($i=0;$i<count($image_name);$i++){
      */
     public function package_update_save(Request $r, $id)
     {
-        $title = $r->input('title');
-        $cat_id=$r->input('cat_id');
-        $description=$r->input('description');
+         $title = $r->input('title');
+         $cat_id=$r->input('cat_id');
+         $description=$r->input('description');
+
         $hotel_id=$r->input('hotel_id');
+        $city_id = $r->input('city_id'); 
+        $map_loc = "00000,00000";
         $day=$r->input('day');
         $night =$r->input('night');
         $theme_id=$r->input('theme_id');
-        $city_id = $r->input('city_id');
         $detailed=$r->input('detailed');
-       
         $depart_date=$r->input('depart_date');
         $revenue_date=$r->input('revenue_date');
         $price =$r->input('price');
         $is_featured=$r->input('is_featured');
         $price_included=$r->input('price_included');
+     $execluded=$r->input('execluded');
+
         
         $brochur_url=$r->file('brochur_url');
       $files=$r->file('attachment');
 
-         $data = ['title' => $title , 'cat_id' => $cat_id , 'description' =>$description ,'hotel_id' =>$hotel_id ,'day' =>$day ,'night' =>$night ,'theme_id' =>$theme_id
-           ,'depart_date' =>$depart_date ,'revenue_date' =>$revenue_date ,'price' =>$price ,'is_featured' =>$is_featured ,'price_included' =>$price_included];
+         $data = ['title' => $title , 'cat_id' => $cat_id , 'description' =>$description ,'hotel_id' =>$hotel_id ,'day' =>$day ,'night' =>$night ,'theme_id' =>$theme_id  ,'depart_date' =>$depart_date ,'revenue_date' =>$revenue_date ,'price' =>$price ,'is_featured' =>$is_featured ,'price_included' =>$price_included ,'execluded' =>$execluded];
 
-            $rules = ['title' => 'required' , 'cat_id' => 'required' , 'description' => 'required' , 'hotel_id' => 'required' , 'day' => 'required' , 'night' => 'required' , 'theme_id' => 'required' , 
-             'depart_date' => 'required' , 'revenue_date' => 'required' , 'price' => 'required' , 'is_featured' => 'required' , 
-            'price_included' => 'required'];
+            $rules = ['title' => 'required' , 'cat_id' => 'required' , 'description' => 'required' , 'hotel_id' => 'required' , 'day' => 'required' , 'night' => 'required' , 'theme_id' => 'required'  , 'depart_date' => 'required' , 'revenue_date' => 'required' , 'price' => 'required' , 'is_featured' => 'required' , 
+            'price_included' => 'required', 'execluded' => 'required'];
 
             $v = Validator::make($data, $rules);
 
@@ -235,10 +248,20 @@ for($i=0;$i<count($image_name);$i++){
             }
             else
             {
-                $data_by_hotel_id = Hotel::with('city')->where('id', $hotel_id)->get();
+
+ 
+                $city_cont = City::with('country')->where('id', $city_id)->get();
+                $cont_id = $city_cont[0]->country->continent->id;
+if($hotel_id == 0 || $hotel_id == -1)
+{
+     $map_loc = "00000,00000";
+}
+else
+{
+                $data_by_hotel_id = Hotel::where('id', $hotel_id)->get();
 $map_loc = $data_by_hotel_id[0]->coor_x.",".$data_by_hotel_id[0]->coor_y;
 
-$cont_id = $data_by_hotel_id[0]->city->country->continent->id;
+}
 
                 $package = Packages::findOrFail($id);
                 $package->cat_id  = $cat_id;
@@ -248,11 +271,11 @@ $cont_id = $data_by_hotel_id[0]->city->country->continent->id;
                 $package->day  =$day ;
                 $package->night  =$night ;
                 $package->theme_id  =$theme_id ;
-            
+                $package->city_id =$city_id;
 
                 $package->cont_id  =$cont_id ;
                 $package->map_loc  =$map_loc ;
-               if($detailed == '')
+                if($detailed == '')
                 {
                      $package->detailed  ="No Data" ;
                 }
@@ -263,12 +286,9 @@ $cont_id = $data_by_hotel_id[0]->city->country->continent->id;
                 $package->depart_date  =$depart_date ;
                 $package->revenu_date  = $revenue_date;
                 $package->price  =$price ;
-                 $package->city_id  =$city ;
-
                 $package->is_featured  =$is_featured ;
                 $package->price_included  =$price_included ;
-
-
+                 $package->price_execluded  =$execluded;
 
 
 

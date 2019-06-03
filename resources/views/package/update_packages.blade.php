@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Create New Package</div>
+                <div class="card-header">Update Package</div>
 
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data" class="well">
@@ -46,23 +46,64 @@
 
                         <p>
     <div class="row">
-        <div class="col-md-4">
-  <select class="form-control" name="hotel_id">
-                                @foreach($hotels as $hotel)
-                                 <option value="{{$hotel->id}}" {{ ($packages->hotel_id == $hotel->id) ? 'selected' : '' }}>{{$hotel->name}}---> {{$hotel->city->name}}</option>
+            <div class="col-md-6">
+                <b>
+                                City Name
+                            </b>
+  <select class="form-control" name="city_id" onchange="show_hotels(this);">
+                                @foreach($cities as $city)
+                                 <option value="{{$city->id}}" {{ ($packages->city_id == $city->id) ? 'selected' : '' }}>{{$city->name}}</option>
                                 
                                 @endforeach
                             </select>
+                                   <p>
+                  <b><p> <span id="loading" style="color: red;font-weight: 900;display: none;">LOADING...</span></p></b>
+                </p>
 </div>
-    <div class="col-md-4">
- <input type="number" name="day" placeholder="Day" class="form-control" value="{{$packages->day}}">
+
+        <div class="col-md-6">
+            <b>
+                                Hotel Name
+                            </b>
+                            @if($packages->hotel_id == 0)
+                              <select class="form-control" name="hotel_id" id="hotel_id"  >
+                   <option value="0" >-- Select Hotel--</option>
+                 </select>
+                 @elseif($packages->hotel_id == -1)
+                              <select class="form-control" name="hotel_id" id="hotel_id"  >
+                   <option value="-1" >--Select Hotel--</option>
+                 </select>
+                 @else
+                 <select class="form-control" name="hotel_id" id="hotel_id">
+                                @foreach($hotels as $hotel)
+                                @if($packages->hotel_id == $hotel->id)
+                                 <option value="{{$hotel->id}}">{{$hotel->name}}</option>
+                                @else
+                                @endif
+                                @endforeach
+                            </select>
+                            @endif
+                           
+
+   
 </div>
-  <div class="col-md-4">
- <input type="number" name="night" placeholder="Night" class="form-control" value="{{$packages->night}}">
+  <p>
+    <div class="col-md-6">
+        <b>
+                              Day
+                            </b>
+ <input type="number" name="day" placeholder="Day" class="form-control" value="{{$packages->day}}" min="0">
+</div>
+  <div class="col-md-6">
+      <b>
+                              Night
+                            </b>
+ <input type="number" name="night" placeholder="Night" class="form-control" value="{{$packages->night}}" min="0">
 </div>
    
 
 </div>
+
 </p>
 
 
@@ -132,15 +173,31 @@
 
 
 
+ <div class="row">
 
- <p>
-                            <b>
-                                Price Included
-                            </b>
-                        </p>
+<div class="col-md-6">
+<p>
+
+    <b>
+        Price Included *
+    </b>
+</p>
 <p>
     <textarea name="price_included">{{$packages->price_included}}</textarea>
 </p>
+</div>
+<div class="col-md-6">
+<p>
+
+    <b>
+        Price Excluded *
+    </b>
+</p>
+<p>
+    <textarea name="execluded">{{$packages->price_execluded}}</textarea>
+</p>
+</div></div>
+ 
 <p>
 
 

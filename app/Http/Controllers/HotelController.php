@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Hotel;
 use App\City;
+use App\Packages;
+
 use paginate;
 use Validator;
 use Redirect;
@@ -121,6 +123,29 @@ class HotelController extends Controller
         }
             
             $hotel->save();
+
+            $package_by_hotel_counts = Packages::where('hotel_id',$id)->count();
+
+            if($package_by_hotel_counts == 0)
+            {
+
+            }
+            else
+            {
+              
+               $package = Packages::where('hotel_id', $id)->get();
+
+
+for($i=0 ; $i < count($package) ; $i++)
+{
+
+    $package_hotel_by_id = Packages::findOrFail($package[$i]->id);
+    $package_hotel_by_id->map_loc = $coor_x.",".$coor_y;
+
+    $package_hotel_by_id->save();
+}
+              
+            }
             return Redirect::back()->with('success', 'New Hotel successfuly Updated');
         }
     }

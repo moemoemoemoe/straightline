@@ -77,13 +77,13 @@
                           <b>
                               Day * 
                             </b>
-                       <input type="number" name="day" placeholder="Day" class="form-control" value="{{old('day')}}">
+                       <input type="number" name="day" placeholder="Day" class="form-control" value="{{old('day')}}" min="0" >
                    </div>
                    <div class="col-md-6">
                       <b>
                                 Night *
                             </b>
-                       <input type="number" name="night" placeholder="Night" class="form-control" value="{{old('night')}}">
+                       <input type="number" name="night" placeholder="Night" class="form-control" value="{{old('night')}}" min="0">
                    </div>
 
 
@@ -146,7 +146,7 @@
 </div>
 </p>
 <p>
-    <textarea name="description"></textarea>
+    <textarea name="description">{{old('description')}}</textarea>
 </p>
 
 
@@ -156,23 +156,35 @@
     </b>
 </p>
 <p>
-    <textarea name="detailed"></textarea>
+    <textarea name="detailed">{{old('detailed')}}</textarea>
 </p>
 </p>
 
 
+ <div class="row">
 
-
-
+<div class="col-md-6">
 <p>
+
     <b>
         Price Included *
     </b>
 </p>
 <p>
-    <textarea name="price_included"></textarea>
+    <textarea name="price_included" >{{old('price_included')}}</textarea>
 </p>
+</div>
+<div class="col-md-6">
+<p>
 
+    <b>
+        Price Excluded *
+    </b>
+</p>
+<p>
+    <textarea name="execluded">{{old('execluded')}}</textarea>
+</p>
+</div></div>
 <p>
    <div class="row">
     <div class="col-md-6">
@@ -198,53 +210,7 @@
 </div>
 </div>
 <script type="text/javascript">
-function show_hotels(id){
 
-  var city_id = id.value;
- 
-//window.alert(id_room);
-$.ajax({
-  url: '{{route('show_hotels')}}',
-  type: 'POST',
-  data:{
-    _token: '{{ csrf_token() }}',
-    city_id:city_id
-  },
-  cache: false,
-  datatype: 'JSON',
-  success: function(response){
-    $('#loading').show();
-    $('#hotel_id').html('');
-    var i;
-    var count = Object.keys(response).length;
-    if(count == 0)
-    {
-      var option=$('<option></option>');
-      option.attr('value',-1);
-      option.text('--No hotels--');
-      $('#hotel_id').append(option);
-    } else
-    {
-    var JSONObject = JSON.parse(JSON.stringify(response));
-    $('#hotel_id').append('<option value="0">-- Select Hotel --</option>');
-    for(i=0;i<count;i++)
-    { 
-     var option=$('<option></option>');
-     option.attr('value',JSONObject[i]["id"]);
-     option.text(JSONObject[i]["name"]);
-     $('#hotel_id').append(option);
-   }
- }
-   // $('#hotel_id').append('<option value="0">---choose--</option>');
-   $('#loading').hide();
-
- },error:function(){
-  alert('Somthing Went Wrong');
-  $('#loading').hide();
-
-}
-});
-}
 </script>
 @endsection
 
