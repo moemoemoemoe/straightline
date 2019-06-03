@@ -200,11 +200,11 @@
                                        <a class=" dropdown-item" href="{{route('contact_index')}}" > Contact Us</a>
 @endif
 
-@if(Route::current()->getName() == 'contact_index' )
-                    <a class="active dropdown-item" href="{{route('contact_index')}}" > Profile</a>
+@if(Route::current()->getName() == 'profile_index' )
+                    <a class="active dropdown-item" href="{{route('profile_index')}}" > Profile</a>
 
                    @else
-                                       <a class=" dropdown-item" href="{{route('contact_index')}}" > Profile</a>
+                                       <a class=" dropdown-item" href="{{route('profile_index')}}" > Profile</a>
 @endif
 @if(Route::current()->getName() == 'contact_index' )
                     <a class="active dropdown-item" href="{{route('contact_index')}}" > Loyality Page</a>
@@ -322,10 +322,15 @@
 
 
 
-    CKEDITOR.replace( 'description' );
-    CKEDITOR.replace( 'detailed' );
-    CKEDITOR.replace( 'price_included' );
-     CKEDITOR.replace( 'execluded' );
+    CKEDITOR.replace('description');
+    CKEDITOR.replace('detailed');
+    CKEDITOR.replace('price_included');
+    CKEDITOR.replace('execluded');
+    // CKEDITOR.replace('missions');
+    // CKEDITOR.replace('visions');
+    // CKEDITOR.replace('goals');
+    
+    CKEDITOR.replace('values');
 
 </script>
 

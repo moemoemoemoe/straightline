@@ -148,6 +148,10 @@ Route::get('change_section/{id}', ['as' => 'change_section', 'uses' => 'ServiceC
 
 Route::get('export_packres_excell/{type}',['as'=> 'export_packres_excell','uses'=>'ExcellController@export_packres_excell']);
 Route::get('export_contact_excell/{type}',['as'=> 'export_contact_excell','uses'=>'ExcellController@export_contact_excell']);
+////////////////////////Profile Controller 
+
+
+Route::get('profile_index',['as'=> 'profile_index','uses'=>'ProfileController@profile_index']);
 
 
 });
