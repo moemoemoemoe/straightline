@@ -13,7 +13,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <p>
-                            <input type="text" name="title" placeholder="Package Title*" class="form-control" value="{{old('title')}}">
+                            <input type="text" name="title" placeholder="Package Title*" class="form-control" value="{{old('title')}}" autocomplete="off">
                         </p>
 
 
@@ -132,7 +132,7 @@
 <p>
    <div class="row">
     <div class="col-md-6">
-       <input type="text" name="price" placeholder="Package Price" class="form-control" value="{{old('price')}}">
+       <input type="text" name="price" placeholder="Package Price" class="form-control" value="{{old('price')}}" autocomplete="off">
    </div>
    <div class="col-md-6">
        <select class="form-control" name="is_featured">

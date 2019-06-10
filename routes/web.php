@@ -15,10 +15,33 @@ Route::get('/', function () {
     return view('welcome');
 });
  Route::get('front_index',['as'=> 'front_index','uses'=>'FrontController@front_index']);
+Route::get('package_detail/{id}',['as'=> 'package_detail','uses'=>'FrontController@package_detail']);
+ Route::get('all_packages',['as'=> 'all_packages','uses'=>'FrontController@all_packages']);
+
+ Route::get('services',['as'=> 'services','uses'=>'FrontController@services']);
+ Route::get('contactus',['as'=> 'contactus','uses'=>'FrontController@contactus']);
+ Route::get('aboutus',['as'=> 'aboutus','uses'=>'FrontController@aboutus']);
+ Route::get('loyality_program',['as'=> 'loyality_program','uses'=>'FrontController@loyality_program']);
+
  Route::post('front_index',['as'=> 'front_index','uses'=>'FrontController@front_index_search']);
  Route::get('result_search',['as'=> 'result_search','uses'=>'FrontController@result_search']);
- Route::get('autocomplete/{key}',['as'=> 'autocomplete','uses'=>'FrontController@autocomplete']);
 
+ Route::get('autocomplete',['as'=> 'autocomplete','uses'=>'FrontController@autocomplete']);
+/////front end forms frontsubmitcontroller
+ 
+  Route::post('submit_insurance',['as'=> 'submit_insurance','uses'=>'FrontSubmitController@submit_insurance']);
+  Route::post('submit_callback',['as'=> 'submit_callback','uses'=>'FrontSubmitController@submit_callback']);
+    Route::post('submit_mailinglist',['as'=> 'submit_mailinglist','uses'=>'FrontSubmitController@submit_mailinglist']);
+ Route::post('submit_reservation_pack/{id}',['as'=> 'submit_reservation_pack','uses'=>'FrontSubmitController@submit_reservation_pack']);
+ Route::post('submit_contactus',['as'=> 'submit_contactus','uses'=>'FrontSubmitController@submit_contactus']);
+
+
+//////////////////Load more
+  Route::post('load_data',['as'=> 'load_data','uses'=>'LoadMoreController@load_data']);
+
+
+
+ //////
 
 Auth::routes();
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function() {
@@ -148,10 +171,25 @@ Route::get('change_section/{id}', ['as' => 'change_section', 'uses' => 'ServiceC
 
 Route::get('export_packres_excell/{type}',['as'=> 'export_packres_excell','uses'=>'ExcellController@export_packres_excell']);
 Route::get('export_contact_excell/{type}',['as'=> 'export_contact_excell','uses'=>'ExcellController@export_contact_excell']);
-////////////////////////Profile Controller 
+////////////////////////Profile Loyality Controller 
 
 
 Route::get('profile_index',['as'=> 'profile_index','uses'=>'ProfileController@profile_index']);
+Route::post('profile_index',['as'=> 'profile_index','uses'=>'ProfileController@profile_index_update']);
+Route::get('loyality_index',['as'=> 'loyality_index','uses'=>'LoyalityController@loyality_index']);
+Route::post('loyality_index',['as'=> 'loyality_index','uses'=>'LoyalityController@loyality_index_save']);
+Route::get('loyality_archive/{id}', ['as' => 'loyality_archive', 'uses' => 'LoyalityController@loyality_archive']);
+Route::get('loyality_messages',['as'=> 'loyality_messages','uses'=>'LoyalityController@loyality_messages']);
 
+
+////////////////////faqterm controller
+
+Route::get('faq_index',['as'=> 'faq_index','uses'=>'FaqTermsController@faq_index']);
+Route::post('faq_index',['as'=> 'faq_index','uses'=>'FaqTermsController@faq_index_save']);
+Route::get('faq_archive/{id}', ['as' => 'faq_archive', 'uses' => 'FaqTermsController@faq_archive']);
+
+
+Route::get('terms_index',['as'=> 'terms_index','uses'=>'FaqTermsController@terms_index']);
+Route::post('terms_index',['as'=> 'terms_index','uses'=>'FaqTermsController@terms_index_save']);
 
 });

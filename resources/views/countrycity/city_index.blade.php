@@ -44,8 +44,8 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">City Name</th>
           <th scope="col">Country Name</th>
+          <th scope="col">City Name</th>
            <th scope="col" style="text-align:center"><i class="fas fa-edit"></i> </th>
          
       </tr>

@@ -27,9 +27,37 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function profile_index_update(Request $r)
     {
-        //
+        
+        $description = $r->input('description');
+        $mession =$r->input('detailed'); // mession
+        $vision =$r->input('price_included'); //vision
+        $goals =$r->input('execluded'); //goals
+        $values =$r->input('values'); //values
+
+    
+       
+
+        $data = ['description' => $description, 'detailed'=>$mession , 'price_included' => $vision , 'execluded' =>$goals,'values' => $values];
+        $rules = ['description' => 'required', 'detailed' =>'required' ,'price_included' =>'required' , 'execluded' =>'required','values'=>'required'];
+        $v = Validator::make($data, $rules);
+        if($v->fails()){
+            return Redirect::Back()->withErrors('Error : Missing Entry')->withInput($r->input());
+        }else
+       {
+           
+            $prorfile = Profile::findOrFail(1);
+            $prorfile->description = $description;
+            $prorfile->mission = $mession;
+            $prorfile->vision = $vision;
+            $prorfile->goals = $goals;
+            $prorfile->values = $values;
+
+           
+            $prorfile->save();
+            return Redirect::back()->with('success', 'Profile Updated Successfully');
+        }
     }
 
     /**

@@ -17,7 +17,20 @@
                             <input type="text" name="name" placeholder="Service Name" class="form-control" value="{{old('name')}}" autocomplete="off">
                         </p>
                           <p>
-    <textarea name="description"></textarea>
+    <textarea name="description"><ol>
+  <li>Passport valid 6 months after date of return</li>
+  <li>2 photos</li>
+  <li>Personal bank statement of account stamped by the bank (recent for the last 3 months)</li>
+  <li>A new family extract in Arabic (less than 3 months old) translated to French or English + 1 copy</li>
+  <li>2 photocopy of passport</li>
+  <li>1 photocopy of all Schengen visas</li>
+  <li>International insurance</li>
+  <li>Notarized parental authorization for children under 18 years old, traveling with or without parents (in French or English)</li>
+  <li>Hotel booking</li>
+  <li>For employees employment letter stating salary (in French or English) precising the date of departure and return + certificate of registration from CNSS + photocopy of commercial circular (French or English)</li>
+  <li>For students letter of enrollment from school (in English or French) + 1 photocopy of student ID</li>
+  <li>For Business owners photocopy of the commercial register (French or English)</li>
+</ol></textarea>
 </p>
               <p>
           <select class="form-control" name="is_important">

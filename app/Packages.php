@@ -15,4 +15,7 @@ class Packages extends Model
        public function hotel(){
     	return $this->belongsTo('App\Hotel');
     }
+     public function city(){
+    	return $this->belongsTo('App\City')->with('country');
+    }
 }

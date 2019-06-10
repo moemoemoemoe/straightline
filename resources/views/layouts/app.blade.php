@@ -206,11 +206,29 @@
                    @else
                                        <a class=" dropdown-item" href="{{route('profile_index')}}" > Profile</a>
 @endif
-@if(Route::current()->getName() == 'contact_index' )
-                    <a class="active dropdown-item" href="{{route('contact_index')}}" > Loyality Page</a>
+@if(Route::current()->getName() == 'loyality_index' )
+                    <a class="active dropdown-item" href="{{route('loyality_index')}}" > Loyality Page</a>
 
                    @else
-                                       <a class=" dropdown-item" href="{{route('contact_index')}}" > Loyality Page</a>
+                                       <a class=" dropdown-item" href="{{route('loyality_index')}}" > Loyality Page</a>
+@endif
+
+
+
+@if(Route::current()->getName() == 'faq_index' )
+                    <a class="active dropdown-item" href="{{route('faq_index')}}" > Faq ? </a>
+
+                   @else
+                                       <a class=" dropdown-item" href="{{route('faq_index')}}" > Faq ?</a>
+@endif
+
+
+
+@if(Route::current()->getName() == 'terms_index' )
+                    <a class="active dropdown-item" href="{{route('terms_index')}}" > Terms & Condition </a>
+
+                   @else
+                                       <a class=" dropdown-item" href="{{route('terms_index')}}" > Terms & Condition </a>
 @endif
                                         </div>
                    

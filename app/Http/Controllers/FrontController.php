@@ -7,6 +7,15 @@ use Session;
 use Illuminate\Support\Facades\View;
 use Redirect;
 use App\Airport;
+use App\Packages;
+use App\Popular;
+use App\Theme;
+use App\Image;
+use App\Contact;
+use App\Faq;
+use App\Term;
+use App\Loyality;
+use App\Service;
 class FrontController extends Controller
 {
     /**
@@ -16,7 +25,13 @@ class FrontController extends Controller
      */
     public function front_index()
     {
-        return view('front.index');
+        $packages_best = Packages::orderBy('id','DESC')->with('city')->where('is_featured',1)->limit(6)->get();
+        $packages_featured = Packages::orderBy('id','DESC')->with('city')->where('is_featured',0)->limit(6)->get();
+        $populars_all = Popular::orderBy('id','ASC')->where('status',1)->limit(7)->get();
+
+     
+//return $packages;
+        return view('front.index',compact('packages_best','packages_featured','populars_all'));
     }
 
     /**
@@ -77,10 +92,12 @@ Session::put('link', $link);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function autocomplete($key)
+    public function autocomplete(Request $request)
     {
-        $query = Airport::where('countryName','LIKE','%{$key}%')->get();
-        return $query;
+     
+    $data = Airport::select("code as name")->where("countryName","LIKE","%{$request->input('query')}%")->orWhere("code","LIKE","%{$request->input('query')}%")->orWhere("name","LIKE","%{$request->input('query')}%")->get();
+       
+        return response()->json($data);
     }
 
     /**
@@ -89,9 +106,13 @@ Session::put('link', $link);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function package_detail($id)
     {
-        //
+        $packages_detail = Packages::with('city')->findOrFail($id);
+        $package_same_cat = Packages::with('cat')->with('city')->where('cat_id',$packages_detail->cat_id)->limit(3)->get();
+       $galleries = Image::orderBy('id','DESC')->where('package_id',$id)->get();
+      
+        return view('front.package_detail',compact('packages_detail','package_same_cat','galleries'));
     }
 
     /**
@@ -101,9 +122,38 @@ Session::put('link', $link);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function all_packages()
     {
-        //
+        $themes = Theme::orderBy('id','DESC')->get();
+        $packages = Packages::with('cat')->with('city')->limit(9)->get();
+
+        return view('front.all_packages',compact('packages','themes'));
+    }
+    public function services()
+    {
+        $services_important = Service::orderBy('id','DESC')->where('status', 1)->where('is_important', 1)->get();
+        $services_other = Service::orderBy('id','DESC')->where('status', 1)->where('is_important', 0)->get();
+
+
+        return view('front.services',compact('services_important'));
+    }
+    public function aboutus()
+    {
+        return view('front.aboutus');
+    }
+    public function contactus()
+    {
+        $contacts = Contact::orderBy('id','DESC')->limit(1)->get();
+
+        return view('front.contactus',compact('contacts'));
+    }
+    public function loyality_program()
+    {
+        $faqs = Faq::orderBy('id','DESC')->where('status',1)->limit(4)->get();
+        $terms = Term::orderBy('id','DESC')->get();
+        $loyalities = Loyality::limit(3)->where('status',1)->get();
+
+        return view('front.loyalityprogram' ,compact('faqs','terms','loyalities'));
     }
 
     /**

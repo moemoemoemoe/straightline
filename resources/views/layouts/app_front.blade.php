@@ -1,319 +1,163 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Straight Line</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{asset('front/css/bootstrap.min.css')}}" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{asset('front/css/carousel.css')}}" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{asset('front/css/custom.css')}}" crossorigin="anonymous">
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
-	
-<!--   <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
- -->
- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="{{asset('front/css/animate.css')}}">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="{{asset('front/css/icomoon.css')}}">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="{{asset('front/css/bootstrap.css')}}">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link href="{{asset('datepicker/css/datepicker.min.css')}}" rel="stylesheet" type="text/css">
+        <script src="{{asset('datepicker/js/datepicker.min.js')}}"></script>
 
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="{{asset('front/css/magnific-popup.css')}}">
+        <!-- Include English language -->
+        <script src="{{asset('datepicker/js/i18n/datepicker.en.js')}}"></script>
+  <title>Home | Straight Line</title>
+</head>
+<body class="home">
+  <header>
+    <nav class="navbar-expand-sm fixed-top bg-dark-blue navbarblue">
+      <div class="container">
+        <div class="cust_container">
+          <div class="row">
+            <div class="col-lg-4 col-md-12 hotline"><b>HOTLINE</b> +961 9 220 400</div>
+            <div class="col-lg-8 col-md-12">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+                    <ul class="navbar-nav text-uppercase">
+                      <li class="nav-item active ">
+                        <a class="nav-link" href="{{route('front_index')}}">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{route('aboutus')}}">About us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{route('services')}}">Services</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{route('contactus')}}">Contacts</a>
+                      </li>
+                    </ul>
 
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="{{asset('front/css/flexslider.css')}}">
+                  </div>
+                </div>
+                <div class="col-lg-4 clock_header">
+                  <span>08:30 AM - 07:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <nav class="navbar-expand-sm">
+      <div class="container pb-3">
+        <div class="cust_container">
+          <div class="row">
+            <div class="col-lg-3">
+              <a class="navbar-brand" href="{{route('front_index')}}">
+                <img src="{{asset('front/images/footer-logo.png')}}" alt="">
+              </a>
+            </div>
+            <div class="col-lg-9 d-flex justify-content-end align-items-center">
+              <ul class="navbar-nav text-uppercase navbar2">
+                <li class="nav-item ">
+                  <a class="nav-link bookTicketLink" href="{{route('front_index')}}#">Book<div>Your Ticket</div></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('all_packages')}}">Packages<div>& Offers</div></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link travelInsuranceLink" href="{{route('front_index')}}#nav_insurance">Travel<div>Insurance</div></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('loyality_program')}}">Loyalty<div>Program</div></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+<main role="main">
+ <div class="col-md-12" style="padding-right:18%;padding-left: 18%">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger" >
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        @if(Session::has('success'))
+        <p class="alert alert-success">{{Session('success')}}</p>
+        @endif
 
-	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="{{asset('front/css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{asset('front/css/owl.theme.default.min.css')}}">
-	
-	<!-- Date Picker -->
-	<link rel="stylesheet" href="{{asset('front/css/bootstrap-datepicker.css')}}">
-	<!-- Flaticons  -->
-	<link rel="stylesheet" href="{{asset('front/fonts/flaticon/font/flaticon.css')}}">
-
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="{{asset('front/css/style.css')}}">
-
-	<!-- Modernizr JS -->
-	<script src="{{asset('front/js/modernizr-2.6.2.min.js')}}"></script>
-
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-<![endif]-->
-<!--  <script src="{{asset('front/js/typeahead.min.js')}}"></script>
- --></head>
-<body >
-
-	<div class="colorlib-loader"></div>
-
-	<div id="page">
-		<nav class="colorlib-nav" role="navigation">
-			<div class="top">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-4">
-							<p class="site"><img src="{{asset('front/images/hotline.png')}}"/> <b>Hotline:</b> +961 9 200 400</p>
-						</div>
-						<div class="col-xs-8 text-right">
-							<p class="num">
-								<ul class="colorlib-social">
-									<li class="active"><a href="#">Home</a></li>
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Contact</a></li>
-									<li><a >|</a></li> 
-									<li style="text-align: right"><a ><img src="{{asset('front/images/watsh.png')}}"></a></li>
-									<li><a><span style="font-size:2px!!important">08:30PM - 07:00PM</span></a></li>
-								</ul>
-							</p>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="top-menu">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-2">
-							<div id="colorlib-logo"><a href="index.html"><img src="{{asset('front/images/logo.png')}}"/></a></div>
-						</div>
-						<div class="col-xs-10 text-right menu-1">
-							<ul>
-								<li class=""><a href=""><img src="{{asset('front/images/book_your.png')}}" /></a><span style="color:#c6e6f6">|</span></li>
-								<li><a href=""><img src="{{asset('front/images/packageoffer.png')}}" /></a><span style="color:#c6e6f6">|</span></li>
-								<li><a href=""><img src="{{asset('front/images/trevelinsurance.png')}}" /></a></li>
-
-
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-
-
-
-
+    </div>
 
     @yield('content_front')
 
 
+  <footer class="pb-3">
+      <div class="container">
+        <div class="cust_container">
+          <div class="row">
+            <div class="col-lg-3 d-flex align-items-center"><a href="{{route('front_index')}}"><img src="{{asset('front/images/footer-logo.png')}}" alt="" width="212" height="49" /></a></div>
+            <div class="col-lg-3 mt-4 border-white border-right pl-0">
+              <div class="footer_title text-uppercase font-weight-bold mb-2 mb-4">Join our<div>Mailing list</div></div>
+               <form method="POST" enctype="multipart/form-data" class="well" action="{{route('submit_mailinglist')}}">
+                     
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <div><input type="text" name="footer_ur_name" id="footer_ur_name" placeholder="YOUR NAME"></div>
+              <div><input type="text" name="footer_ur_email" id="footer_ur_email" placeholder="YOUR EMAIL"></div>
+              <div><input type="submit" class="font-weight-bold p-0" name="footer_submit" id="footer_submit" value="Send"></div>
+            </form>
+            </div>
+            <div class="col-lg-3 mt-4 pl-4">
+              <div class="footer_title text-uppercase font-weight-bold mb-4">Get<div>in touch</div></div>
+              <div class="copyright_border border-white border-right">
+                <p>Zouk Mosbeh Main Street ,<br>Saliba building, 1st Floor.</p>
+                <p><span>P</span> +961 9 220 400<br><span>E</span> info@straightline.com.lb</p>
+              </div>
+            </div>
+            <div class="col-lg-3 pl-0 copyright">
+              <a href="javascript:;">
+                <div class="go_top d-flex justify-content-center align-items-center mb-4">
+                  <div class="d-flex justify-content-center align-items-center">Go Top</div>
+                </div>
+              </a>
+              <div>© Copyright 2019 <span>STRAIGHTLINE</span>.</div>
+              <div>All Rights Reserved.</div>
+              <div class="powered mb-3">Powered by <a href="#"><b>FUTURE DESTINATION</b></a></div>
+              <div class="font-weight-bold d-flex align-items-center">
+                STAY CONNECTED&nbsp;&nbsp;
+                <a href="https://www.facebook.com/straightline" target="_blank" class="f_fb d-inline-block"></a>&nbsp;
+                <a href="https://www.instagram.com/straightline" target="_blank" class="f_insta d-inline-block"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
 
-<footer id="colorlib-footer" role="contentinfo" style="background-color: #ebebeb">
-	<div class="container" >
-		<div class="row row-pb-md" >
-			
-<div class="col-md-3 colorlib-widget1">
-				<h4></h4>
-				<ul class="colorlib-footer-links">
-					<li><img src="{{asset('front/images/logo.png')}}"/></li>
-					<!-- <li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-					<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-					<li><a href="http://luxehotel.com">luxehotel.com</a></li> -->
-				</ul>
-			</div>
-
-			<div class="col-md-3 colorlib-widget">
-				<h4 style="color: #0d4fa0">Join Our Mailing List</h4>
-				<p>
-					<ul class="colorlib-footer-links"  >
-						<li><a href="#" style="color: #999">Accomodation</a></li>
-						<li><a href="#" style="color: #999">Dining &amp; Bar</a></li>
-						<li><a href="#" style="color: #999">Restaurants</a></li>
-						<li><a href="#" style="color: #999">Beach &amp; Resorts</a></li>
-					</ul>
-				</p>
-			</div>
-			<div class="col-md-3">
-				<h4 style="color: #189adb">Get In Touch</h4>
-				<ul class="colorlib-footer-links">
-					<li><a href="#" style="color: #999">The Ultimate Packing List For Female Travelers</a></li>
-					<li><a href="#" style="color: #999">How These 5 People Found The Path to Their Dream Trip</a></li>
-					<li><a href="#" style="color: #999">A Definitive Guide to the Best Dining and Drinking Venues in the City</a></li>
-				</ul>
-			</div>
-<div class="col-md-3 colorlib-widget">
-				<h4 style="color: #0d4fa0">Stay Connected</h4>
-				<p style="color: #999">Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-				<p>
-					<ul class="colorlib-social-icons">
-						<li><a href="#" ><i class="icon-twitter"></i></a></li>
-						<li><a href="#"><i class="icon-facebook"></i></a></li>
-						<li><a href="#"><i class="icon-linkedin"></i></a></li>
-						<li><a href="#"><i class="icon-dribbble"></i></a></li>
-					</ul>
-				</p>
-			</div>
-			
-		</div>
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<p>
-					<small class="block" style="color: #0d4fa0">
-						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Powered By  <a href="#" target="_blank">Future Destination</a>
-					</small> 
-						
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-</div>
-
-<div class="gototop js-top">
-	<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
-</div>
-
-<!-- jQuery -->
-
-
-<script src="{{asset('front/js/jquery.min.js')}}"></script>
-<!-- jQuery Easing -->
-<script src="{{asset('front/js/jquery.easing.1.3.js')}}"></script>
-<!-- Bootstrap -->
-<script src="{{asset('front/js/bootstrap.min.js')}}"></script>
-<!-- Waypoints -->
-<script src="{{asset('front/js/jquery.waypoints.min.js')}}"></script>
-<!-- Flexslider -->
-<script src="{{asset('front/js/jquery.flexslider-min.js')}}"></script>
-<!-- Owl carousel -->
-<script src="{{asset('front/js/owl.carousel.min.js')}}"></script>
-<!-- Magnific Popup -->
-<script src="{{asset('front/js/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{asset('front/js/magnific-popup-options.js')}}"></script>
-<!-- Date Picker -->
-<script src="{{asset('front/js/bootstrap-datepicker.js')}}"></script>
-<!-- Main -->
-<script src="{{asset('front/js/main.js')}}"></script>
-
-
-<script type="text/javascript">
-var type = 1;
-	$("input:checkbox").on('click', function() {
-  // in the handler, 'this' refers to the box clicked on
-  var $box = $(this);
-  if ($box.is(":checked")) {
-    // the name of the box is retrieved using the .attr() method
-    // as it is assumed and expected to be immutable
-    var group = "input:checkbox[name='" + $box.attr("name") + "']";
-    // the checked state of the group/box on the other hand will change
-    // and the current value is retrieved using .prop() method
-    //window.alert($box.val()) 
-     if($box.attr('id') == "a")
-    {
-
-    	document.getElementById("retu").disabled = false;
-    	type = 1;
-    	}
-    if($box.attr('id') == "b")
-    {
-
-    	document.getElementById("retu").disabled = true;
-    	type = 2;
-    }
-   if($box.attr('id') == "c")
-    {
-
-    document.getElementById("retu").disabled = false;
-    	type = 3;
-    }
- if($box.attr('id') == "d")
-    {
-
-    document.getElementById("retu").disabled = false;
-    	type = 4;
-    }
-    $(group).prop("checked", false);
-    $box.prop("checked", true);
-  } else {
-    $box.prop("checked", false);
-  }
-//window.alert(type);
-});
-
-
+  <script src="{{asset('front/js/jquery-3.4.1.min.js')}}" crossorigin="anonymous"></script>
+  <script src="{{asset('front/js/popper.min.js')}}" crossorigin="anonymous"></script>
+  <script src="{{asset('front/js/bootstrap.min.js')}}" crossorigin="anonymous"></script>
+  <script src="{{asset('front/js/custom.js')}}" crossorigin="anonymous"></script>
 
    
-    function search_flight(){
-       var the_type = type ;
-       var from = $('#from').val();
-       var to = $('#to').val();
-       var dep_date = $('#dep_date').val();
-       var rev_date = $('#retu').val();
-       var adu = $('#adult').val();
-       var chil = $('#child').val();
-      $.ajax({
-        url: '{{route('front_index')}}',
-        type: 'POST',
-        data:{
-          _token: '{{ csrf_token() }}',
-          the_type: the_type,
-          from: from,
-          to: to,
-          dep_date: dep_date,
-          rev_date: rev_date,
-          adu: adu,
-          chil: chil
-        },
-        cache: false,
-        datatype: 'JSON',
-        success: function(data){
-        window.location.href = '{{route('result_search')}}';
-        },
-        error: function(){
-         
-        }
-      });
-    }
-      // function autocompleteq(){
-  	   //   var from = $('#from').val();
-  	   //    window.alert(from);
-      // $.ajax({
-      //   url: 'autocomplete/'+from,
-      //   type: 'GET',
-      //   data:{
-         
-      //   },
-      //   cache: false,
-      //   datatype: 'JSON',
-      //   success: function(data){
-      //   window.alert(from);
-      //   },
-      //   error: function(){
-         
-      //   }
-      // });
-    // $('input.from').typeahead({
-    //     name: 'from',
-    //     remote : '{{ route('autocomplete', ['key'=> '%QUERY']) }}',
-    //     limit : 10
-    // });
-// }
-</script>
-
-<script >
-
-
-    </script>
-    
 </body>
 </html>

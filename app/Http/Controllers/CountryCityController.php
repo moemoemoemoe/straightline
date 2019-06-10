@@ -33,7 +33,7 @@ class CountryCityController extends Controller
     {
         
          $name = $r->input('name');
-$cont_id = $r->input('cont_id');
+        $cont_id = $r->input('cont_id');
          $data = ['name' => $name];
 
             $rules = ['name' => 'required'];
