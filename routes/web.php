@@ -47,7 +47,7 @@ Route::get('package_detail/{id}',['as'=> 'package_detail','uses'=>'FrontControll
   
 //////////////////
 Auth::routes();
-Route::group(['prefix' => '/admin/', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => '/', 'middleware' => 'auth'], function() {
 
 Route::get('home', 'HomeController@index')->name('home');
 
