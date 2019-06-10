@@ -16,6 +16,8 @@ use App\Faq;
 use App\Term;
 use App\Loyality;
 use App\Service;
+use App\City;
+use Validator;
 class FrontController extends Controller
 {
     /**
@@ -28,9 +30,7 @@ class FrontController extends Controller
         $packages_best = Packages::orderBy('id','DESC')->with('city')->where('is_featured',1)->limit(6)->get();
         $packages_featured = Packages::orderBy('id','DESC')->with('city')->where('is_featured',0)->limit(6)->get();
         $populars_all = Popular::orderBy('id','ASC')->where('status',1)->limit(7)->get();
-
-     
-//return $packages;
+  
         return view('front.index',compact('packages_best','packages_featured','populars_all'));
     }
 
@@ -125,9 +125,10 @@ Session::put('link', $link);
     public function all_packages()
     {
         $themes = Theme::orderBy('id','DESC')->get();
+        $cities = City::orderBy('id','DESC')->get();
         $packages = Packages::with('cat')->with('city')->limit(9)->get();
-
-        return view('front.all_packages',compact('packages','themes'));
+        
+        return view('front.all_packages',compact('packages','themes','cities'));
     }
     public function services()
     {
@@ -162,8 +163,28 @@ Session::put('link', $link);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function search_in_all_package(Request $r)
     {
-        //
+        $city_id = $r->input('city_id');
+        $theme_id =$r->input('theme_id');
+        $flight_from_date =$r->input('flight_from_date');
+        $flight_to_date =$r->input('flight_to_date');
+        $flight_budget =$r->input('flight_budget');
+    
+       
+
+        $data = ['city_id' => $city_id, 'theme_id'=>$theme_id , 'flight_from_date' => $flight_from_date , 'flight_to_date' =>$flight_to_date, 'flight_budget' =>$flight_budget];
+        $rules = ['city_id' => 'required', 'theme_id' =>'required' ,'flight_from_date' =>'required' , 'flight_to_date' =>'required','flight_budget' =>'required'];
+        $v = Validator::make($data, $rules);
+        if($v->fails()){
+            return Redirect::Back()->withErrors("missing fieald")->withInput($r->input());
+        }else
+       {
+           
+            $packages_best = Packages::with('cat')->with('city')->where('city_id',$city_id)->where('theme_id',$theme_id)->where('price',$flight_budget)->get();
+           
+            return view('front.search_all_packages',compact('packages_best'));
+
+        }
     }
 }

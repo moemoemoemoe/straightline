@@ -51,22 +51,35 @@
       </div>
     </div>
   </div>
+
   <div class="packages_offers_form pt-3">
     <div class="container mb-2">
       <div class="cust_container">
         <div class="row align-items-center flight_date_select ">
-          <input type="text" name="flight_destination" id="flight_destination" value="" placeholder="DESTINATION" autocomplete="off"/>
+        <!--   <input type="text" name="flight_destination" id="flight_destination" value="" placeholder="DESTINATION" autocomplete="off"/> -->
+        <form method="POST" enctype="multipart/form-data" class="well" action="{{route('search_in_all_package')}}">
+                     
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+          <select class="flight_theme vol-md-3 form-controll" name="city_id">
+            @foreach($cities as $city)
+            <option value="{{$city->id}}">{{$city->name}}</option>
+           
+            @endforeach
+          </select>
           <input type="text"  name="flight_from_date" class="date ml-2 datepicker-here" id="flight_from_date" value="" placeholder="DEPART" autocomplete="off" data-language="en" />
           <input type="text" data-language="en"  name="flight_to_date" class="date ml-2 datepicker-here" id="flight_to_date" value="" placeholder="RETURN" autocomplete="off" />
           <input type="text" name="flight_budget" id="flight_budget" value="" placeholder="BUDGET" class="dollar ml-2" autocomplete="off"/>
-          <select class="flight_theme ml-2" name="theme_id">
+          <select class="flight_theme col-md-2" name="theme_id">
             @foreach($themes as $theme)
             <option value="{{$theme->id}}">{{$theme->theme_name}}</option>
            
             @endforeach
           </select>
-          <a href="javascript:;" class="btn text-uppercase search_form_btn font-weight-bold ml-2">Search</a>
+          <input type="submit" value="Search" class="btn search_form_btn font-weight-bold col-md-2" style="width:9%">
+        </form>
         </div>
+
         <div class="d-flex best_travel_title mb-3 pt-5 pb-4">
           <div class="col-lg-12 pl-0 text-center text-uppercase">
             <div class="light_dark_blue_title po_title">PACKAGES & OFFERS</div>
@@ -75,6 +88,7 @@
       </div>
     </div>
   </div>
+
   <div class="packages_offers container mb-5">
     <div class="cust_container">
 

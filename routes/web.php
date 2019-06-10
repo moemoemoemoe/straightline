@@ -42,9 +42,12 @@ Route::get('package_detail/{id}',['as'=> 'package_detail','uses'=>'FrontControll
 
 
  //////
-
+   Route::post('search_in_all_package',['as'=> 'search_in_all_package','uses'=>'FrontController@search_in_all_package']);
+    Route::get('packages_results',['as'=> 'packages_results','uses'=>'FrontController@packages_results']);
+  
+//////////////////
 Auth::routes();
-Route::group(['prefix' => '/', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => '/admin/', 'middleware' => 'auth'], function() {
 
 Route::get('home', 'HomeController@index')->name('home');
 
