@@ -132,11 +132,17 @@ Session::put('link', $link);
     }
     public function services()
     {
-        $services_important = Service::orderBy('id','DESC')->where('status', 1)->where('is_important', 1)->get();
+       
+       $services_important = Service::orderBy('id','ASC')->where('status', 1)->where('is_important', 1)->limit(5)->get();
+ $services_important_first = Service::orderBy('id','DESC')->where('status', 1)->where('is_important', 1)->limit(1)->get();
+
+      
+
+
         $services_other = Service::orderBy('id','DESC')->where('status', 1)->where('is_important', 0)->get();
 
 
-        return view('front.services',compact('services_important'));
+        return view('front.services',compact('services_important','services_other','services_important_first'));
     }
     public function aboutus()
     {

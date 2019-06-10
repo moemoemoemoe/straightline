@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <div class="contactMap ">
+    <div class="contactMap">
       <div class="roundedShadow">
         <iframe class="col-lg-7 text-right" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=straight%20line&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
       </div>

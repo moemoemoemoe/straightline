@@ -23,15 +23,29 @@
           <div class="row resetRow mb-5">
             <div class="col-lg-4 st_tab-menu">
               <div class="list-group text-left">
+                 <a href="#" class="list-group-item active planeBg">
+                  {{$services_important_first[0]->name}}
+                </a>
                 @foreach($services_important as $service)
-                <a href="#" class="list-group-item active planeBg">
+                <a href="#" class="list-group-item  planeBg">
                   {{$service->name}}
                 </a>
                 @endforeach
               </div>
             </div>
             <div class="col-lg-8 col-md-7 col-sm-9 col-xs-9 st_tab">
+
+              <div class="st_tab_content active">
+                <div class="materialsneeded font-weight-bold text-uppercase font_20">
+                  <div class="darkBlue">MATERIALS NEEDED</div>
+                  <div class="yellowColor">FOR SCHENGEN VISA</div>
+                </div>
+                <div class="greyColor my-4">
+                {!! $services_important_first[0]->description !!}
+                </div>
+              </div>
   @foreach($services_important as $service)
+
               <div class="st_tab_content">
                 <div class="materialsneeded font-weight-bold text-uppercase font_20">
                   <div class="darkBlue">MATERIALS NEEDED</div>
@@ -62,7 +76,7 @@
                 <div class="lightBlue font_18 font-italic">We'll get you there</div>
               </div>
               <p>When it comes to airlines, we are one of the most favored travel agencies in the region. Confirming reservations, issuing tickets and providing information about airlines schedules, connections fares and other services with different airlines.</p>
-              <button class="btn d-flex align-items-center serviceBtn bookTicketBtn text-uppercase font-weight-bold"><span></span>Book Your Ticket</button>
+              <a href="{{route('front_index')}}" class="btn d-flex align-items-center serviceBtn bookTicketBtn text-uppercase font-weight-bold" style="color: #fff"><span></span>Book Your Ticket</a>
             </div>
             <div class="col-lg-4 borderRight">
               <div class="serviceBottomTitle hotelBg mb-4">
@@ -77,7 +91,7 @@
                 <div class="lightBlue font_18 font-italic">Relax & Travel with Peace of Mind</div>
               </div>
               <p>Travel insurance is an essential part of your holiday preparations. That is why at Straight Line, we believe safety comes first and we are delighted to provide you with a wide array of possibilities. From covering medical issues, to loss of luggage, and more. Travel insurance can equally be tailored to your needs. contact us for more info.</p>
-              <button class="btn d-flex align-items-center serviceBtn travelInsuranceBtn text-uppercase font-weight-bold"><span></span>Get a travel insurance</button>
+              <a href="{{route('front_index')}}#nav_insurance" class="btn d-flex align-items-center serviceBtn travelInsuranceBtn text-uppercase font-weight-bold" style="color: #fff"><span></span>Get a travel insurance</a>
             </div>
           </div>
           <div class="d-flex best_travel_title mb-5 serviceBorder">
