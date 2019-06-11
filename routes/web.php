@@ -39,8 +39,13 @@ Route::post('search_in_all_package',['as'=> 'search_in_all_package','uses'=>'Fro
 Route::get('packages_results',['as'=> 'packages_results','uses'=>'FrontController@packages_results']);
 
 //////////////////
-Auth::routes();
-Route::group(['prefix' => '/', 'middleware' => 'auth'], function() {
+
+  Route::get('dashboard/login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
+  Route::post('dashboard/login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
+ Route::post('dashboard/logout', ['as' => 'logout', 'uses' =>'Auth\LoginController@logout']);
+
+
+Route::group(['prefix' => '/dashboard', 'middleware' => 'auth'], function() {
 
   Route::get('home', 'HomeController@index')->name('home');
 
