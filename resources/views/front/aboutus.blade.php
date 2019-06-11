@@ -26,11 +26,7 @@
         <div class="cust_container">
           <div class="row aboutProfile mb-5 pb-5">
             <div class="col-lg-9">
-              <p>Straight Line established in 2001, is one of the fast growing Travel Agencies in Lebanon. Located in Adonis,Mont Liban Beirut. Straight Line Travel & Tourism is today a leading travel and destination management service company in Lebanon.</p>
-              <p>France Embassy partnership since 2015 assisting customers in securing tourist visas to France.</p>
-              <p>Straight Line Travel is IATA accredited and offers the widest choice of products and services in the market, and upon records of success, it is ranked number ONE sales in Lebanon for Six consecutive years with 4 GDS implemented.</p>
-              <p>At Straight Line, it is guaranteed that travel expertise and experienced professionals will provide the highest quality of service when travelling the world.</p>
-              <p>The key of our growth is our commitment in offering all of our customers Values in terms of quality services, reliability and cost effectiveness.</p>
+            {!! $profiles[0]->description!!}
             </div>
             <div class="col-lg-3 pl-2 text-right">
               <img src="front/images/number-one.png" class="mb-4" />
@@ -41,16 +37,14 @@
             <div class="col-lg-6">
               <div class="darkBlue font_25 font-weight-bold mb-3 text-uppercase planeBg">OUR MISSION</div>
               <div class="greyColor">
-                <p>Straight Line’s mission is to provide customers with the highest quality service, a host of innovative and value added services to our customers.
-                To power our customers’ success by making the most of their travel investment, keeping travelers safe and enhancing their experiences.</p>
+               {!! $profiles[0]->mission!!}
               </div>
             </div>
             <div class="col-lg-6">
               <div class="">
                 <div class=" mb-3 font-weight-bold darkBlue font_25 text-uppercase planeBg">OUR VISION</div>
                 <div class="greyColor">
-                  <p>Straight Line’s mission is to provide customers with the highest quality service, a host of innovative and value added services to our customers.
-                  To power our customers’ success by making the most of their travel investment, keeping travelers safe and enhancing their experiences.</p>
+                  {!! $profiles[0]->vision!!}
                 </div>
               </div>
             </div>

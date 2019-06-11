@@ -14,6 +14,7 @@ use App\Image;
 use App\Contact;
 use App\Faq;
 use App\Term;
+use App\Profile;
 use App\Loyality;
 use App\Service;
 use App\City;
@@ -146,7 +147,9 @@ Session::put('link', $link);
     }
     public function aboutus()
     {
-        return view('front.aboutus');
+        $profiles = Profile::orderBy('id','DESC')->get();
+
+        return view('front.aboutus',compact('profiles'));
     }
     public function contactus()
     {

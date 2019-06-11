@@ -93,14 +93,21 @@ $i = 1;
                                       {!! $packages_detail->price_included !!}
 
                   </ul>
+                   <div class="darkBlue text-uppercase font-weight-bold font_25 mb-2">PRICE Execluded</div>
+                  <ul class="singleUl">
+                                      {!! $packages_detail->price_execluded !!}
+
+                  </ul>
                   <button class="btn mt-4 download_broshure yellowColor font-weight-bold text-uppercase">Download Brochure</button>
                 </div>
 
               </div>
+
               <div class="col-lg-6">
                 <div class="leftShadow">
                   <div class="detailed_itin mb-4 font-weight-bold darkBlue font_25 text-uppercase">DETAILED ITINERARY</div>
                   <div id="accordion">
+
                     <div class="card">
                       <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
@@ -116,6 +123,8 @@ $i = 1;
                         </div>
                       </div>
                     </div>
+
+
                     <div class="card">
                       <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
@@ -130,6 +139,7 @@ $i = 1;
                        </div>
                      </div>
                    </div>
+
                    <div class="card">
                     <div class="card-header" id="headingThree">
                       <h5 class="mb-0">
@@ -144,6 +154,7 @@ $i = 1;
                       </div>
                     </div>
                   </div>
+
                   <div class="card">
                     <div class="card-header" id="headingFour">
                       <h5 class="mb-0">
@@ -158,6 +169,7 @@ $i = 1;
                       </div>
                     </div>
                   </div>
+
                   <div class="card">
                     <div class="card-header" id="headingFive">
                       <h5 class="mb-0">
@@ -172,6 +184,7 @@ $i = 1;
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
