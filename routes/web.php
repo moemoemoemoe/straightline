@@ -43,7 +43,8 @@ Route::get('packages_results',['as'=> 'packages_results','uses'=>'FrontControlle
   Route::get('dashboard/login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
   Route::post('dashboard/login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
  Route::post('dashboard/logout', ['as' => 'logout', 'uses' =>'Auth\LoginController@logout']);
-
+Route::get('dashboard/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+    Route::post('dashboard/register', ['as' => 'register.post', 'uses' => 'Auth\RegisterController@register']);
 
 Route::group(['prefix' => '/dashboard', 'middleware' => 'auth'], function() {
 

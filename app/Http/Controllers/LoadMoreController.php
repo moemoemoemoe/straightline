@@ -170,7 +170,7 @@ class LoadMoreController extends Controller
        $output .= '
      
        <div class="col-lg-12 text-center mt-4 text-uppercase " id="load_more">
-        <button type="button" name="load_more_button"  class="btn btn-allpacks font-weight-bold" id="load_more_button" style = "color:#fff">No Data Found</button>
+        <button type="button" name="load_more_button"  class="btn btn-allpacks font-weight-bold" id="load_more_button" style = "color:#fff" disabled>No Data Found</button>
        </div>
        ';
       }

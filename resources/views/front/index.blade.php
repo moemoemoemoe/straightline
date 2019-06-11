@@ -65,14 +65,14 @@
                     </div>
                     <div class="col-lg-6 d-flex mt-2">
                       <select class="adult_dropdown" name="adult" id="adult">
-                      	<option value="0">0 ADULT</option>
+                      
                         <option value="1">ADULT (1)</option>
                         <option value="2">ADULT (2)</option>
                         <option value="3">ADULT (3)</option>
                         <option value="4">ADULT (4)</option>
                       </select>
                       <select class="ml-2" name="child" id="child">
-                      <option value="0">0 CHILD</option>
+                     
                         <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
@@ -105,14 +105,14 @@
                     <div class="col-lg-4 d-flex pl-0 mt-2">
                       <select class="adult_dropdown" name="adult" id="adulta">
 
-<option value="0">0 ADULT</option>
+
                         <option value="1">ADULT (1)</option>
                         <option value="2">ADULT (2)</option>
                         <option value="3">ADULT (3)</option>
                         <option value="4">ADULT (4)</option>
                       </select>
                       <select class="ml-2 child_dropdown" name="child" id="childa">
-                      	 <option value="0">0 CHILD</option>
+                      	
                         <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
@@ -134,14 +134,13 @@
                     <div class="flight_empty">&nbsp;</div>
                     <select class="adult_dropdown" name="adult" id="adultb">
 
-<option value="0">0 ADULT</option>
                         <option value="1">ADULT (1)</option>
                         <option value="2">ADULT (2)</option>
                         <option value="3">ADULT (3)</option>
                         <option value="4">ADULT (4)</option>
                       </select>
                    <select class="ml-2 child_dropdown" name="child" id="childb">
-                      	 <option value="0">0 CHILD</option>
+                      	 
                         <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
@@ -188,14 +187,14 @@
                     <div class="insurance_empty ml-2">&nbsp;</div>
                     <div class="d-flex">
                       <select class="adult_dropdown ml-2" name="adult">
-                      	<option value="0">0</option>
+                      
                         <option value="1">ADULT (1)</option>
                         <option value="2">ADULT (2)</option>
                         <option value="3">ADULT (3)</option>
                         <option value="4">ADULT (4)</option>
                       </select>
                       <select class="ml-2" name="child">
-                      	<option value="0">0</option>
+                      
                          <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
@@ -545,4 +544,5 @@
         }
     });
 </script>
+
 @endsection
