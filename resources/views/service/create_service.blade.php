@@ -61,7 +61,7 @@
          
          
           <th scope="col">Service Name</th>
-          <th scope="col">Section Name</th>
+          <th scope="col">Section Name Edit</th>
         
            <th scope="col" style="text-align:center"><i class="fas fa-edit"></i> </th>
            <th scope="col" style="text-align:center"><i class="fas fa-upload"></i> </th>
@@ -73,9 +73,9 @@
       <th >{{$service->name}}</th>
 
          @if($service->is_important ==1)
-     <th><a href="{{route('change_section', $service->id)}}" ><i class="fas fa-exchange-alt"></i></a>  Top Service in page</th>
+     <th><a href="{{route('change_section', $service->id)}}" ><i class="fas fa-exchange-alt"  style="background: #ff0000"></i></a>  Top Service in page</th>
 @else
- <th><a href="{{route('change_section', $service->id)}}"> <i class="fas fa-exchange-alt"></i> </a> Onther Services </th>
+ <th><a href="{{route('change_section', $service->id)}}"> <i class="fas fa-exchange-alt" style="background: GREEN"></i> </a> Onther Services </th>
 @endif
            <td>  <a href="{{route('update_service', $service->id)}}" class="btn btn-primary ">Update And Details</a></td>
           <td>@if($service->status == 0)

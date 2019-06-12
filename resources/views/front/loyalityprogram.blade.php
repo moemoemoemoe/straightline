@@ -53,11 +53,49 @@
 
              
             </div>
-            <center><button class="btn d-flex align-items-center justify-content-center serviceBtn text-uppercase font-weight-bold text-center" style="font-size: 1em">JOIN OUR LOYALTY PROGRAM</button></center>
+           
           </div>
         </div>
       </div>
     </div>
+
+<div class="choose_ur_pack contactFooter single_choose d-flex align-items-center mb-0 py-5"  >
+      <div class="container">
+        <div class="cust_container">
+          <div class="row align-items-center m-0">
+            <div class="col-lg-12 align-items-end pr-0 pl-0 ml-0">
+              <div class="flight_date_select whats_fds ml-3">
+                <div class="d-flex align-items-center whats_text ">
+                  <div class="col-lg-4 mr-0 pl-0"><div class="light_dark_blue_title mb-3 font_25"><div> JOIN OUR </div>LOYALTY PROGRAM</div></div>
+                
+                </div>
+                <form method="POST" enctype="multipart/form-data" class="well" action="{{route('submit_loyality')}}">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                  <div class="d-flex align-items-center mt-2">
+                    <input class="mr-3 flex-fill passenger_bg" type="text" name="firstname" id="firstname" value="" placeholder="FIRST NAME" autocomplete="off">
+                    <input class="mr-3 flex-fill passenger_bg" type="text" name="lastname" id="lastname" value="" placeholder="LAST NAME" autocomplete="off">
+                    <input class="mr-3 flex-fill email_bg" type="text" name="email" id="email" value="" placeholder="EMAIL" autocomplete="off">
+                    <input class="flex-fill phone_bg" type="text" name="phone" id="phone" value="" placeholder="PHONE NUMBER" autocomplete="off">
+                  </div>
+                  <div class="d-flex align-items-center mt-2">
+                    <textarea class="flex-fill px-3 py-2" type="text" name="message" id="message" value="" placeholder="MESSAGE" autocomplete="off"></textarea>
+                  </div>
+                
+               
+ <input type="submit" value="JOIN OUR LOYALTY PROGRAM" class="request_callback font-weight-bold text-uppercase mt-3 float-right ml-2" style="width: 20em">
+
+                
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <div class="container my-5">
       <div class="cust_container">
         <div class="row">
@@ -86,7 +124,6 @@
       </div>
     </div>
   </div>
-
-
-
+ 
+ 
 @endsection

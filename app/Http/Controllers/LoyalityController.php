@@ -90,7 +90,7 @@ class LoyalityController extends Controller
     public function loyality_messages()
     {
 
-        $messages = Loyalitymessage::orderBy('id','DESC')->get();
+        $messages = Loyalitymessage::orderBy('id','DESC')->paginate(20);
         
         return view('prof_loyality.loyality_message',compact('messages'));
     }
@@ -101,9 +101,22 @@ class LoyalityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function loyality_archive_messages($id)
     {
-        //
+       
+        $main = Loyalitymessage::findOrFail($id);
+     if($main->status == '0')
+     {
+       $main->status = '1';
+       $main->save();
+       return Redirect::Back()->with('success', ' is Archived');
+     }
+     else{
+      $main->status = '0';
+      $main->save();
+      return Redirect::Back()->with('success', ' is Unarchived');
+
+    }
     }
 
     /**
@@ -113,9 +126,12 @@ class LoyalityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function loyality_delete_messages($id)
     {
-        //
+         $mailing = Loyalitymessage::findOrFail($id);
+           
+            $mailing->delete();
+                  return Redirect::Back()->with('success', 'Deleted Successfully');
     }
 
     /**

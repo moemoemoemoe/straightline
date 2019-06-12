@@ -8,6 +8,7 @@ use App\Insurance;
 use App\Callback;
 use App\Reservationpack;
 use App\Contactmessage;
+use App\Loyalitymessage;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
@@ -311,9 +312,55 @@ return redirect(url('/')."/uploads/excell/contactus/".$fileName);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function export_contact_oyality_excell($type)
     {
-        //
+          date_default_timezone_set("Asia/Beirut");
+        $current_date_time  =  date("Y-m-d")."-".date("h-i-sa");
+        $contacts = Loyalitymessage::all();
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setCellValue('A1', 'Id');
+$sheet->setCellValue('B1', 'Name');
+$sheet->setCellValue('C1', 'Last Name');
+$sheet->setCellValue('D1', 'Email');
+$sheet->setCellValue('E1', 'Phone');
+$sheet->setCellValue('F1', 'Message');
+$sheet->getStyle("A1:F1")->getFont()->setBold( true ); 
+$sheet->getStyle('A1:F1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A1:F1')
+->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
+$sheet->getColumnDimension('A')->setAutoSize(true);
+$sheet->getColumnDimension('B')->setAutoSize(true);
+$sheet->getColumnDimension('C')->setAutoSize(true);
+$sheet->getColumnDimension('D')->setAutoSize(true);
+$sheet->getColumnDimension('F')->setAutoSize(true);
+
+
+$rows = 2;
+foreach($contacts as $contact){
+$sheet->setCellValue('A' . $rows, $contact['id']);
+$sheet->setCellValue('B' . $rows, $contact['name']);
+$sheet->setCellValue('C' . $rows, $contact['last_name']);
+$sheet->setCellValue('D' . $rows, $contact['email']);
+$sheet->setCellValue('E' . $rows, $contact['phone']);
+$sheet->setCellValue('F' . $rows, $contact['message']);
+
+
+
+$sheet->getStyle('A:F')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A2:F2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+
+$rows++;
+}
+$fileName = "Loyality_message_list_".$current_date_time.".".$type;
+if($type == 'xlsx') {
+$writer = new Xlsx($spreadsheet);
+} else if($type == 'xls') {
+$writer = new Xls($spreadsheet);
+}
+$writer->save("uploads/excell/loyality/".$fileName);
+header("Content-Type: application/vnd.ms-excel");
+return redirect(url('/')."/uploads/excell/loyality/".$fileName);
     }
 
     /**

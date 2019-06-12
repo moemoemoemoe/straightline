@@ -32,7 +32,7 @@ Route::post('submit_callback',['as'=> 'submit_callback','uses'=>'FrontSubmitCont
 Route::post('submit_mailinglist',['as'=> 'submit_mailinglist','uses'=>'FrontSubmitController@submit_mailinglist']);
 Route::post('submit_reservation_pack/{id}',['as'=> 'submit_reservation_pack','uses'=>'FrontSubmitController@submit_reservation_pack']);
 Route::post('submit_contactus',['as'=> 'submit_contactus','uses'=>'FrontSubmitController@submit_contactus']);
-
+Route::post('submit_loyality',['as'=> 'submit_loyality','uses'=>'FrontSubmitController@submit_loyality']);
 //////////////////Load more
 Route::post('load_data',['as'=> 'load_data','uses'=>'LoadMoreController@load_data']);
 Route::post('search_in_all_package',['as'=> 'search_in_all_package','uses'=>'FrontController@search_in_all_package']);
@@ -163,6 +163,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'auth'], function() {
   Route::get('export_callback_excell/{type}',['as'=> 'export_callback_excell','uses'=>'ExcellController@export_callback_excell']);
   Route::get('export_packres_excell/{type}',['as'=> 'export_packres_excell','uses'=>'ExcellController@export_packres_excell']);
   Route::get('export_contact_excell/{type}',['as'=> 'export_contact_excell','uses'=>'ExcellController@export_contact_excell']);
+  Route::get('export_contact_oyality_excell/{type}',['as'=> 'export_contact_oyality_excell','uses'=>'ExcellController@export_contact_oyality_excell']);
 ////////////////////////Profile Loyality Controller 
 
 
@@ -173,7 +174,9 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'auth'], function() {
   Route::get('loyality_archive/{id}', ['as' => 'loyality_archive', 'uses' => 'LoyalityController@loyality_archive']);
   Route::get('loyality_messages',['as'=> 'loyality_messages','uses'=>'LoyalityController@loyality_messages']);
 
-
+ Route::get('loyality_archive_messages/{id}',['as'=> 'loyality_archive_messages','uses'=>'LoyalityController@loyality_archive_messages']);
+ Route::get('loyality_delete_messages/{id}',['as'=> 'loyality_delete_messages','uses'=>'LoyalityController@loyality_delete_messages']);
+ 
 ////////////////////faqterm controller
 
   Route::get('faq_index',['as'=> 'faq_index','uses'=>'FaqTermsController@faq_index']);

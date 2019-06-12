@@ -110,10 +110,37 @@ Session::put('link', $link);
     public function package_detail($id)
     {
         $packages_detail = Packages::with('city')->findOrFail($id);
+
+
+ 
+
+if($packages_detail->detailed)
+{
+$doc = new \DOMDocument();
+$doc->loadHTML($packages_detail->detailed);
+$liList = $doc->getElementsByTagName('li');
+
+foreach ($liList as $li) {
+  
+
+    $data2[] = [
+        'label' => 'desc',
+        'value' => $li->nodeValue
+    ];
+}
+}
+//return $data2;
+ 
+
+
+
         $package_same_cat = Packages::with('cat')->with('city')->where('cat_id',$packages_detail->cat_id)->limit(3)->get();
        $galleries = Image::orderBy('id','DESC')->where('package_id',$id)->get();
       
-        return view('front.package_detail',compact('packages_detail','package_same_cat','galleries'));
+        return view('front.package_detail',compact('packages_detail','package_same_cat','galleries','data2'));
+
+ 
+
     }
 
     /**
@@ -159,9 +186,9 @@ Session::put('link', $link);
     }
     public function loyality_program()
     {
-        $faqs = Faq::orderBy('id','DESC')->where('status',1)->limit(4)->get();
+        $faqs = Faq::orderBy('id','DESC')->where('status',0)->limit(4)->get();
         $terms = Term::orderBy('id','DESC')->get();
-        $loyalities = Loyality::limit(3)->where('status',1)->get();
+        $loyalities = Loyality::limit(3)->where('status',0)->get();
 
         return view('front.loyalityprogram' ,compact('faqs','terms','loyalities'));
     }

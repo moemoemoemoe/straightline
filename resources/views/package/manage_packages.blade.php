@@ -146,17 +146,27 @@
 </div>
 </p>
 <p>
+   <b>
+                               Description
+                            </b>
     <textarea name="description">{{old('description')}}</textarea>
 </p>
 
 
 <p>
     <b>
-        Detailed Itinerary 
+        Detailed Itinerary (please clear this textarea before save or fill it with same structre 1.  2.  3. ...max day is 5)
     </b>
 </p>
 <p>
-    <textarea name="detailed">{{old('detailed')}}</textarea>
+    <textarea name="detailed">
+      <ol>
+  <li>DESC for day1</li>
+  <li>DESC for day2</li>
+  <li>DESC for day3</li>
+  <li>DESC for day4</li>
+  <li>DESC for day5</li>
+</ol></textarea>
 </p>
 </p>
 
@@ -167,22 +177,32 @@
 <p>
 
     <b>
-        Price Included *
+        Price Included * fill it with same structre using bullet list
     </b>
 </p>
 <p>
-    <textarea name="price_included" >{{old('price_included')}}</textarea>
+    <textarea name="price_included" ><ul>
+  <li>desc1</li>
+  <li>desc2</li>
+  <li>des3</li>
+  <li>desc4</li>
+</ul></textarea>
 </p>
 </div>
 <div class="col-md-6">
 <p>
 
     <b>
-        Price Excluded *
+        Price Excluded * fill it with same structre using bullet list
     </b>
 </p>
 <p>
-    <textarea name="execluded">{{old('execluded')}}</textarea>
+    <textarea name="execluded"><ul>
+  <li>desc1</li>
+  <li>desc2</li>
+  <li>des3</li>
+  <li>desc4</li>
+</ul></textarea>
 </p>
 </div></div>
 <p>

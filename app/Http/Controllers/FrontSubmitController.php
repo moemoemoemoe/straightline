@@ -10,6 +10,7 @@ use App\Callback;
 use App\Mailing;
 use App\Reservationpack;
 use App\Contactmessage;
+use App\Loyalitymessage;
 
 class FrontSubmitController extends Controller
 {
@@ -150,8 +151,8 @@ $mailing->save();
     public function submit_reservation_pack(Request $r,$id)
     {
         $firstname = $r->input('firstname');
-        $phone = $r->input('email');
-        $email = $r->input('phone');
+        $phone = $r->input('phone');
+        $email = $r->input('email');
         $lastname = $r->input('lastname');
         $from_date = $r->input('from_date');
         $to_date = $r->input('to_date');
@@ -202,8 +203,8 @@ $callback->save();
     public function submit_contactus(Request $r)
     {
          $firstname = $r->input('firstname');
-        $phone = $r->input('email');
-        $email = $r->input('phone');
+        $email = $r->input('email');
+        $phone = $r->input('phone');
         $lastname = $r->input('lastname');
         
        
@@ -246,9 +247,44 @@ $callback->save();
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function submit_loyality(Request $r)
     {
-        //
+         $firstname = $r->input('firstname');
+        $email = $r->input('email');
+        $phone = $r->input('phone');
+        $lastname = $r->input('lastname');
+        
+       
+        $message = $r->input('message');
+        
+
+  
+                  $data = ['firstname' => $firstname,'phone' => $phone,'email' => $email,'lastname' => $lastname,'message'=>$message];
+
+                  $rules = ['firstname' => 'required','phone' => 'required','email' => 'required','lastname' => 'required','message'=>'required'];
+
+            $v = Validator::make($data, $rules);
+
+            if($v->fails()){
+                return Redirect::Back()->withErrors("Somthing Missing")->withInput($r->input());
+            }
+            else
+            {
+$loyality = new Loyalitymessage();
+ 
+$loyality->name = $firstname ; 
+$loyality->last_name = $lastname ;
+$loyality->phone = $phone ; 
+$loyality->email = $email ;
+ 
+
+ $loyality->message = $message ; 
+
+
+$loyality->status = 0 ; 
+$loyality->save();
+ return Redirect::back()->with('success', 'Message successfully submited');
+            }
     }
 
     /**

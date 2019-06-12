@@ -156,13 +156,16 @@
 </p>
 </p>
 <p>
+     <b>
+                               Description
+                            </b>
     <textarea name="description">{{$packages->description}}</textarea>
 </p>
 
 
  <p>
                             <b>
-                                Detailed Itinerary 
+                                Detailed Itinerary (please clear this textarea before save or fill it with same structre 1.  2.  3. ...max day is 5)
                             </b>
                         </p>
 <p>
@@ -179,7 +182,7 @@
 <p>
 
     <b>
-        Price Included *
+        Price Included * fill it with same structre using bullet list
     </b>
 </p>
 <p>
@@ -190,7 +193,7 @@
 <p>
 
     <b>
-        Price Excluded *
+        Price Excluded * fill it with same structre using bullet list
     </b>
 </p>
 <p>

@@ -361,7 +361,7 @@
         <div class="row list_packages featured_pcks mt-4 mb-5 m-0 ">
          @foreach($packages_featured as $featured)
           <div class="col-lg-4">
-            <a href="#">
+            <a href="{{route('package_detail', $featured->id)}}">
               <div class="featured_pck">
                 <div class="pck_img">
                   <img src="front/images/pack66.jpg" alt="" class="" />
@@ -389,6 +389,35 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade large_bootbox" id="modal-confirm-operator-message" tabindex="-1" role="dialog" style="z-index: 999999999">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+          
+        </div>
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-4" id="operator_logo">
+<img src="{{asset('front/images/oops.png')}}" width="100px" height="100px">
+            </div>
+            <div class="col-md-9 col-sm-8 col-xs-8" style="color: #000">
+            Somthing is Missing Please Make Sure Your Are Fill All Form Input...
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Actions -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">ok</button>
+<!--           <button type="button" class="btn btn-success" onclick="()" id="confirm_btn">Continue</button>
+ -->        </div>
+      </div>
+    </div>
+  </div>
  <script type="text/javascript">
  var type = 1;
   $("input:radio").on('click', function() {
@@ -449,7 +478,10 @@
   	var the_type = type ;
        if(the_type == 1)
        {
+        if(from && to && dep_date && rev_date)
+        {
        	  $.ajax({
+    
         url: '{{route('front_index')}}',
         type: 'POST',
         data:{
@@ -471,9 +503,18 @@
          
         }
       });
+        }
+        else
+        {
+          
+      $('#modal-confirm-operator-message').modal('show');
+   
+        }
        	 
        }
        if (the_type == 2) {
+        if(froma && toa && dep_datea && rev_datea)
+        {
        	  $.ajax({
         url: '{{route('front_index')}}',
         type: 'POST',
@@ -496,9 +537,14 @@
          
         }
       });
+        }
+        else
+        {$('#modal-confirm-operator-message').modal('show');}
        	
        }
        if (the_type == 3) {
+         if(fromb && tob && dep_dateb)
+        {
        	  $.ajax({
         url: '{{route('front_index')}}',
         type: 'POST',
@@ -522,7 +568,10 @@
         }
       });
        }
- 
+       else
+        {$('#modal-confirm-operator-message').modal('show');}
+
+ }
     }
 </script>
  

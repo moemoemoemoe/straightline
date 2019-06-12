@@ -272,6 +272,12 @@
                    @else
                                        <a class=" dropdown-item" href="{{route('contactmessage_index')}}" >Contact Us Messages</a>
 @endif
+@if(Route::current()->getName() == 'loyality_messages' )
+                    <a class="active dropdown-item" href="{{route('loyality_messages')}}" >Loyality Messages</a>
+
+                   @else
+                                       <a class=" dropdown-item" href="{{route('loyality_messages')}}" >Loyality Messages</a>
+@endif
                                         </div>
                    
                 </li>

@@ -101,7 +101,7 @@ $map_loc = $data_by_hotel_id[0]->coor_x.",".$data_by_hotel_id[0]->coor_y;
                 $package->map_loc  =$map_loc ;
                 if($detailed == '')
                 {
-                     $package->detailed  ="No Data" ;
+                     $package->detailed  ="" ;
                 }
                 else
                 {
@@ -182,6 +182,8 @@ for($i=0;$i<count($image_name);$i++){
     public function package_update($id)
     {
           $packages = Packages::findOrFail($id);
+         
+
          $hotels = Hotel::with('city')->orderBy('id','DESC')->get();
         $conts =Continent::orderBy('id','DESC')->get();
         $cats = PackageCat::orderBy('id','DESC')->get();
@@ -277,7 +279,7 @@ $map_loc = $data_by_hotel_id[0]->coor_x.",".$data_by_hotel_id[0]->coor_y;
                 $package->map_loc  =$map_loc ;
                 if($detailed == '')
                 {
-                     $package->detailed  ="No Data" ;
+                     $package->detailed  ="" ;
                 }
                 else
                 {

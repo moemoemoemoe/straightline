@@ -8,6 +8,5 @@
     clear: 'Clear',
     dateFormat: 'mm/dd/yyyy',
     timeFormat: 'hh:ii aa',
-    firstDay: 0,
-    minDate: date('mm/dd/yyyy')
+    firstDay: 0
 }; })(jQuery);

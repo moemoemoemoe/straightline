@@ -9,7 +9,7 @@
               <div class="pck_d_title font-weight-bold text-uppercase">PACKAGES & OFFERS, <span>{{$package_same_cat[0]->city->country->continent->cont_name}}</span></div>
             </div>
           </div>
-          <a href="packagesList.html" class="p_back text-uppercase font-weight-bold">Back</a>
+          <a href="{{route('front_index')}}" class="p_back text-uppercase font-weight-bold">Back</a>
         </div>
       </div>
     </div>
@@ -93,21 +93,30 @@ $i = 1;
                                       {!! $packages_detail->price_included !!}
 
                   </ul>
+                  @if($packages_detail->detailed && $packages_detail->price_execluded)
                    <div class="darkBlue text-uppercase font-weight-bold font_25 mb-2">PRICE Execluded</div>
                   <ul class="singleUl">
                                       {!! $packages_detail->price_execluded !!}
 
                   </ul>
+                  @endif
+                  @if(!$packages_detail->brochur_url)
                   <button class="btn mt-4 download_broshure yellowColor font-weight-bold text-uppercase">Download Brochure</button>
+                  @else
+
+                  @endif
                 </div>
 
               </div>
+@if($packages_detail->detailed && !$packages_detail->price_excluded)
+
+
 
               <div class="col-lg-6">
                 <div class="leftShadow">
                   <div class="detailed_itin mb-4 font-weight-bold darkBlue font_25 text-uppercase">DETAILED ITINERARY</div>
                   <div id="accordion">
-
+@if(count($data2) == 1)
                     <div class="card">
                       <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
@@ -119,12 +128,27 @@ $i = 1;
 
                       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                          As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa.
+                       {{$data2[0]['value']}}
                         </div>
                       </div>
                     </div>
+@endif
+@if(count($data2) == 2)
+                          <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            DAY1
+                          </button>
+                        </h5>
+                      </div>
 
-
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                          {{$data2[0]['value']}}
+                        </div>
+                      </div>
+                    </div>
                     <div class="card">
                       <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
@@ -135,11 +159,41 @@ $i = 1;
                       </div>
                       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body">
-                         As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa.
+                        {{$data2[1]['value']}}
                        </div>
                      </div>
                    </div>
+@endif
+@if(count($data2) == 3)
+  <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            DAY1
+                          </button>
+                        </h5>
+                      </div>
 
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                         {{$data2[0]['value']}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            DAY2
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                        {{$data2[1]['value']}}
+                       </div>
+                     </div>
+                   </div>
                    <div class="card">
                     <div class="card-header" id="headingThree">
                       <h5 class="mb-0">
@@ -150,11 +204,55 @@ $i = 1;
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                       <div class="card-body">
-                        As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa.
+                       {{$data2[2]['value']}}
                       </div>
                     </div>
                   </div>
+                  @endif
+@if(count($data2) == 4)
+  <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            DAY1
+                          </button>
+                        </h5>
+                      </div>
 
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                         {{$data2[0]['value']}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            DAY2
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                        {{$data2[1]['value']}}
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          DAY3
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+                        {{$data2[2]['value']}}
+                      </div>
+                    </div>
+                  </div>
                   <div class="card">
                     <div class="card-header" id="headingFour">
                       <h5 class="mb-0">
@@ -165,11 +263,69 @@ $i = 1;
                     </div>
                     <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                       <div class="card-body">
-                        As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa.
+                       {{$data2[3]['value']}}
                       </div>
                     </div>
                   </div>
+@endif
+@if(count($data2) == 5)
+  <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            DAY1
+                          </button>
+                        </h5>
+                      </div>
 
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                           {{$data2[0]['value']}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            DAY2
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                        {{$data2[1]['value']}}
+                       </div>
+                     </div>
+                   </div>
+                   <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          DAY3
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+                       {{$data2[2]['value']}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingFour">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                          DAY4
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                      <div class="card-body">
+                       {{$data2[3]['value']}}
+                      </div>
+                    </div>
+                  </div>
                   <div class="card">
                     <div class="card-header" id="headingFive">
                       <h5 class="mb-0">
@@ -180,15 +336,29 @@ $i = 1;
                     </div>
                     <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                       <div class="card-body">
-                        As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa As you land at the international airport/railway station of Goa.
+                       {{$data2[4]['value']}}
                       </div>
                     </div>
                   </div>
-
+@endif
                 </div>
               </div>
             </div>
+@else
 
+<div class="col-lg-6">
+                <div class="leftShadow">
+                  <div class="mb-4 font-weight-bold darkBlue font_25 text-uppercase">PRICE Execluded </div>
+                  <div id="accordion">
+                     <ul class="singleUl">
+{!! $packages_detail->price_execluded !!}
+
+</ul>
+
+                    </div>
+                  </div></div>
+
+@endif
 
           </div>
         </div>

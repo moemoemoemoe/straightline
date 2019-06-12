@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Required meta tags -->
@@ -35,18 +35,43 @@
                 <div class="col-lg-8">
                   <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
                     <ul class="navbar-nav text-uppercase">
+                        @if(Route::current()->getName() == 'front_index' )
                       <li class="nav-item active ">
                         <a class="nav-link" href="{{route('front_index')}}">Home</a>
                       </li>
+                      @else
                       <li class="nav-item">
+                        <a class="nav-link" href="{{route('front_index')}}">Home</a>
+                      </li>
+                      @endif
+                         @if(Route::current()->getName() == 'aboutus' )
+                      <li class="nav-item active">
                         <a class="nav-link" href="{{route('aboutus')}}">About us</a>
                       </li>
-                      <li class="nav-item">
+                      @else
+                       <li class="nav-item">
+                        <a class="nav-link" href="{{route('aboutus')}}">About us</a>
+                      </li>
+                      @endif
+                       @if(Route::current()->getName() == 'services' )
+                      <li class="nav-item active">
+                        <a class="nav-link active" href="{{route('services')}}">Services</a>
+                      </li>
+                      @else
+                       <li class="nav-item">
                         <a class="nav-link" href="{{route('services')}}">Services</a>
                       </li>
+                      @endif
+ @if(Route::current()->getName() == 'contactus' )
+                      <li class="nav-item active">
+                        <a class="nav-link" href="{{route('contactus')}}">Contacts</a>
+                      </li>
+                      @else
                       <li class="nav-item">
                         <a class="nav-link" href="{{route('contactus')}}">Contacts</a>
                       </li>
+                      @endif
+
                     </ul>
 
                   </div>
@@ -71,18 +96,37 @@
             </div>
             <div class="col-lg-9 d-flex justify-content-end align-items-center">
               <ul class="navbar-nav text-uppercase navbar2">
-                <li class="nav-item ">
+                @if(Route::current()->getName() == 'front_index')
+                <li class="nav-item active">
                   <a class="nav-link bookTicketLink" href="{{route('front_index')}}#">Book<div>Your Ticket</div></a>
                 </li>
-                <li class="nav-item">
+                @else
+                 <li class="nav-item ">
+                  <a class="nav-link bookTicketLink" href="{{route('front_index')}}#">Book<div>Your Ticket</div></a>
+                </li>
+                @endif
+                 @if(Route::current()->getName() == 'all_packages' )
+                <li class="nav-item active">
                   <a class="nav-link" href="{{route('all_packages')}}">Packages<div>& Offers</div></a>
                 </li>
+                @else
+                 <li class="nav-item">
+                  <a class="nav-link" href="{{route('all_packages')}}">Packages<div>& Offers</div></a>
+                </li>
+                @endif
                 <li class="nav-item">
                   <a class="nav-link travelInsuranceLink" href="{{route('front_index')}}#nav_insurance">Travel<div>Insurance</div></a>
                 </li>
-                <li class="nav-item">
+                 @if(Route::current()->getName() == 'loyality_program' )
+                <li class="nav-item active">
                   <a class="nav-link" href="{{route('loyality_program')}}">Loyalty<div>Program</div></a>
                 </li>
+                @else
+                  <li class="nav-item">
+                  <a class="nav-link" href="{{route('loyality_program')}}">Loyalty<div>Program</div></a>
+                </li>
+                @endif
+
               </ul>
             </div>
           </div>
