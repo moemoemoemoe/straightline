@@ -53,14 +53,15 @@
 
              
             </div>
-           
+            <center id="btn_show"><button  class="btn d-flex align-items-center justify-content-center serviceBtn text-uppercase font-weight-bold text-center font_18" style="width: 30%" onclick="show_form()" >JOIN OUR<br>LOYALTY PROGRAM</button></center>
           </div>
+
         </div>
       </div>
     </div>
 
-<div class="choose_ur_pack contactFooter single_choose d-flex align-items-center mb-0 py-5"  >
-      <div class="container">
+<div class="choose_ur_pack contactFooter single_choose d-flex align-items-center mb-0 py-5"  id="form_send" style="display: none!important">
+      <div class="container" >
         <div class="cust_container">
           <div class="row align-items-center m-0">
             <div class="col-lg-12 align-items-end pr-0 pl-0 ml-0">
@@ -125,5 +126,15 @@
     </div>
   </div>
  
- 
+ <script type="text/javascript">
+    function show_form(){
+      var link = document.getElementById('btn_show');
+
+      $('#form_send').show();
+   link.style.display = 'none';
+
+    }
+
+
+ </script>
 @endsection

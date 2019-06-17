@@ -1,6 +1,10 @@
 @extends('layouts.app_front')
 @section('content_front')
+@isset($name)
+Hi <strong>{{ $name }}</strong>,
 
+<p>{{ $body }}</p>
+@endisset
 
  <div class="package_d_cont">
       <div class="container">

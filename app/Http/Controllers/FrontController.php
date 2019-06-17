@@ -19,6 +19,7 @@ use App\Loyality;
 use App\Service;
 use App\City;
 use Validator;
+use Mail;
 class FrontController extends Controller
 {
     /**
@@ -44,14 +45,20 @@ class FrontController extends Controller
     { 
         $type = $r->input('the_type');
        // return $type;
-        $from = $r->input('from');
-        $to = $r->input('to');
+   
+        $from_one = $r->input('from');
+        $to_one = $r->input('to');
         $dep_date = $r->input('dep_date');
         $rev_date = $r->input('rev_date');
         $adult = $r->input('adu');
         $child = $r->input('chil');
   $dep_hex = str_replace('/', '%2F', $dep_date);
         $ret_hex = str_replace('/', '%2F', $rev_date);
+$arr_one = explode('-',trim($from_one));
+$arr_two = explode('-',trim($to_one));
+
+        $from =$arr_one[0]; ;
+        $to =   $arr_two[0];
         if($type == 1)
         {
  $link = "https://www.epower.amadeus.com/slt/#AdtCount=".$adult."&CabinClass=&ChdCount=".$child."&Culture=en-US&DepartureDate=".$dep_hex."&From=".$from."&InfCount=1&Method=Search&Page=Result&PaxAge=&ProviderList=OnlyAmadeus&QTo=A&ReturnDate=".$ret_hex."&To=".$to;
@@ -96,7 +103,7 @@ Session::put('link', $link);
     public function autocomplete(Request $request)
     {
      
-    $data = Airport::select("code as name")->where("countryName","LIKE","%{$request->input('query')}%")->orWhere("code","LIKE","%{$request->input('query')}%")->orWhere("name","LIKE","%{$request->input('query')}%")->get();
+    $data = Airport::select("code as name","countryName as cn","name as n")->where("countryName","LIKE","%{$request->input('query')}%")->orWhere("code","LIKE","%{$request->input('query')}%")->orWhere("name","LIKE","%{$request->input('query')}%")->get();
        
         return response()->json($data);
     }
@@ -152,6 +159,10 @@ foreach ($liList as $li) {
      */
     public function all_packages()
     {
+
+
+
+
         $themes = Theme::orderBy('id','DESC')->get();
         $cities = City::orderBy('id','DESC')->get();
         $packages = Packages::with('cat')->with('city')->limit(9)->get();
@@ -206,18 +217,23 @@ foreach ($liList as $li) {
         $flight_from_date =$r->input('flight_from_date');
         $flight_to_date =$r->input('flight_to_date');
         $flight_budget =$r->input('flight_budget');
-    
-       
+        $flight_budget_to =$r->input('flight_budget_to');
+    $date_1 = str_replace('/', '-', $flight_from_date);
+    $date_2 = str_replace('/', '-', $flight_to_date);
 
-        $data = ['city_id' => $city_id, 'theme_id'=>$theme_id , 'flight_from_date' => $flight_from_date , 'flight_to_date' =>$flight_to_date, 'flight_budget' =>$flight_budget];
-        $rules = ['city_id' => 'required', 'theme_id' =>'required' ,'flight_from_date' =>'required' , 'flight_to_date' =>'required','flight_budget' =>'required'];
+ 
+  $flight_from_date= $date_1;
+$flight_to_date = $date_2;
+
+        $data = ['city_id' => $city_id, 'theme_id'=>$theme_id , 'flight_from_date' => $flight_from_date , 'flight_to_date' =>$flight_to_date, 'flight_budget' =>$flight_budget, 'flight_budget_to' =>$flight_budget_to];
+        $rules = ['city_id' => 'required', 'theme_id' =>'required' ,'flight_from_date' =>'required' , 'flight_to_date' =>'required','flight_budget' =>'required','flight_budget_to' =>'required'];
         $v = Validator::make($data, $rules);
         if($v->fails()){
-            return Redirect::Back()->withErrors("missing fieald")->withInput($r->input());
+            return Redirect::Back()->withErrors("missing field")->withInput($r->input());
         }else
        {
            
-            $packages_best = Packages::with('cat')->with('city')->where('city_id',$city_id)->where('theme_id',$theme_id)->where('price',$flight_budget)->get();
+            $packages_best = Packages::with('cat')->with('city')->where('city_id',$city_id)->where('theme_id',$theme_id)->where('price','<=',$flight_budget)->where('price','>=',$flight_budget_to)->get();
            
             return view('front.search_all_packages',compact('packages_best'));
 

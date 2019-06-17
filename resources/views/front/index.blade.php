@@ -45,11 +45,12 @@
                   <label class="form-check-label" for="multiLeg">Multi-Leg</label>
                 </div>
               </div>
+
               <div class="flight_date_select pt-3 ">
 
                 <div class="flight roundTrip active">
                   <div class="d-flex align-items-center">
-                    <input type="text" name="flight_from_place" id="flight_from_place" value="" placeholder="FROM" class="typeahead" />
+                    <input type="text" name="flight_from_place" id="flight_from_place" value="" placeholder="FROM" class="typeahead"   data-provide="typeahead"/>
                     <img src="front/images/fromto.png" class="px-2" />
                     <input type="text" name="flight_to_place" id="flight_to_place" value="" placeholder="TO" class="typeahead"/>
 
@@ -72,7 +73,7 @@
                         <option value="4">ADULT (4)</option>
                       </select>
                       <select class="ml-2" name="child" id="child">
-                     
+                        <option value="0">CHILD (0)</option>
                         <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
@@ -90,19 +91,19 @@
                     <img src="front/images/fromto.png" class="px-2" />
                     <input type="text" name="flight_to_place" id="flight_to_placea" value="" placeholder="TO" class="typeahead"/>
                     <input type="text" class="datepicker-here date ml-2" data-language='en' name="flight_from_date" class="date ml-2" id="flight_from_datea" value="" placeholder="DEPART" autocomplete="off" />
-                    <input type="text" class="datepicker-here date ml-2" data-language='en' name="flight_to_date" class="date ml-2" id="flight_to_datea" value="" placeholder="RETURN" autocomplete="off"  />
-                    <select class="nb_travellers ml-2"  id="traveller" name="traveller">
+                  <!--   <input type="text" class="datepicker-here date ml-2" data-language='en' name="flight_to_date" class="date ml-2" id="flight_to_datea" value="" placeholder="RETURN" autocomplete="off"  /> -->
+                   <!--  <select class="nb_travellers ml-2"  id="traveller" name="traveller">
                       <option>0 TRAVELLER(S)</option>
                       <option>1 TRAVELLER(S)</option>
                       <option>2 TRAVELLER(S)</option>
-                    </select>
+                    </select> -->
                   </div>
-                  <div class="row align-items-center"> 
-                    <div class="col-lg-8">
+                  <div class="row align-items-center" > 
+                    <div class="col-lg-4">
                       <input type="checkbox" name="direct_flights" id="direct_flights">
                       <label class="form-check-label fixable_date" for="direct_flights">DIRECT FLIGHTS</label>
                     </div>
-                    <div class="col-lg-4 d-flex pl-0 mt-2">
+                    <div class="col-lg-5 d-flex pl-0 mt-2">
                       <select class="adult_dropdown" name="adult" id="adulta">
 
 
@@ -112,7 +113,7 @@
                         <option value="4">ADULT (4)</option>
                       </select>
                       <select class="ml-2 child_dropdown" name="child" id="childa">
-                      	
+                      	<option value="0">CHILD (0)</option>
                         <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
@@ -140,7 +141,7 @@
                         <option value="4">ADULT (4)</option>
                       </select>
                    <select class="ml-2 child_dropdown" name="child" id="childb">
-                      	 
+                      	 <option value="0">CHILD (0)</option>
                         <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
@@ -513,7 +514,7 @@
        	 
        }
        if (the_type == 2) {
-        if(froma && toa && dep_datea && rev_datea)
+        if(froma && toa && dep_datea)
         {
        	  $.ajax({
         url: '{{route('front_index')}}',
@@ -579,19 +580,61 @@
    <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script> -->
   <script src="{{asset('js/typeahead.jquery.js')}}" crossorigin="anonymous"></script>
 
- <script type="text/javascript">
+<!--  <script type="text/javascript">
     var path = "{{ route('autocomplete') }}";
     $('input.typeahead').typeahead({
-       hint: false,
-    highlight: true,
-     maxItem: 100, 
+      
+     maxItem: 60, 
         minLength: 2,
         source:  function (query, process) {
+
         return $.get(path, { query: query }, function (data) {
+        var results = data.map(function(item) {
+                        var someItem = { code: item.name, countryname: item.cn, name: item.n };
+                         return someItem.code+"-"+someItem.countryname+"-"+someItem.name;
                 return process(data);
             });
         }
     });
-</script>
+</script> -->
 
+<script type="text/javascript">
+
+    $('input.typeahead').typeahead({
+
+        source: function (query, process) {
+            $.ajax({
+                url: "{{ route('autocomplete') }}",
+                type: 'GET',
+                dataType: 'JSON',
+                // data: 'query=' + query,
+                data: 'query=' + $('.typeahead').val(),
+                success: function(data)
+                {
+ return $.get("{{ route('autocomplete') }}", 
+  { query: query }, function (data) {
+                    var results = data.map(function(item) {
+                        var someItem = { code: item.name, countryname: item.cn, name: item.n };
+                         return someItem.code+"-"+someItem.countryname+"-"+someItem.name;
+                    });
+                    
+                    return process(results); 
+
+
+                });
+              }
+
+            });
+        },
+        minLength: 3,
+        highlight : true,
+        updater: function(item) {
+
+            // This may need some tweaks as it has not been tested
+            var obj = JSON.parse(JSON.stringify(item));
+            return item;
+        }
+    });
+
+</script>
 @endsection

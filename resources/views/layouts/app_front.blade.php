@@ -24,7 +24,7 @@
       <div class="container">
         <div class="cust_container">
           <div class="row">
-            <div class="col-lg-4 col-md-12 hotline"><b>HOTLINE</b> +961 9 220 400</div>
+            <div class="col-lg-4 col-md-12 hotline"><b>HOTLINE</b> +961 3 300 997</div>
             <div class="col-lg-8 col-md-12">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar"></span>
@@ -77,7 +77,7 @@
                   </div>
                 </div>
                 <div class="col-lg-4 clock_header">
-                  <span>08:30 AM - 07:00 PM</span>
+                  <span>08:30 AM - 06:00 PM</span>
                 </div>
               </div>
             </div>

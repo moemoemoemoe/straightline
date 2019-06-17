@@ -11,7 +11,8 @@ use App\Mailing;
 use App\Reservationpack;
 use App\Contactmessage;
 use App\Loyalitymessage;
-
+use Mail;
+use Illuminate\Support\Facades\Input;
 class FrontSubmitController extends Controller
 {
     /**
@@ -190,7 +191,9 @@ if($message == '' || $message == NULL)
 
 $callback->status = 0 ; 
 $callback->save();
- return Redirect::back()->with('success', 'Reservation Package successfully submited');
+
+
+ //return Redirect::back()->with('success', 'Reservation Package successfully submited');
             }
     }
 
@@ -206,8 +209,6 @@ $callback->save();
         $email = $r->input('email');
         $phone = $r->input('phone');
         $lastname = $r->input('lastname');
-        
-       
         $message = $r->input('message');
         
 
@@ -236,7 +237,28 @@ $callback->email = $email ;
 
 $callback->status = 0 ; 
 $callback->save();
- return Redirect::back()->with('success', 'Message successfully submited');
+
+// Mail::send([], [], function ($message) {
+//   $message->to(Input::get('email'))
+//     ->subject('contacat us form')
+//     // here comes what you want
+//     ->setBody(Input::get('message')) // assuming text/plain
+//     // or:
+//     ->setBody('<h1>Hi, welcome'.Input::get('name').'</h1>', 'text/html'); // for HTML rich messages
+// });
+//return Input::get('message');
+
+$data = array('name' =>'straight line admin', 'body' => Input::get('message'));
+Mail::send('emails.mails',$data, function($message) {
+
+        $firstname = Input::get('firstname');
+        $email = Input::get('email');//mhadad
+  $message->to($email, $firstname)
+          ->subject('Contact Us Form');
+  $message->from('straightline.travel@gmail.com','From straightline');
+});
+
+ //return Redirect::back()->with('success', 'Message successfully submited and email was sent to straightLine');
             }
     }
 
