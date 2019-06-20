@@ -76,10 +76,12 @@ $i = 1;
                 <div class="yellowColor singlePrice mr-4">${{$packages_detail->price}}</div>
                 <i class="ml-5">per person</i>
               </div>
-              <button class="request_callback singleRequest font-weight-bold text-uppercase mt-3">Submit a Request</button>
+              <a href="#form_request_package">
+              <button  class="request_callback singleRequest font-weight-bold text-uppercase mt-3">Submit a Request</button>
+            </a>
             </div>
           </div>
-          <div class="row mb-5 detailedContainer">
+          <div class="row mb-5 detailedContainer" id="form_request_package">
             <div class="col-lg-6">
               <div class="darkBlue font_25 mb-2">Celebrate Summer 2019 in {{$packages_detail->city->name}}</div>
               <div class="greyColor">
@@ -326,7 +328,7 @@ $i = 1;
                       </div>
                     </div>
                   </div>
-                  <div class="card">
+                  <div class="card" >
                     <div class="card-header" id="headingFive">
                       <h5 class="mb-0">
                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
@@ -364,7 +366,7 @@ $i = 1;
         </div>
       </div>
     </div>
-    <div class="choose_ur_pack single_choose d-flex align-items-center mb-4 py-3">
+    <div class="choose_ur_pack single_choose d-flex align-items-center mb-4 py-3"  >
       <div class="container">
         <div class="cust_container">
           <div class="row align-items-center m-0">

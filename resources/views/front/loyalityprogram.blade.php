@@ -53,14 +53,25 @@
 
              
             </div>
-            <center id="btn_show"><button  class="btn d-flex align-items-center justify-content-center serviceBtn text-uppercase font-weight-bold text-center font_18" style="width: 30%" onclick="show_form()" >JOIN OUR<br>LOYALTY PROGRAM</button></center>
+              <span id="btn_show">
+            <div class="row">
+                <div class="col-md-2" >
+                </div>
+              <div class="col-md-4" >
+          
+              <br/><br/><button  class="btn d-flex align-items-center justify-content-center serviceBtn text-uppercase font-weight-bold text-center font_18" style="width: 70% ;height: 30%" onclick="show_form()" >JOIN OUR<br/><br/>LOYALTY PROGRAM</button></span>
+          </div>
+          <div class="col-md-6">
+            <img src="{{asset('images/card.png')}}" style="width:100%; margin-top: -110px;margin-bottom: -100px">
+          </div>
+          </div>
           </div>
 
         </div>
       </div>
     </div>
 
-<div class="choose_ur_pack contactFooter single_choose d-flex align-items-center mb-0 py-5"  id="form_send" style="display: none!important">
+<div class="choose_ur_pack contactFooter single_choose d-flex align-items-center mb-0 py-5"  id="form_send" style="display: none!important;">
       <div class="container" >
         <div class="cust_container">
           <div class="row align-items-center m-0">

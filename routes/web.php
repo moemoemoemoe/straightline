@@ -11,16 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+// Route::get('/', function () {
+//   return view('welcome');
+// });
 Route::get('front_index',['as'=> 'front_index','uses'=>'FrontController@front_index']);
 Route::get('package_detail/{id}',['as'=> 'package_detail','uses'=>'FrontController@package_detail']);
 Route::get('all_packages',['as'=> 'all_packages','uses'=>'FrontController@all_packages']);
 Route::get('services',['as'=> 'services','uses'=>'FrontController@services']);
 Route::get('contactus',['as'=> 'contactus','uses'=>'FrontController@contactus']);
 Route::get('aboutus',['as'=> 'aboutus','uses'=>'FrontController@aboutus']);
-Route::get('loyality_program',['as'=> 'loyality_program','uses'=>'FrontController@loyality_program']);
+Route::get('loyalty-program',['as'=> 'loyality_program','uses'=>'FrontController@loyality_program']);
 
 Route::post('front_index',['as'=> 'front_index','uses'=>'FrontController@front_index_search']);
 Route::get('result_search',['as'=> 'result_search','uses'=>'FrontController@result_search']);

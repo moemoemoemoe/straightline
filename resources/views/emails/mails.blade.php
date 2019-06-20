@@ -1,11 +1,10 @@
 
-@extends('layouts.app_front')
+<center>
+Hi <strong>{{ $name }} </strong>,
 
-@section('content_front')
+<p>{!! $body !!}
+	<br/>
+ Best Regards,
+Postmaster Straight Line</p>
 
-Hi <strong>{{ $name }}</strong>,
-
-<p>{{ $body }}</p>
-
-
-@endseaction
+</center>

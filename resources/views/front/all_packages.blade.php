@@ -61,7 +61,7 @@
                      
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-          <select class="flight_theme ml-3 " name="city_id">
+          <select class="flight_theme " name="city_id">
             @foreach($cities as $city)
             <option value="{{$city->id}}">{{$city->name}}</option>
            
@@ -70,9 +70,9 @@
           <input type="text"  name="flight_from_date" class="date ml-3 datepicker-here" id="flight_from_date" value="" placeholder="DEPART" autocomplete="off" data-language="en" />
           <input type="text" data-language="en"  name="flight_to_date" class="date ml-3 datepicker-here" id="flight_to_date" value="" placeholder="RETURN" autocomplete="off" />
           <input type="text" name="flight_budget" id="flight_budget" value="" placeholder="FROM BUDGET" class="dollar ml-3" autocomplete="off"/>
-             <input type="text" name="flight_budget_to" id="flight_budget_to" value="" placeholder="TO BUDGET" class="dollar ml-3" autocomplete="off"/>
+             <input type="text" name="flight_budget_to" id="flight_budget_to" value="" placeholder="TO BUDGET" class="dollar " autocomplete="off"/>
              <br/>
-          <select class="flight_theme  ml-3 well" name="theme_id" style="margin-top:30px ">
+          <select class="flight_theme well" name="theme_id" style="margin-top:30px ">
             @foreach($themes as $theme)
             <option value="{{$theme->id}}">{{$theme->theme_name}}</option>
            

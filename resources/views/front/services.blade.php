@@ -38,7 +38,7 @@
               <div class="st_tab_content active">
                 <div class="materialsneeded font-weight-bold text-uppercase font_20">
                   <div class="darkBlue">MATERIALS NEEDED</div>
-                  <div class="yellowColor">FOR SCHENGEN VISA</div>
+                  <div class="yellowColor"> {{ $services_important_first[0]->name }}</div>
                 </div>
                 <div class="greyColor my-4">
                 {!! $services_important_first[0]->description !!}
@@ -49,7 +49,7 @@
               <div class="st_tab_content">
                 <div class="materialsneeded font-weight-bold text-uppercase font_20">
                   <div class="darkBlue">MATERIALS NEEDED</div>
-                  <div class="yellowColor">FOR SCHENGEN VISA</div>
+                  <div class="yellowColor"> {{ $service->name }}</div>
                 </div>
                 <div class="greyColor my-4">
                 {!! $service->description !!}

@@ -46,7 +46,7 @@ class ServiceController extends Controller
             $service->name = $name;
             $service->description = $description;
             $service->is_important = $is_important;
-            $service->status = 0;
+            $service->status = 1;
             $service->save();
             return Redirect::back()->with('success', 'New Service successfuly created');
         }

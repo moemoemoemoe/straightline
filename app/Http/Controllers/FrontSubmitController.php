@@ -102,7 +102,23 @@ $callback->your_whene = $your_whene ;
 
 $callback->status = 0 ; 
 $callback->save();
- return Redirect::back()->with('success', 'Callback successfully submited');
+
+
+
+$messages_all = 'Name: '.$r->input('full_name').'<p> Email : '.$r->input('email').'</p><p> Mobile Number: '.$r->input('phone').'</p>';
+
+
+$data = array('name' =>'straight line admin', 'body' => $messages_all);
+Mail::send('emails.mails',$data, function($message) {
+
+        $firstname = Input::get('firstname');
+        $email = Input::get('email');//mhadad
+  $message->to(['info@straightline.com.lb', 'maroun@straightline.com.lb'], $firstname)
+          ->subject('Postmaster CallBack Request (home page)');
+  $message->from('straightline.travel@gmail.com','From straightline');
+});
+
+return Redirect::back()->with('success', 'Message successfully submited and email was sent to straightLine');
             }
     }
 
@@ -158,7 +174,7 @@ $mailing->save();
         $from_date = $r->input('from_date');
         $to_date = $r->input('to_date');
         $message = $r->input('message');
-          $nbtravellers = $r->input('nbtravellers');
+        $nbtravellers = $r->input('nbtravellers');
 
   
                   $data = ['firstname' => $firstname,'phone' => $phone,'email' => $email,'lastname' => $lastname,'from_date' => $from_date,'to_date' => $to_date,'nbtravellers'=>$nbtravellers];
@@ -193,7 +209,20 @@ $callback->status = 0 ;
 $callback->save();
 
 
- //return Redirect::back()->with('success', 'Reservation Package successfully submited');
+$messages_all = 'Message  :'.$r->input('message').'<p> Name: '.$r->input('firstname').'</p>'.$r->input('firstname').'<p> Last Name: ' .$r->input('lastname'). '</p> <p> Email : '.$r->input('email').'</p><p> Mobile Number: '.$r->input('phone').'</p>';
+
+
+$data = array('name' =>'straight line admin', 'body' => $messages_all);
+Mail::send('emails.mails',$data, function($message) {
+
+        $firstname = Input::get('firstname');
+        $email = Input::get('email');//mhadad
+  $message->to(['Packages.straightline@gmail.com', 'maroun@straightline.com.lb'], $firstname)
+          ->subject('Postmaster Package request (package page)');
+  $message->from('straightline.travel@gmail.com','From straightline');
+});
+
+ return Redirect::back()->with('success', 'Reservation Package successfully submited and email was sent to straightLine');
             }
     }
 
@@ -247,18 +276,20 @@ $callback->save();
 //     ->setBody('<h1>Hi, welcome'.Input::get('name').'</h1>', 'text/html'); // for HTML rich messages
 // });
 //return Input::get('message');
+$messages_all = 'Message  :'.$r->input('message').'<p> Name: '.$r->input('firstname').'</p><p> Last Name: ' .$r->input('lastname'). '</p> <p> Email : '.$r->input('email').'</p><p> Mobile Number: '.$r->input('phone').'</p>';
 
-$data = array('name' =>'straight line admin', 'body' => Input::get('message'));
+
+$data = array('name' =>'straight line admin', 'body' => $messages_all);
 Mail::send('emails.mails',$data, function($message) {
 
         $firstname = Input::get('firstname');
         $email = Input::get('email');//mhadad
-  $message->to($email, $firstname)
-          ->subject('Contact Us Form');
+  $message->to(['info@straightline.com.lb', 'maroun@straightline.com.lb'], $firstname)
+          ->subject('Postmaster Contact Us');
   $message->from('straightline.travel@gmail.com','From straightline');
 });
 
- //return Redirect::back()->with('success', 'Message successfully submited and email was sent to straightLine');
+return Redirect::back()->with('success', 'Message successfully submited and email was sent to straightLine');
             }
     }
 

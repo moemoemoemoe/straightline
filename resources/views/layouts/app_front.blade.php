@@ -77,7 +77,7 @@
                   </div>
                 </div>
                 <div class="col-lg-4 clock_header">
-                  <span>08:30 AM - 06:00 PM</span>
+                  <span>08:30 AM - 06:30 PM</span>
                 </div>
               </div>
             </div>
@@ -158,7 +158,18 @@
       <div class="container">
         <div class="cust_container">
           <div class="row">
-            <div class="col-lg-3 d-flex align-items-center"><a href="{{route('front_index')}}"><img src="{{asset('front/images/footer-logo.png')}}" alt="" width="212" height="49" /></a></div>
+            <div class="col-lg-3  align-items-center" style="text-align: center;padding-top: 1em">
+
+<img src="{{asset('images/france.png')}}"  />
+<hr/>
+
+
+              <a href="{{route('front_index')}}"><img src="{{asset('front/images/footer-logo.png')}}" alt="" width="212" height="49" /></a>
+
+
+
+
+            </div>
             <div class="col-lg-3 mt-4 border-white border-right pl-0">
               <div class="footer_title text-uppercase font-weight-bold mb-2 mb-4">Join our<div>Mailing list</div></div>
                <form method="POST" enctype="multipart/form-data" class="well" action="{{route('submit_mailinglist')}}">
@@ -184,7 +195,7 @@
               </a>
               <div>© Copyright 2019 <span>STRAIGHTLINE</span>.</div>
               <div>All Rights Reserved.</div>
-              <div class="powered mb-3">Powered by <a href="#"><b>FUTURE DESTINATION</b></a></div>
+              <div class="powered mb-3">Powered by <a href="https://www.futuredestination.com"><b>FUTURE DESTINATION</b></a></div>
               <div class="font-weight-bold d-flex align-items-center">
                 STAY CONNECTED&nbsp;&nbsp;
                 <a href="https://www.facebook.com/straightline" target="_blank" class="f_fb d-inline-block"></a>&nbsp;
@@ -202,6 +213,23 @@
   <script src="{{asset('front/js/bootstrap.min.js')}}" crossorigin="anonymous"></script>
   <script src="{{asset('front/js/custom.js')}}" crossorigin="anonymous"></script>
 
-   
+   <script src='https://www.google.com/recaptcha/api.js'></script>
+<script>
+  function get_action(form) 
+{
+    var v = grecaptcha.getResponse();
+    if(v.length == 0)
+    {
+        document.getElementById('captcha').innerHTML="You can't leave Captcha Code empty";
+        return false;
+    }
+    else
+    {
+         document.getElementById('captcha').innerHTML="Captcha completed";
+        return true; 
+    }
+}
+
+</script>
 </body>
 </html>

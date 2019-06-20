@@ -12,7 +12,12 @@
             <hr class="w-100">
           </div>
         </div>
-
+@if(count($packages_best) == 0)
+<br/><br/><br/><br/><br/><br/><br/>
+<p>
+<center><span><h1 style="color: #000">No Packages Available</h1></span></center>
+</p>
+@endif
         <div class="row list_packages mt-4 mb-5 m-0">
           @foreach($packages_best as $best)
           <div class="col-lg-6 pr-3">

@@ -2,9 +2,16 @@
 
 @section('content_front')
 
- 
+ <style type="text/css">
+   
+   @media only screen and (max-width: 1026px) {
+    #slid_slid {
+        display: none;
+    }
+}
+ </style>
  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
+      <div class="carousel-inner" id="slid_slid">
         <div class="carousel-item active">
           <img src="front/images/slider1.jpg" />
         </div>
@@ -62,7 +69,7 @@
                   <div class="row align-items-center"> 
                     <div class="col-lg-6">
                       <input type="checkbox" name="fixable_date" id="fixable_date">
-                      <label class="form-check-label fixable_date" for="fixable_date">My Dates Are Fixable (-/+ 3 days)</label>
+                      <label class="form-check-label fixable_date" for="fixable_date" style="visibility: hidden;">My Dates Are Fixable (-/+ 3 days)</label>
                     </div>
                     <div class="col-lg-6 d-flex mt-2">
                       <select class="adult_dropdown" name="adult" id="adult">
@@ -91,20 +98,8 @@
                     <img src="front/images/fromto.png" class="px-2" />
                     <input type="text" name="flight_to_place" id="flight_to_placea" value="" placeholder="TO" class="typeahead"/>
                     <input type="text" class="datepicker-here date ml-2" data-language='en' name="flight_from_date" class="date ml-2" id="flight_from_datea" value="" placeholder="DEPART" autocomplete="off" />
-                  <!--   <input type="text" class="datepicker-here date ml-2" data-language='en' name="flight_to_date" class="date ml-2" id="flight_to_datea" value="" placeholder="RETURN" autocomplete="off"  /> -->
-                   <!--  <select class="nb_travellers ml-2"  id="traveller" name="traveller">
-                      <option>0 TRAVELLER(S)</option>
-                      <option>1 TRAVELLER(S)</option>
-                      <option>2 TRAVELLER(S)</option>
-                    </select> -->
-                  </div>
-                  <div class="row align-items-center" > 
-                    <div class="col-lg-4">
-                      <input type="checkbox" name="direct_flights" id="direct_flights">
-                      <label class="form-check-label fixable_date" for="direct_flights">DIRECT FLIGHTS</label>
-                    </div>
-                    <div class="col-lg-5 d-flex pl-0 mt-2">
-                      <select class="adult_dropdown" name="adult" id="adulta">
+<div class="ml-2"></div>
+              <select class=" col-md-3 " name="adult" id="adulta">
 
 
                         <option value="1">ADULT (1)</option>
@@ -112,15 +107,21 @@
                         <option value="3">ADULT (3)</option>
                         <option value="4">ADULT (4)</option>
                       </select>
-                      <select class="ml-2 child_dropdown" name="child" id="childa">
-                      	<option value="0">CHILD (0)</option>
+                  </div>
+                 
+                  
+                <br/>
+                    <div class="d-flex align-items-center" >
+                     
+                      <select class="col-md-2" name="child" id="childa">
+                        <option value="0">CHILD (0)</option>
                         <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
                         <option value="4">CHILD (4)</option>
                       </select>
                     </div>
-                  </div>
+                 
                 </div>
                 <div class="flight multiLeg">
                   <div class="multi_flights_cont">
@@ -133,7 +134,7 @@
                   </div>
                   <div class="d-flex align-items-center mt-2">
                     <div class="flight_empty">&nbsp;</div>
-                    <select class="adult_dropdown" name="adult" id="adultb">
+                    <select class="col-md-3" name="adult" id="adultb">
 
                         <option value="1">ADULT (1)</option>
                         <option value="2">ADULT (2)</option>
@@ -141,7 +142,7 @@
                         <option value="4">ADULT (4)</option>
                       </select>
                    <select class="ml-2 child_dropdown" name="child" id="childb">
-                      	 <option value="0">CHILD (0)</option>
+                         <option value="0">CHILD (0)</option>
                         <option value="1">CHILD (1)</option>
                         <option value="2">CHILD (2)</option>
                         <option value="3">CHILD (3)</option>
@@ -167,7 +168,7 @@
             <div class="tab-pane fade" id="nav-insurance" role="tabpanel" aria-labelledby="nav-insurance-tab">
               <div class="flight_date_select pt-3 ">
                 <div class="active">
-                	<form method="POST" enctype="multipart/form-data" class="well" action="{{route('submit_insurance')}}">
+                  <form method="POST" enctype="multipart/form-data" class="well" action="{{route('submit_insurance')}}">
                      
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -218,20 +219,32 @@
         </div>
       </div>
     </div>
-
+     <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+ <span class="light_dark_blue_title" style="font-size: 2.2em;padding-left: 2.5em">IT'S A <span style="color: #189adb">BIG WORLD</span> </span>
+</div>
+</div>
     <div class="container">
+      
       <div class="cust_container">
+
         <div class="d-flex best_travel_title mb-5">
+
           <div class="col-lg-3 pl-0">
             <div class="light_dark_blue_title">BEST TRAVEL<div>PACKAGES</div></div>
+                       
+
           </div>
           <div class="w-100 d-flex align-items-end pr-0">
             <hr class="w-100">
+
           </div>
         </div>
 
         <div class="row list_packages mt-4 mb-5 m-0">
-        	@foreach($packages_best as $best)
+          @foreach($packages_best as $best)
           <div class="col-lg-6 pr-3">
             <a href="{{route('package_detail', $best->id)}}">
               <div class="home_pck  d-flex mb-4">
@@ -249,7 +262,7 @@
                     </div>
                  
                     <div class="">
-                    	
+                      
                       <button class="text-uppercase font-weight-bold pck_details_btn">Details</button>
                
                     </div>
@@ -310,16 +323,16 @@
               <form method="POST" enctype="multipart/form-data" class="well" action="{{route('submit_callback')}}">
                      
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <button class="request_callback font-weight-bold text-uppercase" type="submit">Request a callback</button>
+         
             </div>
             <div class="col-lg-9 align-items-end pr-0 pl-0 ml-0">
               <div class="flight_date_select whats_fds ml-3">
 
-              	
+                
                 <div class="d-flex align-items-center whats_text">
                   <div class="col-lg-4 mr-0 pl-0">What's On Your Mind?</div>
                   <div class="col-lg-4 mr-0 pl-0">Where Do You Want to Go?</div>
-                  <div class="col-lg-4 mr-0 pl-0">Whene  You Want to Go?</div>
+                  <div class="col-lg-4 mr-0 pl-0">When  You Want to Go?</div>
                 </div>
                 <div class="d-flex align-items-center">
                   <select class="mr-2 flex-fill pl-1" name="your_mind">
@@ -328,10 +341,18 @@
                   </select>
                   <select class="mr-2 flex-fill pl-1" name="your_go">
                     <option value="All over the world">All over the world</option>
-                   
+                    @foreach($cities as $city)
+                    <option value="{{$city->name}}">{{$city->name}}</option>
+                    @endforeach
                   </select>
                   <select class="mr-2 flex-fill pl-1" name="your_whene">
                     <option value="All seasons">All seasons</option>
+                    <option value="summer">SUMMER</option>
+                    <option value="Spring">SPRING</option>
+                    <option value="Autumn">AUTUMN</option>
+                   <option value="winter">WINTER</option>
+
+
                   
                   </select>
                 </div>
@@ -341,7 +362,14 @@
                   <input class="mr-2 flex-fill email_bg" type="text" name="ur_email" id="ur_email" value="" placeholder="YOUR EMAIL ADDRESS" />
                 </div>
 
+                <div class="d-flex align-items-center mt-2">
+    
+      <!-- <div class="g-recaptcha ml-2" id="rcaptcha"  data-sitekey="6LfkzqkUAAAAAPaMr4mOdhxzk0UBLXm950ew55lN" style="width:1em"></div>
+<span id="captcha" style="color:red" /></span> -->
+ <button class="request_callback font-weight-bold text-uppercase" type="submit">Request a callback</button>
               </div>
+            </div>
+
           </form>
             </div>
           </div>
@@ -365,7 +393,7 @@
             <a href="{{route('package_detail', $featured->id)}}">
               <div class="featured_pck">
                 <div class="pck_img">
-                  <img src="front/images/pack66.jpg" alt="" class="" />
+                  <img src="{{asset('uploads/packages/'.$featured->main_image)}}" alt="" class="" width="322px" />
                 </div>
                 <div class="pt-3 home_pck_details">
                   <h3 class="pck_title pl-3">{{$featured->title}}</h3>
@@ -457,31 +485,31 @@
 
 
   function search_flight(){
-  	var from = $('#flight_from_place').val();
-  	var to = $('#flight_to_place').val();
-  	var dep_date = $('#flight_from_date').val();
-  	var rev_date = $('#flight_to_date').val();
-  	var adu = $('#adult').val();
-  	var chil = $('#child').val();
+    var from = $('#flight_from_place').val();
+    var to = $('#flight_to_place').val();
+    var dep_date = $('#flight_from_date').val();
+    var rev_date = $('#flight_to_date').val();
+    var adu = $('#adult').val();
+    var chil = $('#child').val();
 
-  	var froma = $('#flight_from_placea').val();
-  	var toa = $('#flight_to_placea').val();
-  	var dep_datea = $('#flight_from_datea').val();
-  	var rev_datea = $('#flight_to_datea').val();
-  	var adua = $('#adulta').val();
-  	var chila = $('#childa').val();
+    var froma = $('#flight_from_placea').val();
+    var toa = $('#flight_to_placea').val();
+    var dep_datea = $('#flight_from_datea').val();
+    var rev_datea = $('#flight_to_datea').val();
+    var adua = $('#adulta').val();
+    var chila = $('#childa').val();
 
-  	var fromb = $('#flight_from_placeb').val();
-  	var tob = $('#flight_to_placeb').val();
-  	var dep_dateb = $('#flight_from_dateb').val();
-  	var adub = $('#adultb').val();
-  	var chilb = $('#childb').val();
-  	var the_type = type ;
+    var fromb = $('#flight_from_placeb').val();
+    var tob = $('#flight_to_placeb').val();
+    var dep_dateb = $('#flight_from_dateb').val();
+    var adub = $('#adultb').val();
+    var chilb = $('#childb').val();
+    var the_type = type ;
        if(the_type == 1)
        {
         if(from && to && dep_date && rev_date)
         {
-       	  $.ajax({
+          $.ajax({
     
         url: '{{route('front_index')}}',
         type: 'POST',
@@ -511,12 +539,12 @@
       $('#modal-confirm-operator-message').modal('show');
    
         }
-       	 
+         
        }
        if (the_type == 2) {
         if(froma && toa && dep_datea)
         {
-       	  $.ajax({
+          $.ajax({
         url: '{{route('front_index')}}',
         type: 'POST',
         data:{
@@ -541,12 +569,12 @@
         }
         else
         {$('#modal-confirm-operator-message').modal('show');}
-       	
+        
        }
        if (the_type == 3) {
          if(fromb && tob && dep_dateb)
         {
-       	  $.ajax({
+          $.ajax({
         url: '{{route('front_index')}}',
         type: 'POST',
         data:{
@@ -614,8 +642,8 @@
  return $.get("{{ route('autocomplete') }}", 
   { query: query }, function (data) {
                     var results = data.map(function(item) {
-                        var someItem = { code: item.name, countryname: item.cn, name: item.n };
-                         return someItem.code+"-"+someItem.countryname+"-"+someItem.name;
+                        var someItem = { code: item.name, countryname: item.cn, name: item.n ,city :item.city };
+                         return someItem.city+", "+someItem.countryname+"-("+someItem.code+") "+someItem.name;
                     });
                     
                     return process(results); 
