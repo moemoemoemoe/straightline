@@ -337,10 +337,21 @@
                 <div class="d-flex align-items-center">
                   <select class="mr-2 flex-fill pl-1" name="your_mind">
                     <option value="All Activities"> All Activities</option>
+                    <option value='Carnivals, Fairs and Events'  >Carnivals, Fairs and Events</option>
+                    <option value='Sun & Sand'  >Sun & Sand</option>
+                    <option value='Honeymoons, Weddings & Romantic Escapes'  >Honeymoons, Weddings & Romantic Escapes</option>
+                    <option value='Culture, Nature & Heritage'  >Culture, Nature & Heritage</option>
+                    <option value='Spa & Wellness'  >Spa & Wellness</option>
+                    <option value='City Breaks'  >City Breaks</option>
+                    <option value='Family Holidays'  >Family Holidays</option>
+                    <option value='Sports, Adventures & Safaris'  >Sports, Adventures & Safaris</option>
+                    <option value='City + Beach'  >City + Beach</option>
+                    <option value='Hajj & Omra'  >Hajj & Omra</option>
                    
                   </select>
                   <select class="mr-2 flex-fill pl-1" name="your_go">
                     <option value="All over the world">All over the world</option>
+                    
                     @foreach($cities as $city)
                     <option value="{{$city->name}}">{{$city->name}}</option>
                     @endforeach

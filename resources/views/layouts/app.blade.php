@@ -240,6 +240,10 @@
                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Forms</a>
              
                 <div class="dropdown-menu">
+
+<a class="dropdown-item" href="{{route('manage_sending_mails')}}" >Manage Sending mails</a>
+
+
                   @if(Route::current()->getName() == 'reservation_package' )
                     <a class="active dropdown-item" href="{{route('reservation_package')}}" > Package Reservation</a>
 @else

@@ -185,4 +185,12 @@ Route::group(['prefix' => '/dashboard', 'middleware' => 'auth'], function() {
   Route::get('terms_index',['as'=> 'terms_index','uses'=>'FaqTermsController@terms_index']);
   Route::post('terms_index',['as'=> 'terms_index','uses'=>'FaqTermsController@terms_index_save']);
 
+  ///////////////////////////////////////
+
+  Route::get('manage_sending_mails',['as'=> 'manage_sending_mails','uses'=>'MailingController@manage_sending_mails']);
+   Route::post('manage_sending_mails',['as'=> 'manage_sending_mails','uses'=>'MailingController@manage_sending_mails_save']);
+  Route::get('update_mail_receive/{id}',['as'=> 'update_mail_receive','uses'=>'MailingController@update_mail_receive']);
+Route::post('update_mail_receive/{id}',['as'=> 'update_mail_receive','uses'=>'MailingController@update_mail_receive_save']);
+  
+
 });

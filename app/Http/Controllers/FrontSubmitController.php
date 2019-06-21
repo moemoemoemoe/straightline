@@ -9,6 +9,7 @@ use App\Insurance;
 use App\Callback;
 use App\Mailing;
 use App\Reservationpack;
+use App\Emailtosend;
 use App\Contactmessage;
 use App\Loyalitymessage;
 use Mail;
@@ -69,7 +70,9 @@ $insurance->save();
      */
     public function submit_callback(Request $r)
     {
-        
+        // $emails_send = Emailtosend::where('section_id' , 3)->get();
+
+       
         $full_name = $r->input('ur_fullname');
         $phone = $r->input('ur_phone');
         $email = $r->input('ur_email');
@@ -77,8 +80,6 @@ $insurance->save();
         $your_go = $r->input('your_go');
         $your_whene = $r->input('your_whene');
        
-       
-                  
                   $data = ['full_name' => $full_name,'phone' => $phone,'email' => $email,'your_mind' => $your_mind,'your_go' => $your_go,'your_whene' => $your_whene];
 
                   $rules = ['full_name' => 'required','phone' => 'required','your_whene' => 'required','email' => 'required','your_mind' => 'required','your_go' => 'required'];
@@ -104,19 +105,21 @@ $callback->status = 0 ;
 $callback->save();
 
 
+//////////////////send email callback
+
 
 $messages_all = 'Name: '.$r->input('full_name').'<p> Email : '.$r->input('email').'</p><p> Mobile Number: '.$r->input('phone').'</p>';
-
-
 $data = array('name' =>'straight line admin', 'body' => $messages_all);
-Mail::send('emails.mails',$data, function($message) {
 
+
+Mail::send('emails.mails',$data, function($message) {
         $firstname = Input::get('firstname');
         $email = Input::get('email');//mhadad
   $message->to(['info@straightline.com.lb', 'maroun@straightline.com.lb'], $firstname)
           ->subject('Postmaster CallBack Request (home page)');
   $message->from('straightline.travel@gmail.com','From straightline');
 });
+//////////////////
 
 return Redirect::back()->with('success', 'Message successfully submited and email was sent to straightLine');
             }
@@ -208,9 +211,8 @@ if($message == '' || $message == NULL)
 $callback->status = 0 ; 
 $callback->save();
 
-
+////////////////////// d=send email res pack
 $messages_all = 'Message  :'.$r->input('message').'<p> Name: '.$r->input('firstname').'</p>'.$r->input('firstname').'<p> Last Name: ' .$r->input('lastname'). '</p> <p> Email : '.$r->input('email').'</p><p> Mobile Number: '.$r->input('phone').'</p>';
-
 
 $data = array('name' =>'straight line admin', 'body' => $messages_all);
 Mail::send('emails.mails',$data, function($message) {
@@ -221,6 +223,7 @@ Mail::send('emails.mails',$data, function($message) {
           ->subject('Postmaster Package request (package page)');
   $message->from('straightline.travel@gmail.com','From straightline');
 });
+////////////////
 
  return Redirect::back()->with('success', 'Reservation Package successfully submited and email was sent to straightLine');
             }
@@ -267,17 +270,8 @@ $callback->email = $email ;
 $callback->status = 0 ; 
 $callback->save();
 
-// Mail::send([], [], function ($message) {
-//   $message->to(Input::get('email'))
-//     ->subject('contacat us form')
-//     // here comes what you want
-//     ->setBody(Input::get('message')) // assuming text/plain
-//     // or:
-//     ->setBody('<h1>Hi, welcome'.Input::get('name').'</h1>', 'text/html'); // for HTML rich messages
-// });
-//return Input::get('message');
+/////////////////send email cotact us
 $messages_all = 'Message  :'.$r->input('message').'<p> Name: '.$r->input('firstname').'</p><p> Last Name: ' .$r->input('lastname'). '</p> <p> Email : '.$r->input('email').'</p><p> Mobile Number: '.$r->input('phone').'</p>';
-
 
 $data = array('name' =>'straight line admin', 'body' => $messages_all);
 Mail::send('emails.mails',$data, function($message) {
@@ -288,6 +282,7 @@ Mail::send('emails.mails',$data, function($message) {
           ->subject('Postmaster Contact Us');
   $message->from('straightline.travel@gmail.com','From straightline');
 });
+/////////////////////////
 
 return Redirect::back()->with('success', 'Message successfully submited and email was sent to straightLine');
             }

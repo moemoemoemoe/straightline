@@ -187,25 +187,28 @@
                 <p><span>P</span> +961 9 220 400<br><span>E</span> info@straightline.com.lb</p>
               </div>
             </div>
+             <div class="col-lg-3 pl-0 ">
             <div class="col-lg-3 pl-0 copyright">
-              <a href="javascript:;">
+              <a >
                 <div class="go_top d-flex justify-content-center align-items-center mb-4">
                   <div class="d-flex justify-content-center align-items-center">Go Top</div>
                 </div>
+              </div>
               </a>
               <div>© Copyright 2019 <span>STRAIGHTLINE</span>.</div>
               <div>All Rights Reserved.</div>
-              <div class="powered mb-3">Powered by <a href="https://www.futuredestination.com"><b>FUTURE DESTINATION</b></a></div>
+              <div class="powered mb-3">Powered by <a href="https://www.futuredestination.com" target="_blank"><b>FUTURE DESTINATION</b></a></div>
               <div class="font-weight-bold d-flex align-items-center">
                 STAY CONNECTED&nbsp;&nbsp;
-                <a href="https://www.facebook.com/straightline" target="_blank" class="f_fb d-inline-block"></a>&nbsp;
-                <a href="https://www.instagram.com/straightline" target="_blank" class="f_insta d-inline-block"></a>
+                <a href="https://www.facebook.com/StraightLineTravelAndTourism" target="_blank" class="f_fb d-inline-block"></a>&nbsp;
+                <a href="https://www.instagram.com/straightlinetraveltourism" target="_blank" class="f_insta d-inline-block"></a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </footer>
+
   </main>
 
   <script src="{{asset('front/js/jquery-3.4.1.min.js')}}" crossorigin="anonymous"></script>
@@ -213,23 +216,6 @@
   <script src="{{asset('front/js/bootstrap.min.js')}}" crossorigin="anonymous"></script>
   <script src="{{asset('front/js/custom.js')}}" crossorigin="anonymous"></script>
 
-   <script src='https://www.google.com/recaptcha/api.js'></script>
-<script>
-  function get_action(form) 
-{
-    var v = grecaptcha.getResponse();
-    if(v.length == 0)
-    {
-        document.getElementById('captcha').innerHTML="You can't leave Captcha Code empty";
-        return false;
-    }
-    else
-    {
-         document.getElementById('captcha').innerHTML="Captcha completed";
-        return true; 
-    }
-}
-
-</script>
+ 
 </body>
 </html>

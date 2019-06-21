@@ -7,6 +7,7 @@ use App\Mailing;
 use Validator;
 use Redirect;
 use paginate;
+use App\Emailtosend;
 
 class MailingController extends Controller
 {
@@ -64,9 +65,10 @@ class MailingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function manage_sending_mails()
     {
-        //
+        $emails = Emailtosend::orderBy('id','DESC')->get();
+        return view('mails.index',compact('emails'));
     }
 
     /**
@@ -75,9 +77,37 @@ class MailingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function manage_sending_mails_save(Request $r)
     {
-        //
+        
+       
+        $section_id =$r->input('section_id');
+        $emails =$r->input('emails');
+ $emails_count = Emailtosend::orderBy('id','DESC')->where('section_id', $section_id)->count();
+ if($emails_count > 0 )
+ {
+
+     return Redirect::Back()->withErrors("You All Ready Have This Section Created..please just update your emails")->withInput($r->input());
+ }
+ else
+ {
+
+        $data = ['emails' => $emails];
+        $rules = ['emails' => 'required'];
+
+        $v = Validator::make($data, $rules);
+        if($v->fails()){
+            return Redirect::Back()->withErrors($v)->withInput($r->input());
+        }else
+       {
+           
+            $mails_save = new Emailtosend();
+            $mails_save->section_id = $section_id;
+            $mails_save->emails = $emails;
+            $mails_save->save();
+            return Redirect::back()->with('success', 'Created Successfully');
+        }
+    }
     }
 
     /**
@@ -87,9 +117,10 @@ class MailingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_mail_receive($id)
     {
-        //
+        $mails_save = Emailtosend::findOrFail($id);
+        return view('mails.update',compact('mails_save'));
     }
 
     /**
@@ -98,8 +129,25 @@ class MailingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function update_mail_receive_save(Request $r,$id)
     {
-        //
+         
+          $emails =$r->input('emails');
+
+        $data = ['emails' => $emails];
+        $rules = ['emails' => 'required'];
+
+        $v = Validator::make($data, $rules);
+        if($v->fails()){
+            return Redirect::Back()->withErrors($v)->withInput($r->input());
+        }else
+       {
+           
+            $mails_save = Emailtosend::findOrFail($id);
+            
+            $mails_save->emails = $emails;
+            $mails_save->save();
+            return Redirect::back()->with('success', 'Updated  Successfully');
+        }
     }
 }
